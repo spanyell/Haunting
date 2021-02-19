@@ -163,17 +163,18 @@ struct OnceUponView: View {
                 .opacity(fadeInOut5 ? 0 : 1)
                 .offset(x: 0, y: 0)
             NavigationLink(
-                destination: StoryView(),
+                destination: StoryView().transition(AnyTransition.opacity.animation(.easeInOut(duration: 1.0))),
                 isActive: $newView,
                 label: {
                     EmptyView()
                 })
+                
                 .onAppear() {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 17) {
                         newView.toggle()
                     }
             }
-            
+                
         
         }.navigationBarHidden(true)
         

@@ -12,12 +12,12 @@ class DatabaseManager
     
     func saveAndPrintStoryData()
     {
-        let previousStoryDataItemRecords = StoryData.all(in: realm)
-                
-                if(!previousStoryDataItemRecords.isEmpty)
-                {
-                    return
-                }
+//        let previousStoryDataItemRecords = StoryData.all(in: realm)
+//
+//                if(!previousStoryDataItemRecords.isEmpty)
+//                {
+//                    return
+//                }
         //  Declare an empty storyDataList array
         var storyDataList = [StoryData]()
         
@@ -26,8 +26,8 @@ class DatabaseManager
                                   chapter: "1",
                                   paragraph: "1",
                                   subparagraph: "1",
-                                  dataDescription: "When you open your eyes, you find yourself sitting on a large canopy bed. You have no recollection of how you got here or where you are. The room is dark save for the flashes of sporadic lightning from the window on the opposite side of the room. What do you do?",
-                                  choices: "Try to remember how you got there.*Look around the room.*Stand up.",
+                                  dataDescription: "With a gasp, you open your eyes. You lay on a canopy bed, the curtains drawn. It is dark, save for the intermittent flashes of lightning. You are above the covers, though judging how stiff you feel, it is obvious you have been sleeping for some time. You had been dreaming, though with each passing second, it fades. Who are you? Where are you?",
+                                  choices: "Try to remember your dream.*Try to remember who and where you are.*Rise and open the curtains.",
                                   isCompleted: false)
         
         //  Add the storyDataItem to the array
@@ -37,8 +37,8 @@ class DatabaseManager
                                   chapter: "1",
                                   paragraph: "2",
                                   subparagraph: "1",
-                                  dataDescription: "When you open your eyes, you find yourself sitting on a large canopy bed. You have no recollection of how you got here or where you are. The room is dark save for the flashes of sporadic lightning from the window on the opposite side of the room. What do you do?",
-                                  choices: "Try to remember how you got there.*Look around the room.*Stand up.",
+                                  dataDescription: "The events of the dreams are vague, as all dreams are, but you remember the need to move quickly. You wanted to run with a great desperation in your heart, but it felt as though you were getting nowhere. Was someone or something chasing you? You cannot be certain. You do know that after feelings of extreme exhaustion, you decided to give up the struggle and relent. You were overcome with fear in the moments before you awoke, but the dream has faded before you can recall what.",
+                                  choices: "Try to remember who you are.*Rise and open the curtains.",
                                   isCompleted: false)
         
         //  Add the storyDataItem to the array
@@ -48,8 +48,8 @@ class DatabaseManager
                                   chapter: "1",
                                   paragraph: "3",
                                   subparagraph: "1",
-                                  dataDescription: "When you open your eyes, you find yourself sitting on a large canopy bed. You have no recollection of how you got here or where you are. The room is dark save for the flashes of sporadic lightning from the window on the opposite side of the room. What do you do?",
-                                  choices: "Try to remember how you got there.*Look around the room.*Stand up.",
+                                  dataDescription: "While it first, you find it silly to question your identity, it remains elusive. You fight off a sense of panic as your mind whirls through the remnants of the dream and what little else is there in the way of memory.  But it seems the harder you try, the less you understand.",
+                                  choices: "Try to remember your dream.*Rise and open the curtains.",
                                   isCompleted: false)
         
         //  Add the storyDataItem to the array
@@ -79,3 +79,6 @@ class DatabaseManager
         print(Realm.Configuration.defaultConfiguration.fileURL!)
     }
 }
+
+
+// /Users/danbeers/Library/Developer/CoreSimulator/Devices/D426985F-0782-4F97-A551-5B8A481EC47F/data/Containers/Data/Application/D53F2501-81B0-4FAE-A243-7433356A3784/Documents/default.realm

@@ -38,7 +38,7 @@ class AppDelegate: NSObject, UIApplicationDelegate
         //  Test the code by adding a record to the database
  //           saveAndPrintStoryData()
                 
-        // DatabaseManager().saveAndPrintStoryData()
+ //        DatabaseManager().saveAndPrintStoryData()
         
 //        StoryDataViewModel().retrieveChapterData(chapter: "1")
 
@@ -56,10 +56,9 @@ func saveAndPrintStoryData()
     //  Create an object which represents a single row of data in the StoryData table in the database
     let storyDataItem = StoryData(id: UUID().uuidString,
                               chapter: "1",
-                              paragraph: "2",
-                              subparagraph: "2",
-                              dataDescription: "His fucking mom.The events of the dreams are vague, as all dreams are, but you remember the need to move quickly. You wanted to run with a great desperation in your heart, but it felt as though you were getting nowhere. Was someone or something chasing you? You cannot be certain. You do know that after feelings of extreme exhaustion, you decided to give up the struggle and relent. You were overcome with fear in the moments before you awoke, but the dream has faded before you can recall what.",
-                              choices: "Rise, and open the curtains.*Try to remember who you are.",
+                              paragraph: "1",
+                              subparagraph: "1",
+                              dataDescription: "With a gasp, you open your eyes. You lay on a canopy bed, the curtains drawn. It is dark, save for the intermittent flashes of lightning. You are above the covers, though judging how stiff you feel, it is obvious you have been sleeping for some time. You had been dreaming, though with each passing second, it fades. Who are you? Where are you?",
                               isCompleted: false)
     
     try! realm.write
