@@ -15,8 +15,11 @@ struct StoryView: View {
     @State var makeSmally = true
     @State var bouncySpinny = true
     @State var shadows = true
+    @State var blurry = true
     @State private var flashEffect = false
     @State var thunderEffect: AVAudioPlayer!
+    var paragraph = UserDefaults.standard.string(forKey: "paragraph") ?? "1"
+    
     
     var body: some View {
         ZStack {
@@ -27,10 +30,10 @@ struct StoryView: View {
                         thunderEffect = try! AVAudioPlayer(data: thunderclapAndRain.data, fileTypeHint: "mp3")
                     }
                     DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                        thunderEffect.play()
+ //                       thunderEffect.play()
                     }
-
                 }
+        
                 
             VStack {
                 Text("\(storyDataViewModel.storyDataList[0].dataDescription)")
@@ -39,17 +42,19 @@ struct StoryView: View {
                     .padding()
                     .scaleEffect(makeSmally ? 0 : 1.0)
                     .offset(y: onTappy ? -25 : 0)
-                    .rotation3DEffect(.degrees(bouncySpinny ? 90 : 0),
-                                      axis: (x: bouncySpinny ? 0 : 0, y: bouncySpinny ? 0 : 0.0, z: bouncySpinny ? 0 : 0.0))
+                    .rotationEffect(bouncySpinny ? .degrees(180) : .degrees(0))
+//                    .rotation3DEffect(.degrees(bouncySpinny ? 90 : 0),
+//                                      axis: (x: bouncySpinny ? 0 : 0, y: bouncySpinny ? 0 : 0.0, z: bouncySpinny ? -180 : 0.0))
                     .shadow(color: shadows ? .white : .black, radius: shadows ? 20 : 0, x: 1, y: 1)
                     .onAppear() {
                         
-                        withAnimation(.easeInOut(duration: 7.0)) {
+                        withAnimation(.easeInOut(duration: 10.0)) {
 
                             onTappy.toggle()
                             makeSmally.toggle()
                             bouncySpinny.toggle()
                             shadows.toggle()
+                            blurry.toggle()
                         }
                         withAnimation(Animation
                                         .easeInOut(duration: 0.1)
@@ -61,11 +66,33 @@ struct StoryView: View {
 
                         }
                     }
-
                     .shadow(color: shadows ? .white : .black, radius: shadows ? 18 : 0, x: 1, y: 1)
-                    
-            }
+                VStack {
+                    ForEach(storyDataViewModel.choicesDictionary[paragraph]!, id: \.self) {
+                            Text("\($0)")
+                                .foregroundColor(.white)
+                                .font(Font.custom("Hoefler Text", size: 15))
+                                .padding()
+                                .blur(radius: blurry ? 100 : 0)
+                        }
+                }
+//                    Text("DD")
+//                        .foregroundColor(.white)
+//                        .font(Font.custom("Hoefler Text", size: 20))
+//                        .padding()
+//                    Text("EE")
+//                        .foregroundColor(.white)
+//                        .font(Font.custom("Hoefler Text", size: 20))
+//                        .padding()
+//                    Text("FF")
+//                        .foregroundColor(.white)
+//                        .font(Font.custom("Hoefler Text", size: 20))
+//                        .padding()
+//                }
+//
         }.navigationBarHidden(true)
+            
+        }
         
         .onTapGesture {
             thunderEffect.play()
@@ -87,7 +114,6 @@ struct StoryView: View {
                     flashEffect.toggle()
 
                 }
-
             }
         }
     }

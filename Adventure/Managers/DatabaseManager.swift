@@ -12,12 +12,12 @@ class DatabaseManager
     
     func saveAndPrintStoryData()
     {
-//        let previousStoryDataItemRecords = StoryData.all(in: realm)
-//
-//                if(!previousStoryDataItemRecords.isEmpty)
-//                {
-//                    return
-//                }
+        let previousStoryDataItemRecords = StoryData.all(in: realm)
+
+                if(!previousStoryDataItemRecords.isEmpty)
+                {
+                    return
+                }
         //  Declare an empty storyDataList array
         var storyDataList = [StoryData]()
         
