@@ -16,6 +16,7 @@ struct StoryData: Realmable
     var dataDescription = ""
     var choices = ""
     var isCompleted = false
+    var choiceDestination = ""
     
     static func primaryKey() -> String?
     {
@@ -86,7 +87,7 @@ extension StoryData
     //  Retrieve rows from the database based on chapter
         static func retrieveStoryDataByChapter(chapter: String, in realm: Realm = try! Realm()) -> [StoryData]
         {
-            return realm.objects(StoryData.self).filter("chapter == '\(chapter)'").toArray(type: StoryData.self)
+            return realm.objects(StoryData.self).filter("chapter == '\(chapter)'").sorted(byKeyPath: "paragraph", ascending: true).toArray(type: StoryData.self)
         }
 }
 

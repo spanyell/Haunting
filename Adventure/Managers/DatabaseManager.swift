@@ -28,7 +28,8 @@ class DatabaseManager
                                   subparagraph: "1",
                                   dataDescription: "With a gasp, you open your eyes. You lay on a canopy bed, the curtains drawn. It is dark, save for the intermittent flashes of lightning. You are above the covers, though judging how stiff you feel, it is obvious you have been sleeping for some time. You had been dreaming, though with each passing second, it fades. Who are you? Where are you?",
                                   choices: "Try to remember your dream.*Try to remember who and where you are.*Rise and open the curtains.",
-                                  isCompleted: false)
+                                  isCompleted: false,
+                                  choiceDestination: "1.4.1*1.2.1*1.3.1")
         
         //  Add the storyDataItem to the array
         storyDataList.append(storyDataItem)
@@ -39,7 +40,8 @@ class DatabaseManager
                                   subparagraph: "1",
                                   dataDescription: "The events of the dreams are vague, as all dreams are, but you remember the need to move quickly. You wanted to run with a great desperation in your heart, but it felt as though you were getting nowhere. Was someone or something chasing you? You cannot be certain. You do know that after feelings of extreme exhaustion, you decided to give up the struggle and relent. You were overcome with fear in the moments before you awoke, but the dream has faded before you can recall what.",
                                   choices: "Try to remember who you are.*Rise and open the curtains.",
-                                  isCompleted: false)
+                                  isCompleted: false,
+                                  choiceDestination: "1.4.1*1.3.1")
         
         //  Add the storyDataItem to the array
         storyDataList.append(storyDataItem2)
@@ -50,7 +52,8 @@ class DatabaseManager
                                   subparagraph: "1",
                                   dataDescription: "While it first, you find it silly to question your identity, it remains elusive. You fight off a sense of panic as your mind whirls through the remnants of the dream and what little else is there in the way of memory.  But it seems the harder you try, the less you understand.",
                                   choices: "Try to remember your dream.*Rise and open the curtains.",
-                                  isCompleted: false)
+                                  isCompleted: false,
+                                  choiceDestination: "1.4.1*1.2.1")
         
         //  Add the storyDataItem to the array
         storyDataList.append(storyDataItem3)
