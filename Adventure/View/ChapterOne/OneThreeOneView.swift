@@ -24,7 +24,7 @@ struct OneThreeOneView: View {
     var body: some View {
         let choicesArray = storyDataViewModel.choicesDictionary[storyPlacement]
         Text("1.3.1")
-        Text("\(storyDataViewModel.storyDataList[2].dataDescription)")
+        Text("\(storyDataViewModel.storyDataList[Int(storyPlacement)! - 1].dataDescription)")
             .onAppear() {
             }
         VStack
