@@ -163,7 +163,7 @@ struct OnceUponView: View {
                 .opacity(fadeInOut5 ? 0 : 1)
                 .offset(x: 0, y: 0)
             NavigationLink(
-                destination: StoryView().transition(AnyTransition.opacity.animation(.easeInOut(duration: 1.0))),
+                destination: OneOneOneView(),
                 isActive: $newView,
                 label: {
                     EmptyView()

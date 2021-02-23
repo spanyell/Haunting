@@ -20,9 +20,11 @@ struct StartView: View {
     var body: some View {
         NavigationView {
             ZStack {
+                //Inputting black color with a white and black effect.
                 Color(flashEffect ? .white : .black)
                     .frame(alignment: .center)
                     .opacity(flashEffect ? 0 : 1)
+                    // inits the music
                     .onAppear() {
                         if let mainViewMusic = NSDataAsset(name: "MainViewMusic") {
                             musicPlayer = try! AVAudioPlayer(data: mainViewMusic.data, fileTypeHint: "mp3")
@@ -34,23 +36,25 @@ struct StartView: View {
                             thunderEffect = try! AVAudioPlayer(data: thunderclapAndRain.data, fileTypeHint: "mp3")
                         }
                     }
+                // Text UI
                 Text("Adventure Game")
                     .foregroundColor(.white)
                     .font(Font.custom("Hoefler Text", size: 50))
                     .offset(x: 0, y: -200)
                     .opacity(fadeAway ? 0 : 1)
+                // Calls the navigation links in order by tag
                 VStack {
                     NavigationLink(
                         destination: OnceUponView(), tag: 1, selection: $action) {
                         EmptyView()
                     }
                     NavigationLink(
-                        destination: StoryView(), tag: 2, selection: $action) {
+                        destination: OneOneOneView(), tag: 2, selection: $action) {
                         EmptyView()
                     }
                     .navigationBarHidden(true)
                 }
-                
+                // Text UI with graphic animations toggling and sound effects playing.
                 VStack {
                     Text("New Game")
                         .foregroundColor(.white)

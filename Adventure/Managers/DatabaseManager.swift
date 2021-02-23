@@ -27,7 +27,7 @@ class DatabaseManager
                                   paragraph: "1",
                                   subparagraph: "1",
                                   dataDescription: "With a gasp, you open your eyes. You lay on a canopy bed, the curtains drawn. It is dark, save for the intermittent flashes of lightning. You are above the covers, though judging how stiff you feel, it is obvious you have been sleeping for some time. You had been dreaming, though with each passing second, it fades. Who are you? Where are you?",
-                                  choices: "Try to remember your dream.*Try to remember who and where you are.*Rise and open the curtains.",
+                                  choices: "Rise and open the curtains.*Try to remember your dream.*Try to remember who and where you are.",
                                   isCompleted: false,
                                   choiceDestination: "1.4.1*1.2.1*1.3.1")
         
@@ -39,7 +39,7 @@ class DatabaseManager
                                   paragraph: "2",
                                   subparagraph: "1",
                                   dataDescription: "The events of the dreams are vague, as all dreams are, but you remember the need to move quickly. You wanted to run with a great desperation in your heart, but it felt as though you were getting nowhere. Was someone or something chasing you? You cannot be certain. You do know that after feelings of extreme exhaustion, you decided to give up the struggle and relent. You were overcome with fear in the moments before you awoke, but the dream has faded before you can recall what.",
-                                  choices: "Try to remember who you are.*Rise and open the curtains.",
+                                  choices: "Rise and open the curtains.*Try to remember who you are.",
                                   isCompleted: false,
                                   choiceDestination: "1.4.1*1.3.1")
         
@@ -51,12 +51,24 @@ class DatabaseManager
                                   paragraph: "3",
                                   subparagraph: "1",
                                   dataDescription: "While it first, you find it silly to question your identity, it remains elusive. You fight off a sense of panic as your mind whirls through the remnants of the dream and what little else is there in the way of memory.  But it seems the harder you try, the less you understand.",
-                                  choices: "Try to remember your dream.*Rise and open the curtains.",
+                                  choices: "Rise and open the curtains.*Try to remember your dream.",
                                   isCompleted: false,
                                   choiceDestination: "1.4.1*1.2.1")
         
         //  Add the storyDataItem to the array
         storyDataList.append(storyDataItem3)
+        
+        let storyDataItem4 = StoryData(id: UUID().uuidString,
+                                  chapter: "1",
+                                  paragraph: "4",
+                                  subparagraph: "1",
+                                  dataDescription: "You open the curtains of the canopy bed and drop your legs to a carpeted floor. When you stand, you feel a sudden light-headedness. Your skin feels cold and clammy. You fight the urge to sit back down.",
+                                  choices: "Continue.",
+                                  isCompleted: false,
+                                  choiceDestination: "1.5")
+        
+        //  Add the storyDataItem to the array
+        storyDataList.append(storyDataItem4)
         
         //  Add the rows into the table from the array using the class method called add().
         StoryData.add(dataItems: storyDataList, in: realm)

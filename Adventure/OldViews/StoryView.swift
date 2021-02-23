@@ -114,7 +114,6 @@ struct StoryView: View
                             .padding()
                             .onTapGesture(perform: {
                                 viewAction = i + 1
-                                
                             })
                             .onAppear
                             {
