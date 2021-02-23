@@ -54,7 +54,7 @@ extension StoryData
         {
             try! realm.write
             {
-                realm.add(dataItem)
+                realm.add(dataItem, update: .all)
             }
         }
         
