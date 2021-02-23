@@ -70,7 +70,6 @@
 		2B0E350D25E4B1FD006BB63B /* ChapterOne */ = {
 			isa = PBXGroup;
 			children = (
-				2BEFA5C625DCECF200F8984F /* OnceUponView.swift */,
 				2B0E350125E495CA006BB63B /* OneOneOneView.swift */,
 				2B0E350425E495D6006BB63B /* OneTwoOneView.swift */,
 				2B0E350725E495EF006BB63B /* OneThreeOneView.swift */,
@@ -105,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				2BEFA5BE25DCEAFC00F8984F /* StartView.swift */,
+				2BEFA5C625DCECF200F8984F /* OnceUponView.swift */,
 				2B0E350D25E4B1FD006BB63B /* ChapterOne */,
 			);
 			path = View;
@@ -130,8 +130,8 @@
 			isa = PBXGroup;
 			children = (
 				9114E90425D9A1530051CB3A /* AdventureApp.swift */,
-				9114E91F25D9AE2D0051CB3A /* ViewModel */,
 				9114E91A25D9A5EE0051CB3A /* Model */,
+				9114E91F25D9AE2D0051CB3A /* ViewModel */,
 				2BEFA5C125DCEB0400F8984F /* View */,
 				2B2FD78625DDDB1000C0AB71 /* Managers */,
 				9114E90825D9A1540051CB3A /* Assets.xcassets */,

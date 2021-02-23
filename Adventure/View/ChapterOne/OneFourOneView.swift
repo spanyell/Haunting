@@ -51,5 +51,6 @@ struct OneFourOneView: View {
                     })
             
         }
+        .navigationBarHidden(true)
     }
 }

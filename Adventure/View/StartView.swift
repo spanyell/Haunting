@@ -112,6 +112,7 @@ struct StartView: View {
             }
         }
         .preferredColorScheme(.dark)
+        .navigationBarHidden(true)
     }
 }
 
