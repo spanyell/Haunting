@@ -21,12 +21,12 @@ struct OneFourView: View
     @State var blurry = true
     @State private var flashEffect = false
     @State var screenFade = true
-    @State var slideX = true
     //Sound
     @State var thunderEffect: AVAudioPlayer!
     @State var oneOneOneMusic: AVAudioPlayer!
     //Destination variable
     @State private var viewAction: Int? = 0
+    @State private var viewTransition: Int? = 0
     
     var storyPlacement: Int
 
@@ -38,7 +38,6 @@ struct OneFourView: View
         Text("\(storyDataViewModel.storyDataList[storyPlacement - 1].dataDescription)")
             .foregroundColor(.white)
             .font(Font.custom("Hoefler Text", size: 25))
-            .offset(x: slideX ? 0 : -1000)
             .onAppear
             {
             }
@@ -62,13 +61,8 @@ struct OneFourView: View
             Text("\(choicesArray![i])")
                 .foregroundColor(.white)
                 .font(Font.custom("Hoefler Text", size: 20))
-                .offset(x: slideX ? 0 : 1000)
                 .padding()
                 .onTapGesture(perform: {
-                    withAnimation(.easeInOut(duration: 2))
-                    {
-                        slideX.toggle()
-                    }
                     DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                         viewAction = i + 1
                     }

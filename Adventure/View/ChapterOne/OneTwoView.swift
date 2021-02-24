@@ -21,11 +21,15 @@ struct OneTwoView: View
     @State var blurry = true
     @State var screenFade = true
     @State private var flashEffect = false
+    @State var curtainSlideX = true
     //Sound
     @State var thunderEffect: AVAudioPlayer!
-    @State var oneOneOneMusic: AVAudioPlayer!
+    @State var oneTwoMusic: AVAudioPlayer!
+    @State var curtainsEffect: AVAudioPlayer!
+    @State var musicEffect: AVAudioPlayer!
     //Destination Variable
     @State private var viewAction: Int? = 0
+    @State private var viewTransition: Int? = 0
     
     var storyPlacement: Int
     
@@ -40,9 +44,18 @@ struct OneTwoView: View
             .font(Font.custom("Hoefler Text", size: 25))
             .blur(radius: blurry ? 500 : 0)
             .blur(radius: screenFade ? 0 : 500)
+            .offset(x: curtainSlideX ? 0 : -1000)
             .onAppear
             {
-                withAnimation(.easeInOut(duration: 2))
+                if let drawCurtains = NSDataAsset(name: "DrawCurtains")
+                {
+                    curtainsEffect = try! AVAudioPlayer(data: drawCurtains.data, fileTypeHint: "mp3")
+                }
+                if let mainViewMusic = NSDataAsset(name: "MainViewMusic")
+                {
+                    musicEffect = try! AVAudioPlayer(data: mainViewMusic.data, fileTypeHint: "mp3")
+                }
+                withAnimation(.easeInOut(duration: 1))
                 {
                     blurry.toggle()
                 }
@@ -65,6 +78,7 @@ struct OneTwoView: View
             .frame(height: 100)
             .blur(radius: blurry ? 100 : 0)
             .blur(radius: screenFade ? 0 : 500)
+            .offset(x: curtainSlideX ? 0 : 1000)
 
         ForEach(choicesArray!.indices, id: \.self)
         {
@@ -76,14 +90,21 @@ struct OneTwoView: View
                 .padding()
                 .blur(radius: blurry ? 100 : 0)
                 .blur(radius: screenFade ? 0 : 500)
-                .padding()
+                .offset(x: curtainSlideX ? 0 : 1000)
                 .onTapGesture(perform: {
-                    withAnimation(.easeInOut(duration: 1))
+                    withAnimation(.easeInOut(duration: 0.5))
                     {
+                        viewTransition = i + 1
+                        if viewTransition == 1 {
+                            curtainsEffect.play()
+                            curtainSlideX.toggle()
+                        } else {
                         screenFade.toggle()
+                        }
                     }
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                         viewAction = i + 1
+
                     }
                 })
         }

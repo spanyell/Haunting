@@ -1,0 +1,9 @@
+- Find better thunder files, update rain.
+- Figure out how to justify text alignment in the dataDescription https://stackoverflow.com/questions/63075091/swiftui-justify-text
+- Possibly create an array of music files and call them in by tracks (playNext after assigning last loop)
+- Loop has too much of a delay. Consider AVQueuePlayer and AVPlayerLooper
+
+
+
+Credits:
+Additional sounds by Zapsplat.com

@@ -45,7 +45,7 @@ class DatabaseManager
                     //  Get the data from the colunms and populate the field values
                     let chapter = columns[0]
                     let paragraph = columns[1]
-                    let dataDescription = columns[2]
+                    let dataDescription = columns[2].replacingOccurrences(of: "*", with: ",")
                     let choices = columns[3]
                     
                     //  Create a new StoryData object with the field values

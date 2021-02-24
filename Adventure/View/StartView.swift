@@ -65,7 +65,7 @@ struct StartView: View {
                             thunderEffect.play()
                             flashEffect.toggle()
                             musicPlayer.setVolume(0, fadeDuration: 2)
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                                 fadeAway.toggle()
                                 musicPlayer.stop()
                                 action = 1
@@ -89,7 +89,7 @@ struct StartView: View {
                             thunderEffect.play()
                             flashEffect.toggle()
                             musicPlayer.setVolume(0, fadeDuration: 2)
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                                 fadeAway.toggle()
                                 musicPlayer.stop()
                                 action = 2

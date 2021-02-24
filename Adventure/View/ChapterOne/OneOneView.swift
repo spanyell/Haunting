@@ -13,19 +13,23 @@ struct OneOneView: View
 {
     @StateObject var storyDataViewModel = StoryDataViewModel()
     //UI
-    @State var moveAround = true
+    @State var moveTextAround = true
     @State var makeSmally = true
     @State var bouncySpinny = true
     @State var shadows = true
     @State var blurry = true
     @State private var flashEffect = false
     @State var screenFade = true
+    @State var curtainSlideX = true
     //Sound
     @State var thunderEffect: AVAudioPlayer!
-    @State var oneOneOneMusic: AVAudioPlayer!
+    @State var musicEffect: AVAudioPlayer!
+    @State var curtainsEffect: AVAudioPlayer!
     // Destination variable
     @State private var viewAction: Int? = 0
+    @State private var viewTransition: Int? = 0
     @State var index = 0
+    @State var musicCurrentlyPlaying = false
     
     var paragraph = UserDefaults.standard.integer(forKey: "paragraph")
     
@@ -42,10 +46,13 @@ struct OneOneView: View
                     if let thunderclapAndRain = NSDataAsset(name: "ThunderclapAndRain")
                     {
                         thunderEffect = try! AVAudioPlayer(data: thunderclapAndRain.data, fileTypeHint: "mp3")
-                        if let oneOneMusic = NSDataAsset(name: "1_1_1_music")
-                        {
-                            oneOneOneMusic = try! AVAudioPlayer(data: oneOneMusic.data, fileTypeHint: "mp3")
-                        }
+                    }
+                    if let oneOneMusic = NSDataAsset(name: "OneOneMusic")
+                    {
+                        musicEffect = try! AVAudioPlayer(data: oneOneMusic.data, fileTypeHint: "mp3")
+                    }
+                    if let drawCurtains = NSDataAsset(name: "DrawCurtains") {
+                        curtainsEffect = try! AVAudioPlayer(data: drawCurtains.data, fileTypeHint: "mp3")
                     }
                     DispatchQueue.main.asyncAfter(deadline: .now() + 4)
                     {
@@ -75,14 +82,15 @@ struct OneOneView: View
                     .font(Font.custom("Hoefler Text", size: 25))
                     .padding()
                     .scaleEffect(makeSmally ? 0 : 1.0)
-                    .offset(y: moveAround ? -200 : 0)
+                    .offset(y: moveTextAround ? -200 : 0)
                     .rotationEffect(bouncySpinny ? .degrees(180) : .degrees(0))
                     .blur(radius: screenFade ? 0 : 500)
+                    .offset(x: curtainSlideX ? 0 : -1000)
                     .onAppear
                     {
                         withAnimation(.easeInOut(duration: 10.0))
                         {
-                            moveAround.toggle()
+                            moveTextAround.toggle()
                             makeSmally.toggle()
                             bouncySpinny.toggle()
                             shadows.toggle()
@@ -108,6 +116,7 @@ struct OneOneView: View
                     .frame(height: 100)
                     .blur(radius: blurry ? 100 : 0)
                     .blur(radius: screenFade ? 0 : 500)
+                    .offset(x: curtainSlideX ? 0 : 1000)
 
                 VStack
                 {
@@ -123,13 +132,22 @@ struct OneOneView: View
                             .padding()
                             .blur(radius: blurry ? 100 : 0)
                             .blur(radius: screenFade ? 0 : 500)
-                            .offset(y: moveAround ? 500 : 0)
+                            .offset(y: moveTextAround ? 500 : 0)
+                            .offset(x: curtainSlideX ? 0 : 1000)
                             .onTapGesture(perform: {
-                                withAnimation(.easeInOut(duration: 2))
+                                musicEffect.numberOfLoops = 1
+                                musicEffect.setVolume(0, fadeDuration: 1)
+                                withAnimation(.easeInOut(duration: 0.5))
                                 {
+                                    viewTransition = i + 1
+                                    if viewTransition == 1 {
+                                        curtainsEffect.play()
+                                        curtainSlideX.toggle()
+                                    } else {
                                     screenFade.toggle()
+                                    }
                                 }
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                                     viewAction = i + 1
                                 }
                                 
@@ -138,7 +156,9 @@ struct OneOneView: View
                             {
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 10)
                                 {
-                                    oneOneOneMusic.play()
+                                    musicEffect.play()
+                                    musicCurrentlyPlaying.toggle()
+                                    musicEffect.numberOfLoops = -1
                                 }
                             }
                     }
