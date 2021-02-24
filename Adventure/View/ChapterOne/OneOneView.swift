@@ -12,15 +12,18 @@ import Unrealm
 struct OneOneView: View
 {
     @StateObject var storyDataViewModel = StoryDataViewModel()
-    
-    @State var onTappy = true
+    //UI
+    @State var moveAround = true
     @State var makeSmally = true
     @State var bouncySpinny = true
     @State var shadows = true
     @State var blurry = true
     @State private var flashEffect = false
+    @State var screenFade = true
+    //Sound
     @State var thunderEffect: AVAudioPlayer!
     @State var oneOneOneMusic: AVAudioPlayer!
+    // Destination variable
     @State private var viewAction: Int? = 0
     @State var index = 0
     
@@ -69,16 +72,17 @@ struct OneOneView: View
                 }
                 Text("\(storyDataViewModel.storyDataList[0].dataDescription)")
                     .foregroundColor(.white)
-                    .font(Font.custom("Hoefler Text", size: 20))
+                    .font(Font.custom("Hoefler Text", size: 25))
                     .padding()
                     .scaleEffect(makeSmally ? 0 : 1.0)
-                    .offset(y: onTappy ? -25 : 0)
+                    .offset(y: moveAround ? -200 : 0)
                     .rotationEffect(bouncySpinny ? .degrees(180) : .degrees(0))
+                    .blur(radius: screenFade ? 0 : 500)
                     .onAppear
                     {
                         withAnimation(.easeInOut(duration: 10.0))
                         {
-                            onTappy.toggle()
+                            moveAround.toggle()
                             makeSmally.toggle()
                             bouncySpinny.toggle()
                             shadows.toggle()
@@ -99,6 +103,12 @@ struct OneOneView: View
                         }
                     }
                     .shadow(color: shadows ? .white : .black, radius: shadows ? 18 : 0, x: 1, y: 1)
+                
+                Divider().background(Color.white)
+                    .frame(height: 100)
+                    .blur(radius: blurry ? 100 : 0)
+                    .blur(radius: screenFade ? 0 : 500)
+
                 VStack
                 {
                     ForEach(choicesArray!.indices, id: \.self)
@@ -108,13 +118,21 @@ struct OneOneView: View
                         //index = i
 
                         Text("\(choicesArray![i])")
-                                .foregroundColor(.white)
-                                .font(Font.custom("Hoefler Text", size: 15))
-                                .padding()
-                                .blur(radius: blurry ? 100 : 0)
+                            .foregroundColor(.white)
+                            .font(Font.custom("Hoefler Text", size: 20))
                             .padding()
+                            .blur(radius: blurry ? 100 : 0)
+                            .blur(radius: screenFade ? 0 : 500)
+                            .offset(y: moveAround ? 500 : 0)
                             .onTapGesture(perform: {
-                                viewAction = i + 1
+                                withAnimation(.easeInOut(duration: 2))
+                                {
+                                    screenFade.toggle()
+                                }
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                                    viewAction = i + 1
+                                }
+                                
                             })
                             .onAppear
                             {

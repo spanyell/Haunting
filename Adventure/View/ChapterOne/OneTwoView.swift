@@ -13,14 +13,18 @@ struct OneTwoView: View
 {
     @StateObject var storyDataViewModel = StoryDataViewModel()
     
+    //UI
     @State var onTappy = true
     @State var makeSmally = true
     @State var bouncySpinny = true
     @State var shadows = true
     @State var blurry = true
+    @State var screenFade = true
     @State private var flashEffect = false
+    //Sound
     @State var thunderEffect: AVAudioPlayer!
     @State var oneOneOneMusic: AVAudioPlayer!
+    //Destination Variable
     @State private var viewAction: Int? = 0
     
     var storyPlacement: Int
@@ -29,13 +33,19 @@ struct OneTwoView: View
     {
         let choicesArray = storyDataViewModel.choicesDictionary[storyPlacement]
         
-        Text(Constants.ONE_TWO_ONE)
+//        Text(Constants.ONE_TWO_ONE)
         
         Text("\(storyDataViewModel.storyDataList[storyPlacement - 1].dataDescription)")
             .foregroundColor(.white)
-            .font(Font.custom("Hoefler Text", size: 20))
+            .font(Font.custom("Hoefler Text", size: 25))
+            .blur(radius: blurry ? 500 : 0)
+            .blur(radius: screenFade ? 0 : 500)
             .onAppear
             {
+                withAnimation(.easeInOut(duration: 2))
+                {
+                    blurry.toggle()
+                }
             }
         
         VStack
@@ -51,6 +61,10 @@ struct OneTwoView: View
                 EmptyView()
             }
         }
+        Divider().background(Color.white)
+            .frame(height: 100)
+            .blur(radius: blurry ? 100 : 0)
+            .blur(radius: screenFade ? 0 : 500)
 
         ForEach(choicesArray!.indices, id: \.self)
         {
@@ -58,10 +72,19 @@ struct OneTwoView: View
 
             Text("\(choicesArray![i])")
                 .foregroundColor(.white)
-                .font(Font.custom("Hoefler Text", size: 15))
+                .font(Font.custom("Hoefler Text", size: 20))
+                .padding()
+                .blur(radius: blurry ? 100 : 0)
+                .blur(radius: screenFade ? 0 : 500)
                 .padding()
                 .onTapGesture(perform: {
-                    viewAction = i + 1
+                    withAnimation(.easeInOut(duration: 1))
+                    {
+                        screenFade.toggle()
+                    }
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                        viewAction = i + 1
+                    }
                 })
         }
         .navigationBarHidden(true)

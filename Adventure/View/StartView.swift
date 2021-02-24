@@ -37,7 +37,7 @@ struct StartView: View {
                         }
                     }
                 // Text UI
-                Text("Adventure Game")
+                Text("A Haunting at Willowbrook")
                     .foregroundColor(.white)
                     .font(Font.custom("Hoefler Text", size: 50))
                     .offset(x: 0, y: -200)

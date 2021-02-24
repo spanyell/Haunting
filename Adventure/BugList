@@ -1,0 +1,4 @@
+- Change the * to , in the dataDescription.
+- Find better thunder files, update rain.
+- Figure out how to justify text alignment in the dataDescription https://stackoverflow.com/questions/63075091/swiftui-justify-text
+
