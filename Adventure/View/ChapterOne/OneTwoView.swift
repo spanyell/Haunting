@@ -32,6 +32,8 @@ struct OneTwoView: View
         Text(Constants.ONE_TWO_ONE)
         
         Text("\(storyDataViewModel.storyDataList[storyPlacement - 1].dataDescription)")
+            .foregroundColor(.white)
+            .font(Font.custom("Hoefler Text", size: 20))
             .onAppear
             {
             }
