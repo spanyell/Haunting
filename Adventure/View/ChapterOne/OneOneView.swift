@@ -1,5 +1,5 @@
 //
-//  OneOneOneView.swift
+//  OneOneView.swift
 //  Adventure
 //
 //  Created by Dan Beers on 2/22/21.
@@ -9,9 +9,10 @@ import AVKit
 import SwiftUI
 import Unrealm
 
-struct OneOneOneView: View
+struct OneOneView: View
 {
     @StateObject var storyDataViewModel = StoryDataViewModel()
+    
     @State var onTappy = true
     @State var makeSmally = true
     @State var bouncySpinny = true
@@ -20,14 +21,14 @@ struct OneOneOneView: View
     @State private var flashEffect = false
     @State var thunderEffect: AVAudioPlayer!
     @State var oneOneOneMusic: AVAudioPlayer!
-    var paragraph = UserDefaults.standard.string(forKey: "paragraph") ?? "1"
-
     @State private var viewAction: Int? = 0
     @State var index = 0
-
+    
+    var paragraph = UserDefaults.standard.integer(forKey: "paragraph")
+    
     var body: some View
     {
-        let choicesArray = storyDataViewModel.choicesDictionary[UserDefaults.standard.string(forKey: "paragraph") ?? "1"]
+        let choicesArray = storyDataViewModel.choicesDictionary[UserDefaults.standard.integer(forKey: "paragraph")]
 
         ZStack
         {
@@ -52,17 +53,17 @@ struct OneOneOneView: View
             VStack
             {
                 NavigationLink(
-                    destination: OneFourOneView(storyPlacement: "4"), tag: 1, selection: $viewAction)
+                    destination: OneFourView(storyPlacement: 4), tag: 1, selection: $viewAction)
                 {
                     EmptyView()
                 }
                 NavigationLink(
-                    destination: OneTwoOneView(storyPlacement: "2"), tag: 2, selection: $viewAction)
+                    destination: OneTwoView(storyPlacement: 2), tag: 2, selection: $viewAction)
                 {
                     EmptyView()
                 }
                 NavigationLink(
-                    destination: OneThreeOneView(storyPlacement: "3"), tag: 3, selection: $viewAction)
+                    destination: OneThreeView(storyPlacement: 3), tag: 3, selection: $viewAction)
                 {
                     EmptyView()
                 }
@@ -131,8 +132,9 @@ struct OneOneOneView: View
 }
 
 
-struct OneOneOneView_Previews: PreviewProvider {
+struct OneOneView_Previews: PreviewProvider {
     static var previews: some View {
-        OneOneOneView()
+        OneOneView()
     }
 }
+

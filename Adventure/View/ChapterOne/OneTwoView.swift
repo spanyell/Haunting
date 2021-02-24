@@ -1,5 +1,5 @@
 //
-//  OneTwoOneView.swift
+//  OneTwoView.swift
 //  Adventure
 //
 //  Created by Dan Beers on 2/22/21.
@@ -9,8 +9,10 @@ import AVKit
 import SwiftUI
 import Unrealm
 
-struct OneTwoOneView: View {
+struct OneTwoView: View
+{
     @StateObject var storyDataViewModel = StoryDataViewModel()
+    
     @State var onTappy = true
     @State var makeSmally = true
     @State var bouncySpinny = true
@@ -19,23 +21,30 @@ struct OneTwoOneView: View {
     @State private var flashEffect = false
     @State var thunderEffect: AVAudioPlayer!
     @State var oneOneOneMusic: AVAudioPlayer!
-    var storyPlacement: String
     @State private var viewAction: Int? = 0
-    var body: some View {
+    
+    var storyPlacement: Int
+    
+    var body: some View
+    {
         let choicesArray = storyDataViewModel.choicesDictionary[storyPlacement]
-        Text("1.2.1")
-        Text("\(storyDataViewModel.storyDataList[Int(storyPlacement)! - 1].dataDescription)")
-            .onAppear() {
+        
+        Text(Constants.ONE_TWO_ONE)
+        
+        Text("\(storyDataViewModel.storyDataList[storyPlacement - 1].dataDescription)")
+            .onAppear
+            {
             }
+        
         VStack
         {
             NavigationLink(
-                destination: OneFourOneView(storyPlacement: "4"), tag: 1, selection: $viewAction)
+                destination: OneFourView(storyPlacement: 4), tag: 1, selection: $viewAction)
             {
                 EmptyView()
             }
             NavigationLink(
-                destination: OneThreeOneView(storyPlacement: "3"), tag: 2, selection: $viewAction)
+                destination: OneThreeView(storyPlacement: 3), tag: 2, selection: $viewAction)
             {
                 EmptyView()
             }
@@ -44,24 +53,22 @@ struct OneTwoOneView: View {
         ForEach(choicesArray!.indices, id: \.self)
         {
             i in
-            
-            //index = i
 
             Text("\(choicesArray![i])")
-                    .foregroundColor(.white)
-                    .font(Font.custom("Hoefler Text", size: 15))
-                    .padding()
-                    .onTapGesture(perform: {
-                        viewAction = i + 1
-                    })
-            
+                .foregroundColor(.white)
+                .font(Font.custom("Hoefler Text", size: 15))
+                .padding()
+                .onTapGesture(perform: {
+                    viewAction = i + 1
+                })
         }
         .navigationBarHidden(true)
     }
 }
 
-//struct OneTwoOneView_Previews: PreviewProvider {
+// struct OneTwoView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        OneTwoOneView()
 //    }
-//}
+// }
+

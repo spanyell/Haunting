@@ -163,7 +163,7 @@ struct OnceUponView: View {
                 .opacity(fadeInOut5 ? 0 : 1)
                 .offset(x: 0, y: 0)
             NavigationLink(
-                destination: OneOneOneView(),
+                destination: OneOneView(),
                 isActive: $newView,
                 label: {
                     EmptyView()

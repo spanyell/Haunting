@@ -1,20 +1,20 @@
+////
+////  TestView.swift
+////  Adventure
+////
+////  Created by Dan Beers on 2/20/21.
+////
 //
-//  TestView.swift
-//  Adventure
+//import SwiftUI
 //
-//  Created by Dan Beers on 2/20/21.
+//struct TestView: View {
+//    var body: some View {
+//        Text("You selected option 1.")
+//    }
+//}
 //
-
-import SwiftUI
-
-struct TestView: View {
-    var body: some View {
-        Text("You selected option 1.")
-    }
-}
-
-struct TestView_Previews: PreviewProvider {
-    static var previews: some View {
-        TestView()
-    }
-}
+//struct TestView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        TestView()
+//    }
+//}

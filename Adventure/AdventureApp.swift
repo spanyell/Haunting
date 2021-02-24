@@ -31,12 +31,12 @@ class AppDelegate: NSObject, UIApplicationDelegate
     {
         //  Register the database table objects
         Realm.registerRealmables(StoryData.self)
-        UserDefaults.standard.set("1", forKey: "chapter")
-        UserDefaults.standard.set("1", forKey: "paragraph")
+        UserDefaults.standard.set(1, forKey: "chapter")
+        UserDefaults.standard.set(1, forKey: "paragraph")
 
         DatabaseManager().loadCSVFileData()
 
-        StoryDataViewModel().retrieveChapterData(chapter: "1")
+        StoryDataViewModel().retrieveChapterData(chapter: 1)
 
         return true
     }
@@ -57,3 +57,4 @@ func getNextPrimaryKey() -> Int
 
     return 0
 }
+

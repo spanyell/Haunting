@@ -49,7 +49,7 @@ struct StartView: View {
                         EmptyView()
                     }
                     NavigationLink(
-                        destination: OneOneOneView(), tag: 2, selection: $action) {
+                        destination: OneOneView(), tag: 2, selection: $action) {
                         EmptyView()
                     }
                     .navigationBarHidden(true)

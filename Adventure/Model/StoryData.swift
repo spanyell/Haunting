@@ -10,13 +10,11 @@ import Unrealm
 struct StoryData: Realmable
 {
     var id = UUID().uuidString
-    var chapter = ""
-    var paragraph = ""
-    var subparagraph = ""
-    var dataDescription = ""
-    var choices = ""
+    var chapter = 1
+    var paragraph = 1
+    var dataDescription = Constants.EMPTY_STRING
+    var choices = Constants.EMPTY_STRING
     var isCompleted = false
-    var choiceDestination = ""
     
     static func primaryKey() -> String?
     {
@@ -26,6 +24,7 @@ struct StoryData: Realmable
 
 extension Unrealm.Results
 {
+    //  Converts the <Results> returned from a Realm database query to a standard array
     func toArray<T>(type: T.Type) -> [T]
     {
         return compactMap { $0 as? T }
@@ -40,13 +39,13 @@ extension StoryData
         return realm.objects(StoryData.self).toArray(type: StoryData.self)
     }
     
-    //  Retrieve a row from the database based on chapter, paragraph and (optionally) subparagraph
-    static func retrieveStoryDataByChapterAndParagraph(chapter: String, paragraph: String, subparagraph: String = "1", in realm: Realm = try! Realm()) -> [StoryData]
+    //  Retrieve a row from the database based on chapter and paragraph
+    static func retrieveStoryDataByChapterAndParagraph(chapter: Int, paragraph: Int, in realm: Realm = try! Realm()) -> [StoryData]
     {
-        return realm.objects(StoryData.self).filter("chapter == '\(chapter)' AND paragraph == '\(paragraph)' AND subparagraph == '\(subparagraph)'").toArray(type: StoryData.self)
+        return realm.objects(StoryData.self).filter("chapter == \(chapter) AND paragraph == \(paragraph)").toArray(type: StoryData.self)
     }
 
-    //  Save a list of populated StoryData objects to the database
+    //  Saves/updates a list of populated StoryData objects to the database.
     @discardableResult
     static func add(dataItems: [StoryData], in realm: Realm = try! Realm()) -> Bool
     {
@@ -84,10 +83,10 @@ extension StoryData
             realm.delete(self)
         }
     }
+    
     //  Retrieve rows from the database based on chapter
-        static func retrieveStoryDataByChapter(chapter: String, in realm: Realm = try! Realm()) -> [StoryData]
-        {
-            return realm.objects(StoryData.self).filter("chapter == '\(chapter)'").sorted(byKeyPath: "paragraph", ascending: true).toArray(type: StoryData.self)
-        }
+    static func retrieveStoryDataByChapter(chapter: Int, in realm: Realm = try! Realm()) -> [StoryData]
+    {
+        return realm.objects(StoryData.self).filter("chapter == \(chapter)").sorted(byKeyPath: "paragraph", ascending: true).toArray(type: StoryData.self)
+    }
 }
-

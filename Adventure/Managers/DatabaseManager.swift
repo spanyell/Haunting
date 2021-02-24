@@ -12,11 +12,17 @@ class DatabaseManager
     
     func loadCSVFileData()
     {
+        //  Only load the file if it hasn't been loaded already
+        if !StoryData.all(in: realm).isEmpty
+        {
+            return
+        }
+        
         var storyDataList = [StoryData]()
         
-        guard let filepath = Bundle.main.path(forResource: "Haunting", ofType: "csv") else { return }
+        guard let filepath = Bundle.main.path(forResource: Constants.CSV_FILE_NAME, ofType: Constants.CSV_FILE_TYPE) else { return }
 
-        var data = ""
+        var data = Constants.EMPTY_STRING
 
         do
         {
@@ -33,24 +39,21 @@ class DatabaseManager
                 
                 print("Column count is \(columns.count) for row \(row)")
 
-                //  Ensure that we have 6 columns of data
-                if columns.count == 7
+                //  Ensure that we have 5 columns of data
+                if columns.count == 5
                 {
                     //  Get the data from the colunms and populate the field values
                     let chapter = columns[0]
                     let paragraph = columns[1]
-                    let subparagraph = columns[2]
-                    let dataDescription = columns[3]
-                    let choices = columns[4]
-                    let isCompleted = columns[5] == "False"
-                    let choiceDestination = columns[6]
+                    let dataDescription = columns[2]
+                    let choices = columns[3]
                     
                     //  Create a new StoryData object with the field values
-                    let storyData = StoryData(id: UUID().uuidString, chapter: chapter, paragraph: paragraph,
-                                              subparagraph: subparagraph, dataDescription: dataDescription, choices: choices, isCompleted: isCompleted, choiceDestination: choiceDestination)
+                    let storyData = StoryData(id: UUID().uuidString, chapter: Int(chapter)!, paragraph: Int(paragraph)!, dataDescription: dataDescription, choices: choices, isCompleted: false)
                     
                     //  Add the row to the storyDataList
                     storyDataList.append(storyData)
+                    
                     //  Add the rows into the table from the array using the class method called add().
                     StoryData.add(dataItems: storyDataList, in: realm)
                     
@@ -63,8 +66,8 @@ class DatabaseManager
                     for savedStoryDataItem in savedStoryDataItemList
                     {
                         print("\nPrimary Key: " + savedStoryDataItem.id)
-                        print("Chapter: " + savedStoryDataItem.chapter)
-                        print("Paragraph: " + savedStoryDataItem.paragraph + "\n")
+                        print("Chapter: " + "\(savedStoryDataItem.chapter)")
+                        print("Paragraph: " + "\(savedStoryDataItem.paragraph)" + "\n")
                     }
                     
                     print("----------------------------------------------")
@@ -79,88 +82,5 @@ class DatabaseManager
             print("Number of records in storyDataList in loadCSVFileData is: \(storyDataList.count)")
         }
     }
-    
-//    func saveAndPrintStoryData()
-//    {
-//        let previousStoryDataItemRecords = StoryData.all(in: realm)
-//
-//                if(!previousStoryDataItemRecords.isEmpty)
-//                {
-//                    return
-//                }
-//        //  Declare an empty storyDataList array
-//        var storyDataList = [StoryData]()
-//        
-//        //  Create three objects which represent a single row of data in the StoryData table in the database
-//        let storyDataItem = StoryData(id: UUID().uuidString,
-//                                  chapter: "1",
-//                                  paragraph: "1",
-//                                  subparagraph: "1",
-//                                  dataDescription: "With a gasp, you open your eyes. You lay on a canopy bed, the curtains drawn. It is dark, save for the intermittent flashes of lightning. You are above the covers, though judging how stiff you feel, it is obvious you have been sleeping for some time. You had been dreaming, though with each passing second, it fades. Who are you? Where are you?",
-//                                  choices: "Rise and open the curtains.*Try to remember your dream.*Try to remember who and where you are.",
-//                                  isCompleted: false,
-//                                  choiceDestination: "1.4.1*1.2.1*1.3.1")
-//        
-//        //  Add the storyDataItem to the array
-//        storyDataList.append(storyDataItem)
-//        
-//        let storyDataItem2 = StoryData(id: UUID().uuidString,
-//                                  chapter: "1",
-//                                  paragraph: "2",
-//                                  subparagraph: "1",
-//                                  dataDescription: "The events of the dreams are vague, as all dreams are, but you remember the need to move quickly. You wanted to run with a great desperation in your heart, but it felt as though you were getting nowhere. Was someone or something chasing you? You cannot be certain. You do know that after feelings of extreme exhaustion, you decided to give up the struggle and relent. You were overcome with fear in the moments before you awoke, but the dream has faded before you can recall what.",
-//                                  choices: "Rise and open the curtains.*Try to remember who you are.",
-//                                  isCompleted: false,
-//                                  choiceDestination: "1.4.1*1.3.1")
-//        
-//        //  Add the storyDataItem to the array
-//        storyDataList.append(storyDataItem2)
-//        
-//        let storyDataItem3 = StoryData(id: UUID().uuidString,
-//                                  chapter: "1",
-//                                  paragraph: "3",
-//                                  subparagraph: "1",
-//                                  dataDescription: "While it first, you find it silly to question your identity, it remains elusive. You fight off a sense of panic as your mind whirls through the remnants of the dream and what little else is there in the way of memory.  But it seems the harder you try, the less you understand.",
-//                                  choices: "Rise and open the curtains.*Try to remember your dream.",
-//                                  isCompleted: false,
-//                                  choiceDestination: "1.4.1*1.2.1")
-//        
-//        //  Add the storyDataItem to the array
-//        storyDataList.append(storyDataItem3)
-//        
-//        let storyDataItem4 = StoryData(id: UUID().uuidString,
-//                                  chapter: "1",
-//                                  paragraph: "4",
-//                                  subparagraph: "1",
-//                                  dataDescription: "You open the curtains of the canopy bed and drop your legs to a carpeted floor. When you stand, you feel a sudden light-headedness. Your skin feels cold and clammy. You fight the urge to sit back down.",
-//                                  choices: "Continue.",
-//                                  isCompleted: false,
-//                                  choiceDestination: "1.5")
-//        
-//        //  Add the storyDataItem to the array
-//        storyDataList.append(storyDataItem4)
-//        
-//        //  Add the rows into the table from the array using the class method called add().
-//        StoryData.add(dataItems: storyDataList, in: realm)
-//        
-//        //  Retrieve the saved rows and populate the data into a new StoryData array
-//        let savedStoryDataItemList = StoryData.all(in: realm)
-//        
-//        print("----------------------------------------------")
-//        
-//        //  Spin through the array and print the chapters and paragraphs
-//        for savedStoryDataItem in savedStoryDataItemList
-//        {
-//            print("\nPrimary Key: " + savedStoryDataItem.id)
-//            print("Chapter: " + savedStoryDataItem.chapter)
-//            print("Paragraph: " + savedStoryDataItem.paragraph + "\n")
-//        }
-//        
-//        print("----------------------------------------------")
-//        
-//        print("\n\n")
-//        
-//        //  Print the database file URL
-//        print(Realm.Configuration.defaultConfiguration.fileURL!)
-//    }
 }
+
