@@ -16,9 +16,11 @@ struct OneFourView: View
     //UI
     @State var onTappy = true
     @State var makeSmally = true
+    @State var makeLarge = true
     @State var bouncySpinny = true
     @State var shadows = true
     @State var blurry = true
+    @State var moveTextAround = true
     @State private var flashEffect = false
     @State var screenFade = true
     //Sound
@@ -38,8 +40,25 @@ struct OneFourView: View
         Text("\(storyDataViewModel.storyDataList[storyPlacement - 1].dataDescription)")
             .foregroundColor(.white)
             .font(Font.custom("Hoefler Text", size: 25))
+            .scaleEffect(makeSmally ? 0 : 0.5)
+            .offset(y: moveTextAround ? 1000 : 0)
+            .scaleEffect(makeLarge ? 0.5 : 2)
+            
             .onAppear
             {
+                withAnimation(.easeIn(duration: 1))
+                                {
+                    moveTextAround.toggle()
+                    makeSmally.toggle()
+                                }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1)
+                {
+                    withAnimation(.easeIn(duration: 1))
+                                    {
+                        makeLarge.toggle()
+                                    }
+                }
+                
             }
         
         VStack
@@ -62,12 +81,14 @@ struct OneFourView: View
                 .foregroundColor(.white)
                 .font(Font.custom("Hoefler Text", size: 20))
                 .padding()
-                .onTapGesture(perform: {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                        viewAction = i + 1
-                    }
+                .onTapGesture(perform:
+                                {
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 2)
+                                    {
+                                        viewAction = i + 1
+                                    }
                     
-                })
+                                })
         }
         .navigationBarHidden(true)
     }

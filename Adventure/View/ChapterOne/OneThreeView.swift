@@ -80,26 +80,29 @@ struct OneThreeView: View
             Text("\(choicesArray![i])")
                 .foregroundColor(.white)
                 .font(Font.custom("Hoefler Text", size: 20))
+                .padding()
                 .blur(radius: blurry ? 100 : 0)
                 .blur(radius: screenFade ? 0 : 500)
                 .offset(x: curtainSlideX ? 0 : 1000)
-                .padding()
-                .onTapGesture(perform: {
-                    withAnimation(.easeInOut(duration: 0.5))
-                    {
-                        viewTransition = i + 1
-                        if viewTransition == 1 {
-                            curtainsEffect.play()
-                            curtainSlideX.toggle()
-                        } else {
-                        screenFade.toggle()
-                        }
-                    }
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                        viewAction = i + 1
-
-                    }
-                })
+                .onTapGesture(perform:
+                                {
+                                    withAnimation(.easeInOut(duration: 0.5))
+                                    {
+                                        viewTransition = i + 1
+                                        if viewTransition == 1
+                                        {
+                                            curtainsEffect.play()
+                                            curtainSlideX.toggle()
+                                        } else
+                                        {
+                                            screenFade.toggle()
+                                        }
+                                    }
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 1)
+                                    {
+                                        viewAction = i + 1
+                                    }
+                                })
         }
         .navigationBarHidden(true)
     }

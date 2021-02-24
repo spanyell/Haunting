@@ -134,24 +134,27 @@ struct OneOneView: View
                             .blur(radius: screenFade ? 0 : 500)
                             .offset(y: moveTextAround ? 500 : 0)
                             .offset(x: curtainSlideX ? 0 : 1000)
-                            .onTapGesture(perform: {
-                                musicEffect.numberOfLoops = 1
-                                musicEffect.setVolume(0, fadeDuration: 1)
-                                withAnimation(.easeInOut(duration: 0.5))
-                                {
-                                    viewTransition = i + 1
-                                    if viewTransition == 1 {
-                                        curtainsEffect.play()
-                                        curtainSlideX.toggle()
-                                    } else {
-                                    screenFade.toggle()
-                                    }
-                                }
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                                    viewAction = i + 1
-                                }
-                                
-                            })
+                            .onTapGesture(perform:
+                                            {
+                                                musicEffect.numberOfLoops = 1
+                                                musicEffect.setVolume(0, fadeDuration: 1)
+                                                withAnimation(.easeInOut(duration: 0.5))
+                                                {
+                                                    viewTransition = i + 1
+                                                    if viewTransition == 1
+                                                    {
+                                                        curtainsEffect.play()
+                                                        curtainSlideX.toggle()
+                                                    } else
+                                                    {
+                                                        screenFade.toggle()
+                                                    }
+                                                }
+                                                DispatchQueue.main.asyncAfter(deadline: .now() + 1)
+                                                {
+                                                    viewAction = i + 1
+                                                }
+                                            })
                             .onAppear
                             {
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 10)
