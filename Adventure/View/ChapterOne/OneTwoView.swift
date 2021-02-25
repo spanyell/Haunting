@@ -37,7 +37,7 @@ struct OneTwoView: View
     {
         let choicesArray = storyDataViewModel.choicesDictionary[storyPlacement]
         
-//        Text(Constants.ONE_TWO_ONE)
+        Text(Constants.ONE_TWO_ONE)
         
         Text("\(storyDataViewModel.storyDataList[storyPlacement - 1].dataDescription)")
             .foregroundColor(.white)

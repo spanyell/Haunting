@@ -36,7 +36,7 @@ struct OneFourView: View
     {
         let choicesArray = storyDataViewModel.choicesDictionary[storyPlacement]
         
-//        Text(Constants.ONE_FOUR_ONE)
+        Text(Constants.ONE_FOUR_ONE)
         Text("\(storyDataViewModel.storyDataList[storyPlacement - 1].dataDescription)")
             .foregroundColor(.white)
             .font(Font.custom("Hoefler Text", size: 25))
@@ -63,7 +63,7 @@ struct OneFourView: View
         
         VStack
         {
-            NavigationLink(destination: StartView(), tag: 1, selection: $viewAction)
+            NavigationLink(destination: OneFiveView(storyPlacement: 5), tag: 1, selection: $viewAction)
             {
                 EmptyView()
             }

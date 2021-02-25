@@ -36,7 +36,7 @@ struct OneThreeView: View
     {
         let choicesArray = storyDataViewModel.choicesDictionary[storyPlacement]
         
-//        Text(Constants.ONE_THREE_ONE)
+        Text(Constants.ONE_THREE_ONE)
         Text("\(storyDataViewModel.storyDataList[storyPlacement - 1].dataDescription)")
             .foregroundColor(.white)
             .font(Font.custom("Hoefler Text", size: 25))
