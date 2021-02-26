@@ -46,14 +46,14 @@ struct OneFourView: View
             
             .onAppear
             {
-                withAnimation(.easeIn(duration: 1))
+                withAnimation(.easeIn(duration: 0.5))
                                 {
                     moveTextAround.toggle()
                     makeSmally.toggle()
                                 }
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1)
                 {
-                    withAnimation(.easeIn(duration: 1))
+                    withAnimation(.easeIn(duration: 0.5))
                                     {
                         makeLarge.toggle()
                                     }
@@ -83,7 +83,7 @@ struct OneFourView: View
                 .padding()
                 .onTapGesture(perform:
                                 {
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + 2)
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0)
                                     {
                                         viewAction = i + 1
                                     }

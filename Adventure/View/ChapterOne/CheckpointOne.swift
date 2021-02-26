@@ -2,14 +2,14 @@
 //  CheckpointOne.swift
 //  Adventure
 //
-//  Created by Dan Beers on 2/24/21.
+//  Created by Dan Beers on 2/25/21.
 //
 
 import SwiftUI
 
 struct CheckpointOne: View {
     var body: some View {
-        Text("CHECKPOINT!!")
+        Text("CHECKPOINT!")
     }
 }
 

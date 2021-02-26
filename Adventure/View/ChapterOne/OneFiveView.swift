@@ -32,12 +32,12 @@ struct OneFiveView: View {
                 EmptyView()
             }
             NavigationLink(
-                destination: OneSevenView(storyPlacement: 7), tag: 2, selection: $viewAction)
+                destination: OneSeventeenView(storyPlacement: 17), tag: 2, selection: $viewAction)
             {
                 EmptyView()
             }
             NavigationLink(
-                destination: OneEightView(storyPlacement: 8), tag: 3, selection: $viewAction)
+                destination: OneEighteenView(storyPlacement: 18), tag: 3, selection: $viewAction)
             {
                 EmptyView()
             }
@@ -60,7 +60,7 @@ struct OneFiveView: View {
                 .padding()
                 .onTapGesture(perform:
                                 {
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + 2)
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0)
                                     {
                                         viewAction = i + 1
                                     }
