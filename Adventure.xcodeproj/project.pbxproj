@@ -43,6 +43,7 @@
 		2BEFA5BF25DCEAFC00F8984F /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BEFA5BE25DCEAFC00F8984F /* StartView.swift */; };
 		2BEFA5C725DCECF200F8984F /* OnceUponView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BEFA5C625DCECF200F8984F /* OnceUponView.swift */; };
 		2BF95D6E25DF25960033421E /* StoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF95D6D25DF25960033421E /* StoryView.swift */; };
+		6607BEE425E991B0000359F4 /* DoorOpen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6607BEE325E991B0000359F4 /* DoorOpen.swift */; };
 		66FA3E4425E8B54700429099 /* MoveForwardTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FA3E4325E8B54700429099 /* MoveForwardTwo.swift */; };
 		66FA3E4B25E8B9CA00429099 /* CheckpointOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FA3E4A25E8B9CA00429099 /* CheckpointOne.swift */; };
 		66FA3E4E25E8BA4B00429099 /* ThreeDeeFloating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FA3E4D25E8BA4B00429099 /* ThreeDeeFloating.swift */; };
@@ -94,6 +95,7 @@
 		2BEFA5BE25DCEAFC00F8984F /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
 		2BEFA5C625DCECF200F8984F /* OnceUponView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnceUponView.swift; sourceTree = "<group>"; };
 		2BF95D6D25DF25960033421E /* StoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryView.swift; sourceTree = "<group>"; };
+		6607BEE325E991B0000359F4 /* DoorOpen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoorOpen.swift; sourceTree = "<group>"; };
 		66FA3E4325E8B54700429099 /* MoveForwardTwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveForwardTwo.swift; sourceTree = "<group>"; };
 		66FA3E4A25E8B9CA00429099 /* CheckpointOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckpointOne.swift; sourceTree = "<group>"; };
 		66FA3E4D25E8BA4B00429099 /* ThreeDeeFloating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeDeeFloating.swift; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 				66FA3E4D25E8BA4B00429099 /* ThreeDeeFloating.swift */,
 				66FA3E5025E8C25400429099 /* WindowLightning.swift */,
 				66FA3E5325E8C7A400429099 /* EyeBlinkEffect.swift */,
+				6607BEE325E991B0000359F4 /* DoorOpen.swift */,
 			);
 			path = TransitionEffects;
 			sourceTree = "<group>";
@@ -336,6 +339,7 @@
 				2B0C271525DF6FF30014EF8D /* UsernameView.swift in Sources */,
 				2BEFA5BF25DCEAFC00F8984F /* StartView.swift in Sources */,
 				2B4DD0B225E7199800923DBC /* OneNineView.swift in Sources */,
+				6607BEE425E991B0000359F4 /* DoorOpen.swift in Sources */,
 				2B4F8FE025E1ECF70091DAE3 /* TestView.swift in Sources */,
 				2B0E350225E495CA006BB63B /* OneOneView.swift in Sources */,
 				2B0E350525E495D6006BB63B /* OneTwoView.swift in Sources */,
