@@ -16,7 +16,7 @@ struct PlaySomething: View {
         
     var body: some View {
         
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Text("What in the John Denver.")
             .onAppear() {
                 musicEffect = try! AVAudioPlayer(data: Constants.oneOneMusic!.data, fileTypeHint: "mp3")
                 musicEffect2 = try! AVAudioPlayer(data: Constants.oneTwoMusic!.data, fileTypeHint: "mp3")
