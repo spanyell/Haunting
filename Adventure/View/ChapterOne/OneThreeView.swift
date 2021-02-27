@@ -21,7 +21,7 @@ struct OneThreeView: View
     @State private var flashEffect = false
     @State var screenFade = true
     @State var curtainSlideX = true
-    @State var curtainsEffect: AVAudioPlayer!
+    @State var curtainsEffect = try! AVAudioPlayer(data: Constants.drawCurtains!.data, fileTypeHint: "mp3")
     //Sound
     @State var thunderEffect: AVAudioPlayer!
     @State var oneOneOneMusic: AVAudioPlayer!
@@ -45,7 +45,6 @@ struct OneThreeView: View
             .offset(x: curtainSlideX ? 0 : -1000)
             .onAppear
             {
-                curtainsEffect = try! AVAudioPlayer(data: Constants.drawCurtains!.data, fileTypeHint: "mp3")
                 withAnimation(.easeInOut(duration: 1))
                 {
                     blurry.toggle()

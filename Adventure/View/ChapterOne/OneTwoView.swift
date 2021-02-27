@@ -23,10 +23,8 @@ struct OneTwoView: View
     @State private var flashEffect = false
     @State var curtainSlideX = true
     //Sound
-    @State var thunderEffect: AVAudioPlayer!
-    @State var oneTwoMusic: AVAudioPlayer!
-    @State var curtainsEffect: AVAudioPlayer!
-    @State var musicEffect: AVAudioPlayer!
+    @State var curtainsEffect = try! AVAudioPlayer(data: Constants.drawCurtains!.data, fileTypeHint: "mp3")
+    @State var oneTwoMusicEffect = try! AVAudioPlayer(data: Constants.oneTwoMusic!.data, fileTypeHint: "mp3")
     //Destination Variable
     @State private var viewAction: Int? = 0
     @State private var viewTransition: Int? = 0
@@ -47,8 +45,6 @@ struct OneTwoView: View
             .offset(x: curtainSlideX ? 0 : -1000)
             .onAppear
             {
-                curtainsEffect = try! AVAudioPlayer(data: Constants.drawCurtains!.data, fileTypeHint: "mp3")
-                musicEffect = try! AVAudioPlayer(data: Constants.mainViewMusic!.data, fileTypeHint: "mp3")
                 withAnimation(.easeInOut(duration: 1))
                 {
                     blurry.toggle()
