@@ -43,18 +43,10 @@ struct OneOneView: View
                 .frame(alignment: .center)
                 .onAppear
                 {
-                    if let thunderclapAndRain = NSDataAsset(name: "ThunderclapAndRain")
-                    {
-                        thunderEffect = try! AVAudioPlayer(data: thunderclapAndRain.data, fileTypeHint: "mp3")
-                    }
-                    if let oneOneMusic = NSDataAsset(name: "OneOneMusic")
-                    {
-                        musicEffect = try! AVAudioPlayer(data: oneOneMusic.data, fileTypeHint: "mp3")
-                    }
-                    if let drawCurtains = NSDataAsset(name: "DrawCurtains") {
-                        curtainsEffect = try! AVAudioPlayer(data: drawCurtains.data, fileTypeHint: "mp3")
-                    }
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 4)
+                    thunderEffect = try! AVAudioPlayer(data: Constants.thunderclapAndRain!.data, fileTypeHint: "mp3")
+                    musicEffect = try! AVAudioPlayer(data: Constants.oneOneMusic!.data, fileTypeHint: "mp3")
+                    curtainsEffect = try! AVAudioPlayer(data: Constants.drawCurtains!.data, fileTypeHint: "mp3")
+                DispatchQueue.main.asyncAfter(deadline: .now() + 4)
                     {
                         thunderEffect.play()
                     }

@@ -4,7 +4,10 @@
 //
 //  Created by Larry Burris on 2/23/21.
 //
+
+import AVKit
 import Foundation
+import SwiftUI
 
 struct Constants
 {
@@ -37,4 +40,14 @@ struct Constants
     static let ONE_NINETEEN_ONE = "1.19.1"
     static let ONE_TWENTY_ONE = "1.20.1"
     static let ONE_TWENTYONE_ONE = "1.21.1"
+    
+    // Music
+    static let mainViewMusic = NSDataAsset(name: "MainViewMusic")
+    static let oneOneMusic = NSDataAsset(name: "OneOneMusic")
+    static let oneTwoMusic = NSDataAsset(name: "OneTwoMusic")
+    
+    //Sound Effects
+    static let thunderclapAndRain = NSDataAsset(name: "ThunderclapAndRain")
+    static let drawCurtains = NSDataAsset(name: "DrawCurtains")
+    static let doorOpenAndCreak = NSDataAsset(name: "DoorOpenAndCreak")
 }

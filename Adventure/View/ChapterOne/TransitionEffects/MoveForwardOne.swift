@@ -61,7 +61,7 @@ struct MoveForwardOne: View {
                             }
                             
                         }
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 1)
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5)
                         {
                             viewAction = 1
                         }

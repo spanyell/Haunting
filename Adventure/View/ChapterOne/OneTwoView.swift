@@ -47,14 +47,8 @@ struct OneTwoView: View
             .offset(x: curtainSlideX ? 0 : -1000)
             .onAppear
             {
-                if let drawCurtains = NSDataAsset(name: "DrawCurtains")
-                {
-                    curtainsEffect = try! AVAudioPlayer(data: drawCurtains.data, fileTypeHint: "mp3")
-                }
-                if let mainViewMusic = NSDataAsset(name: "MainViewMusic")
-                {
-                    musicEffect = try! AVAudioPlayer(data: mainViewMusic.data, fileTypeHint: "mp3")
-                }
+                curtainsEffect = try! AVAudioPlayer(data: Constants.drawCurtains!.data, fileTypeHint: "mp3")
+                musicEffect = try! AVAudioPlayer(data: Constants.mainViewMusic!.data, fileTypeHint: "mp3")
                 withAnimation(.easeInOut(duration: 1))
                 {
                     blurry.toggle()

@@ -25,17 +25,17 @@ struct StartView: View {
                     .frame(alignment: .center)
                     .opacity(flashEffect ? 0 : 1)
                     // inits the music
-                    .onAppear() {
-                        if let mainViewMusic = NSDataAsset(name: "MainViewMusic") {
-                            musicPlayer = try! AVAudioPlayer(data: mainViewMusic.data, fileTypeHint: "mp3")
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                                musicPlayer.play()
-                            }
-                        }
-                        if let thunderclapAndRain = NSDataAsset(name: "ThunderclapAndRain") {
-                            thunderEffect = try! AVAudioPlayer(data: thunderclapAndRain.data, fileTypeHint: "mp3")
+                    .onAppear()
+                    {
+                        musicPlayer = try! AVAudioPlayer(data: Constants.mainViewMusic!.data, fileTypeHint: "mp3")
+                        thunderEffect = try! AVAudioPlayer(data: Constants.thunderclapAndRain!.data, fileTypeHint: "mp3")
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1)
+                        {
+                            musicPlayer.play()
                         }
                     }
+            
+        
                 // Text UI
                 Text("A Haunting at Willowbrook")
                     .foregroundColor(.white)
@@ -55,7 +55,8 @@ struct StartView: View {
                     .navigationBarHidden(true)
                 }
                 // Text UI with graphic animations toggling and sound effects playing.
-                VStack {
+                VStack
+                {
                     Text("New Game")
                         .foregroundColor(.white)
                         .font(Font.custom("Hoefler Text", size: 20))
@@ -110,6 +111,7 @@ struct StartView: View {
                         .padding()
                 }
             }
+            
         }
         .preferredColorScheme(.dark)
         .navigationBarHidden(true)
