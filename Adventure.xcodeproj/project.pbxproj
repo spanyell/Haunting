@@ -45,6 +45,7 @@
 		2BF95D6E25DF25960033421E /* StoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF95D6D25DF25960033421E /* StoryView.swift */; };
 		6607BEE425E991B0000359F4 /* DoorOpen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6607BEE325E991B0000359F4 /* DoorOpen.swift */; };
 		6607BEE725E9A23A000359F4 /* SlightJitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6607BEE625E9A23A000359F4 /* SlightJitter.swift */; };
+		6607BEEC25E9CA76000359F4 /* PlaySomething.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6607BEEB25E9CA76000359F4 /* PlaySomething.swift */; };
 		66FA3E4425E8B54700429099 /* MoveForwardTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FA3E4325E8B54700429099 /* MoveForwardTwo.swift */; };
 		66FA3E4B25E8B9CA00429099 /* CheckpointOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FA3E4A25E8B9CA00429099 /* CheckpointOne.swift */; };
 		66FA3E4E25E8BA4B00429099 /* ThreeDeeFloating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FA3E4D25E8BA4B00429099 /* ThreeDeeFloating.swift */; };
@@ -98,6 +99,7 @@
 		2BF95D6D25DF25960033421E /* StoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryView.swift; sourceTree = "<group>"; };
 		6607BEE325E991B0000359F4 /* DoorOpen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoorOpen.swift; sourceTree = "<group>"; };
 		6607BEE625E9A23A000359F4 /* SlightJitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlightJitter.swift; sourceTree = "<group>"; };
+		6607BEEB25E9CA76000359F4 /* PlaySomething.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaySomething.swift; sourceTree = "<group>"; };
 		66FA3E4325E8B54700429099 /* MoveForwardTwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveForwardTwo.swift; sourceTree = "<group>"; };
 		66FA3E4A25E8B9CA00429099 /* CheckpointOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckpointOne.swift; sourceTree = "<group>"; };
 		66FA3E4D25E8BA4B00429099 /* ThreeDeeFloating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeDeeFloating.swift; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 		66FA3E4725E8B89B00429099 /* TransitionEffects */ = {
 			isa = PBXGroup;
 			children = (
+				6607BEEB25E9CA76000359F4 /* PlaySomething.swift */,
 				2B4DD0D825E71F1600923DBC /* MoveForwardOne.swift */,
 				66FA3E4325E8B54700429099 /* MoveForwardTwo.swift */,
 				66FA3E4D25E8BA4B00429099 /* ThreeDeeFloating.swift */,
@@ -358,6 +361,7 @@
 				2B4F8FDD25E1CC1D0091DAE3 /* StoryView1.swift in Sources */,
 				2B4F8FE325E1ED4A0091DAE3 /* TestView1.swift in Sources */,
 				2B4F8FD825E01E120091DAE3 /* AppStartView.swift in Sources */,
+				6607BEEC25E9CA76000359F4 /* PlaySomething.swift in Sources */,
 				2B4DD0C125E71E9900923DBC /* OneFourteenView.swift in Sources */,
 				2B4DD0AC25E7128C00923DBC /* OneSevenView.swift in Sources */,
 				2B4DD0BB25E71AE300923DBC /* OneTwelveView.swift in Sources */,
