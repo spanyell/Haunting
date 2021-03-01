@@ -15,7 +15,7 @@ struct OneSixView: View {
     @State private var viewTransition: Int? = 0
     @State var doorOpenEffect = true
     @State var textWalkForward = true
-    @State var blurry = true
+    @State var bringForward = true
     @State var doorOpenAndCreakSound = try! AVAudioPlayer(data: Constants.doorOpenAndCreak!.data, fileTypeHint: "mp3")
     
     var storyPlacement: Int
@@ -37,6 +37,7 @@ struct OneSixView: View {
                     perspective: /*@START_MENU_TOKEN@*/1.0/*@END_MENU_TOKEN@*/
                 )
                 .scaleEffect(textWalkForward ? 1: 500)
+                .offset()
                 .onAppear
                 {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5)
@@ -49,16 +50,16 @@ struct OneSixView: View {
                     doorOpenAndCreakSound.play()
                     DispatchQueue.main.asyncAfter(deadline: .now() + 2.5)
                     {
-                        withAnimation(Animation.easeInOut(duration: 3))
+                        withAnimation(Animation.easeInOut(duration: 4))
                         {
                             textWalkForward.toggle()
                         }
                     }
                     DispatchQueue.main.asyncAfter(deadline: .now() + 2.5)
                     {
-                        withAnimation(Animation.easeInOut(duration: 3))
+                        withAnimation(Animation.easeIn(duration: 3))
                         {
-                            blurry.toggle()
+                            bringForward.toggle()
                         }
                     }
                 }
@@ -67,7 +68,7 @@ struct OneSixView: View {
                 Text("\(storyDataViewModel.storyDataList[storyPlacement - 1].dataDescription)")
                     .foregroundColor(.white)
                     .font(Font.custom("Hoefler Text", size: 25))
-                    .blur(radius: blurry ? 500: 0)
+                    .scaleEffect(bringForward ? 0 : 1)
                 
                 VStack
                 {
@@ -84,7 +85,7 @@ struct OneSixView: View {
                 }
                 Divider().background(Color.white)
                     .frame(height: 100)
-                    .blur(radius: blurry ? 500: 0)
+                    .scaleEffect(bringForward ? 0 : 1)
 
                 ForEach(choicesArray!.indices, id: \.self)
                 {
@@ -94,7 +95,7 @@ struct OneSixView: View {
                         .foregroundColor(.white)
                         .font(Font.custom("Hoefler Text", size: 20))
                         .padding()
-                        .blur(radius: blurry ? 500: 0)
+                        .scaleEffect(bringForward ? 0 : 1)
                         .onTapGesture(perform:
                                         {
                                             DispatchQueue.main.asyncAfter(deadline: .now() + 0)

@@ -9,7 +9,8 @@ import SwiftUI
 import AVKit
 import Unrealm
 
-struct StartView: View {
+struct StartView: View
+{
     
     @State var musicPlayer: AVAudioPlayer!
     @State var thunderEffect: AVAudioPlayer!
@@ -17,9 +18,12 @@ struct StartView: View {
     @State private var action: Int? = 0
     @State var fadeAway = false
     
-    var body: some View {
-        NavigationView {
-            ZStack {
+    var body: some View
+    {
+        NavigationView
+        {
+            ZStack
+            {
                 //Inputting black color with a white and black effect.
                 Color(flashEffect ? .white : .black)
                     .frame(alignment: .center)
@@ -45,11 +49,13 @@ struct StartView: View {
                 // Calls the navigation links in order by tag
                 VStack {
                     NavigationLink(
-                        destination: OnceUponView(), tag: 1, selection: $action) {
+                        destination: OnceUponView(), tag: 1, selection: $action)
+                    {
                         EmptyView()
                     }
                     NavigationLink(
-                        destination: OneOneView(), tag: 2, selection: $action) {
+                        destination: OneOneView(), tag: 2, selection: $action)
+                    {
                         EmptyView()
                     }
                     .navigationBarHidden(true)
@@ -62,48 +68,56 @@ struct StartView: View {
                         .font(Font.custom("Hoefler Text", size: 20))
                         .opacity(fadeAway ? 0 : 1)
                         .padding()
-                        .onTapGesture {
+                        .onTapGesture
+                        {
                             thunderEffect.play()
                             flashEffect.toggle()
                             musicPlayer.setVolume(0, fadeDuration: 2)
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1)
+                            {
                                 fadeAway.toggle()
                                 musicPlayer.stop()
                                 action = 1
                             }
                             withAnimation(Animation
                                             .easeInOut(duration: 0.1)
-                                            .repeatCount(4, autoreverses: true)) {
+                                            .repeatCount(4, autoreverses: true))
+                            {
                                 flashEffect.toggle()
                                 
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5)
+                                {
                                     flashEffect.toggle()
                                 }
                             }
-                    }
+                        }
                     Text("Continue")
                         .foregroundColor(.white)
                         .font(Font.custom("Hoefler Text", size: 20))
                         .opacity(fadeAway ? 0 : 1)
                         .padding()
-                        .onTapGesture {
+                        .onTapGesture
+                        {
                             thunderEffect.play()
                             flashEffect.toggle()
                             musicPlayer.setVolume(0, fadeDuration: 2)
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1)
+                            {
                                 fadeAway.toggle()
                                 musicPlayer.stop()
                                 action = 2
                             }
                             withAnimation(Animation
                                             .easeInOut(duration: 0.1)
-                                            .repeatCount(4, autoreverses: true)) {
+                                            .repeatCount(4, autoreverses: true))
+                            {
                                 flashEffect.toggle()
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5)
+                                {
                                     flashEffect.toggle()
                                 }
                             }
-                    }
+                        }
                     Text("Quit")
                         .foregroundColor(.white)
                         .font(Font.custom("Hoefler Text", size: 20))

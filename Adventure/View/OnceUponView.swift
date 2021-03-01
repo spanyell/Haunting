@@ -10,7 +10,8 @@ import AVKit
 
 
 
-struct OnceUponView: View {
+struct OnceUponView: View
+{
     
     @State private var fadeInOut = true
     @State private var fadeInOut2 = true
@@ -23,26 +24,31 @@ struct OnceUponView: View {
     @State private var timeMove = true
     @State private var newView = false
     
-    var body: some View {
-        ZStack {
+    var body: some View
+    {
+        ZStack
+        {
             Color.black
                 .frame(alignment: .center)
             Text("...Once")
                 .font(Font.custom("Snell Roundhand", size: 60))
                 .foregroundColor(.white)
                 
-                .onAppear() {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                    withAnimation(Animation
+                .onAppear()
+                {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1)
+                    {
+                        withAnimation(Animation
                                     .easeInOut(duration: 1)
                                     .repeatCount(1, autoreverses: true))
-                    {
-                        fadeInOut.toggle()
-                    }
+                        {
+                            fadeInOut.toggle()
+                        }
                         
-                }
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                    withAnimation(Animation
+                    }
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2)
+                    {
+                        withAnimation(Animation
                                     .easeInOut(duration: 2)
                                     .repeatCount(1, autoreverses: true))
                     {
@@ -58,27 +64,30 @@ struct OnceUponView: View {
             Text("Upon")
                 .font(Font.custom("Snell Roundhand", size: 60))
                 .foregroundColor(.white)
-                .onAppear() {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                    withAnimation(Animation
+                .onAppear()
+                {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 3)
+                    {
+                        withAnimation(Animation
                                     .easeInOut(duration: 2)
                                     .repeatCount(1, autoreverses: true))
-                    {
-                        fadeInOut2.toggle()
-                    }
+                        {
+                            fadeInOut2.toggle()
+                        }
                         
-                }
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
-                    withAnimation(Animation
+                    }
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 4)
+                    {
+                        withAnimation(Animation
                                     .easeInOut(duration: 2)
                                     .repeatCount(1, autoreverses: true))
-                    {
-                        fadeInOut2.toggle()
-                        uponMove.toggle()
-                    }
+                        {
+                            fadeInOut2.toggle()
+                            uponMove.toggle()
+                        }
                         
+                    }
                 }
-            }
                 .opacity(fadeInOut2 ? 0 : 1)
                 .offset(x: uponMove ? -50 : 0, y: uponMove ? -100: 400)
                 .preferredColorScheme(/*@START_MENU_TOKEN@*/.dark/*@END_MENU_TOKEN@*/)
@@ -86,98 +95,107 @@ struct OnceUponView: View {
             Text("a")
                 .font(Font.custom("Snell Roundhand", size: 60))
                 .foregroundColor(.white)
-                .onAppear() {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
-                    withAnimation(Animation
+                .onAppear()
+                {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 4)
+                    {
+                        withAnimation(Animation
                                     .easeInOut(duration: 2)
                                     .repeatCount(1, autoreverses: true))
-                    {
-                        fadeInOut3.toggle()
-                    }
+                        {
+                            fadeInOut3.toggle()
+                        }
                         
-                }
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-                    withAnimation(Animation
+                    }
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 5)
+                    {
+                        withAnimation(Animation
                                     .easeInOut(duration: 2)
                                     .repeatCount(1, autoreverses: true))
-                    {
-                        fadeInOut3.toggle()
-                        aMove.toggle()
-                    }
+                        {
+                            fadeInOut3.toggle()
+                            aMove.toggle()
+                        }
                         
+                    }
                 }
-            }
                 .opacity(fadeInOut3 ? 0 : 1)
                 .offset(x: aMove ? 25 : 75, y: aMove ? 0 : 400)
             
             Text("Time...")
                 .font(Font.custom("Snell Roundhand", size: 60))
                 .foregroundColor(.white)
-                .onAppear() {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 6) {
-                    withAnimation(Animation
+                .onAppear()
+                {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 6)
+                    {
+                        withAnimation(Animation
                                     .easeInOut(duration: 2)
                                     .repeatCount(1, autoreverses: true))
-                    {
-                        fadeInOut4.toggle()
-                    }
+                        {
+                            fadeInOut4.toggle()
+                        }
                         
-                }
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 9) {
-                    withAnimation(Animation
+                    }
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 9)
+                    {
+                        withAnimation(Animation
                                     .easeInOut(duration: 2)
                                     .repeatCount(1, autoreverses: true))
-                    {
-                        fadeInOut4.toggle()
-                    }
+                        {
+                            fadeInOut4.toggle()
+                        }
                         
+                    }
                 }
-            }
                 .opacity(fadeInOut4 ? 0 : 1)
                 .offset(x: 100, y: 200)
             
             Text("Chapter 1")
                 .font(Font.custom("Hoefler Text", size: 50))
                 .foregroundColor(.white)
-                .onAppear() {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 13) {
-                    withAnimation(Animation
+                .onAppear()
+                {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 13)
+                    {
+                        withAnimation(Animation
                                     .easeInOut(duration: 2)
                                     .repeatCount(1, autoreverses: true))
-                        {
-                            fadeInOut5.toggle()
-                        }
-                    
-                }
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 15) {
-                    withAnimation(Animation
-                                    .easeInOut(duration: 2)
-                                    .repeatCount(1, autoreverses: true))
-                        {
-                            fadeInOut5.toggle()
-                        }
+                            {
+                                fadeInOut5.toggle()
+                            }
                     
                     }
-                    
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 15)
+                    {
+                        withAnimation(Animation
+                                    .easeInOut(duration: 2)
+                                    .repeatCount(1, autoreverses: true))
+                            {
+                                fadeInOut5.toggle()
+                            }
+                    }
                 }
                 .opacity(fadeInOut5 ? 0 : 1)
                 .offset(x: 0, y: 0)
+            
             NavigationLink(
                 destination: OneOneView(),
                 isActive: $newView,
-                label: {
+                label:
+                    {
                     EmptyView()
-                })
+                    })
                 
-                .onAppear() {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 17) {
+                .onAppear()
+                {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 17)
+                    {
                         newView.toggle()
                     }
-            }
-                
-        
-        }.navigationBarHidden(true)
-        
+                }
+        }
+        .navigationBarHidden(true)
     }
 }
 
@@ -186,15 +204,3 @@ struct OnceUponView_Previews: PreviewProvider {
         OnceUponView()
     }
 }
-
-//NavigationLink(
-//    destination: StoryView(),
-//    isActive: $newView,
-//    label: {
-//        Text("")
-//    })
-//    .onAppear() {
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 15) {
-//            newView.toggle()
-//        }
-//}
