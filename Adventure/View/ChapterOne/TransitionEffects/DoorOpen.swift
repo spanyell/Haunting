@@ -9,7 +9,8 @@ import AVKit
 import SwiftUI
 import Unrealm
 
-struct DoorOpen: View {
+struct DoorOpen: View
+{
     @StateObject var storyDataViewModel = StoryDataViewModel()
     @State private var viewAction: Int? = 0
     @State private var viewTransition: Int? = 0
@@ -17,13 +18,15 @@ struct DoorOpen: View {
     @State var textWalkForward = true
     @State var blurry = true
     @State var doorOpenAndCreakSound = try! AVAudioPlayer(data: Constants.doorOpenAndCreak!.data, fileTypeHint: "mp3")
-    
+
     var storyPlacement: Int
-    
-    var body: some View {
+
+    var body: some View
+    {
         let choicesArray = storyDataViewModel.choicesDictionary[storyPlacement]
-        
-        ZStack {
+
+        ZStack
+        {
             Text("THE\nDOOR\nGROANS\nOPEN.").multilineTextAlignment(.trailing)
                 .foregroundColor(.white)
                 .font(Font.custom("Hoefler Text", size: 70))
@@ -34,33 +37,40 @@ struct DoorOpen: View {
                     anchorZ: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/,
                     perspective: /*@START_MENU_TOKEN@*/1.0/*@END_MENU_TOKEN@*/
                 )
-                .scaleEffect(textWalkForward ? 1: 500)
-                .onTapGesture {
-                    withAnimation(Animation.easeInOut(duration: 3)) {
+                .scaleEffect(textWalkForward ? 1 : 500)
+                .onTapGesture
+                {
+                    withAnimation(Animation.easeInOut(duration: 3))
+                    {
                         doorOpenEffect.toggle()
                     }
                     doorOpenAndCreakSound.play()
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
-                        withAnimation(Animation.easeInOut(duration: 3)) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.5)
+                    {
+                        withAnimation(Animation.easeInOut(duration: 3))
+                        {
                             textWalkForward.toggle()
                         }
                     }
                 }
-            VStack {
-                
+            VStack
+            {
                 Text(Constants.ONE_SIX_ONE)
                 Text("\(storyDataViewModel.storyDataList[storyPlacement - 1].dataDescription)")
                     .foregroundColor(.white)
                     .font(Font.custom("Hoefler Text", size: 25))
                     .blur(radius: blurry ? 500 : 0)
-                    .onAppear() {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-                        withAnimation(Animation.easeInOut(duration: 3)) {
-                            blurry.toggle()
-                        }
+                    .onAppear
+                    {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 5)
+                        {
+                            withAnimation(Animation.easeInOut(duration: 3))
+                            {
+                                blurry.toggle()
+                            }
                         }
                     }
-                
+
                 VStack
                 {
                     NavigationLink(
@@ -87,23 +97,24 @@ struct DoorOpen: View {
                         .blur(radius: blurry ? 500 : 0)
                         .padding()
                         .onTapGesture(perform:
-                                        {
-                                            DispatchQueue.main.asyncAfter(deadline: .now() + 0)
-                                            {
-                                                viewAction = i + 1
-                                            }
-                            
-                                        })
+                            {
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0)
+                                {
+                                    viewAction = i + 1
+                                }
+
+                            })
                 }
                 .navigationBarHidden(true)
             }
         }
-        
     }
 }
 
-struct DoorOpen_Preview: PreviewProvider {
-    static var previews: some View {
+struct DoorOpen_Preview: PreviewProvider
+{
+    static var previews: some View
+    {
         DoorOpen(storyPlacement: 6)
     }
 }

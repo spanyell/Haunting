@@ -7,25 +7,28 @@
 
 import SwiftUI
 
-struct WindowLightning: View {
+struct WindowLightning: View
+{
     @State var windowLightningEffect = true
     @State var fadeInStory = true
-    var body: some View {
+    var body: some View
+    {
         ZStack
         {
             Color(.black)
                 .frame(alignment: .center)
             VStack
             {
-                ForEach((0...2), id: \.self)
+                ForEach(0 ... 2, id: \.self)
                 {
-                    windowPanes in
-                    HStack {
-                        ForEach((0...2), id: \.self)
+                    _ in
+                    HStack
+                    {
+                        ForEach(0 ... 2, id: \.self)
                         {
-                            windowPanes in
+                            _ in
                             Rectangle()
-                            .foregroundColor(windowLightningEffect ? .black : .white)
+                                .foregroundColor(windowLightningEffect ? .black : .white)
                         }
                     }
                 }
@@ -35,13 +38,13 @@ struct WindowLightning: View {
                 .font(Font.custom("Hoefler Text", size: 25))
                 .blur(radius: fadeInStory ? 100 : 0)
         }
-        .onAppear()
+        .onAppear
         {
             withAnimation(Animation
-                        .easeInOut(duration: 1))
-                        {
-                                fadeInStory.toggle()
-                            }
+                .easeInOut(duration: 1))
+            {
+                fadeInStory.toggle()
+            }
             DispatchQueue.main.asyncAfter(deadline: .now() + 2)
             {
                 withAnimation(Animation
@@ -56,12 +59,13 @@ struct WindowLightning: View {
                 }
             }
         }
-        
     }
 }
 
-struct WindowLightning_Previews: PreviewProvider {
-    static var previews: some View {
+struct WindowLightning_Previews: PreviewProvider
+{
+    static var previews: some View
+    {
         WindowLightning()
     }
 }

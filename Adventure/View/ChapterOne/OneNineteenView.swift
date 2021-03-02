@@ -9,49 +9,54 @@ import AVKit
 import SwiftUI
 import Unrealm
 
-struct OneNineteenView: View {
+struct OneNineteenView: View
+{
     @StateObject var storyDataViewModel = StoryDataViewModel()
     @State private var viewAction: Int? = 0
     @State private var viewTransition: Int? = 0
     @State var windowLightningEffect = true
     @State var fadeInStory = true
-    
+
     var storyPlacement: Int
-    
-    var body: some View {
+
+    var body: some View
+    {
         let choicesArray = storyDataViewModel.choicesDictionary[storyPlacement]
-        
-        ZStack {
+
+        ZStack
+        {
             Color(.black)
                 .frame(alignment: .center)
             VStack
             {
-                ForEach((0...2), id: \.self)
+                ForEach(0 ... 2, id: \.self)
                 {
-                    windowPanes in
-                    HStack {
-                        ForEach((0...2), id: \.self)
+                    _ in
+                    HStack
+                    {
+                        ForEach(0 ... 2, id: \.self)
                         {
-                            windowPanes in
+                            _ in
                             Rectangle()
-                            .foregroundColor(windowLightningEffect ? .black : .white)
+                                .foregroundColor(windowLightningEffect ? .black : .white)
                         }
                     }
                 }
             }
-            VStack {
+            VStack
+            {
                 Text(Constants.ONE_NINETEEN_ONE)
                 Text("\(storyDataViewModel.storyDataList[storyPlacement - 1].dataDescription)")
                     .foregroundColor(.white)
                     .font(Font.custom("Hoefler Text", size: 25))
                     .blur(radius: fadeInStory ? 100 : 0)
-                    .onAppear()
+                    .onAppear
                     {
                         withAnimation(Animation
-                                    .easeInOut(duration: 1))
-                                    {
-                                            fadeInStory.toggle()
-                                        }
+                            .easeInOut(duration: 1))
+                        {
+                            fadeInStory.toggle()
+                        }
                         DispatchQueue.main.asyncAfter(deadline: .now() + 2)
                         {
                             withAnimation(Animation
@@ -66,7 +71,7 @@ struct OneNineteenView: View {
                             }
                         }
                     }
-                
+
                 VStack
                 {
                     NavigationLink(
@@ -103,17 +108,16 @@ struct OneNineteenView: View {
                         .padding()
                         .blur(radius: fadeInStory ? 100 : 0)
                         .onTapGesture(perform:
-                                        {
-                                            DispatchQueue.main.asyncAfter(deadline: .now() + 0)
-                                            {
-                                                viewAction = i + 1
-                                            }
-                            
-                                        })
+                            {
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0)
+                                {
+                                    viewAction = i + 1
+                                }
+
+                            })
                 }
                 .navigationBarHidden(true)
             }
         }
-        
     }
 }

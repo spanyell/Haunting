@@ -11,8 +11,8 @@ import Unrealm
 struct OneThreeView: View
 {
     @StateObject var storyDataViewModel = StoryDataViewModel()
-    
-    //UI
+
+    // UI
     @State var onTappy = true
     @State var makeSmally = true
     @State var bouncySpinny = true
@@ -22,11 +22,11 @@ struct OneThreeView: View
     @State var screenFade = true
     @State var curtainSlideX = true
     @State var curtainsEffect = try! AVAudioPlayer(data: Constants.drawCurtains!.data, fileTypeHint: "mp3")
-    //Sound
+    // Sound
     @State var thunderEffect: AVAudioPlayer!
     @State var oneOneOneMusic: AVAudioPlayer!
-    
-    //Destination variable
+
+    // Destination variable
     @State private var viewAction: Int? = 0
     @State private var viewTransition: Int? = 0
 
@@ -35,7 +35,7 @@ struct OneThreeView: View
     var body: some View
     {
         let choicesArray = storyDataViewModel.choicesDictionary[storyPlacement]
-        
+
         Text(Constants.ONE_THREE_ONE)
         Text("\(storyDataViewModel.storyDataList[storyPlacement - 1].dataDescription)")
             .foregroundColor(.white)
@@ -50,7 +50,7 @@ struct OneThreeView: View
                     blurry.toggle()
                 }
             }
-        
+
         VStack
         {
             NavigationLink(
@@ -82,26 +82,26 @@ struct OneThreeView: View
                 .blur(radius: screenFade ? 0 : 500)
                 .offset(x: curtainSlideX ? 0 : 1000)
                 .onTapGesture(perform:
-                                {
-                                    withAnimation(.easeInOut(duration: 0.5))
-                                    {
-                                        viewTransition = i + 1
-                                        if viewTransition == 1
-                                        {
-                                            curtainsEffect.play()
-                                            curtainSlideX.toggle()
-                                        } else
-                                        {
-                                            screenFade.toggle()
-                                        }
-                                    }
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + 1)
-                                    {
-                                        viewAction = i + 1
-                                    }
-                                })
+                    {
+                        withAnimation(.easeInOut(duration: 0.5))
+                        {
+                            viewTransition = i + 1
+                            if viewTransition == 1
+                            {
+                                curtainsEffect.play()
+                                curtainSlideX.toggle()
+                            }
+                            else
+                            {
+                                screenFade.toggle()
+                            }
+                        }
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1)
+                        {
+                            viewAction = i + 1
+                        }
+                    })
         }
         .navigationBarHidden(true)
     }
 }
-

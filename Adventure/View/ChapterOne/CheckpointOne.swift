@@ -7,14 +7,18 @@
 
 import SwiftUI
 
-struct CheckpointOne: View {
-    var body: some View {
+struct CheckpointOne: View
+{
+    var body: some View
+    {
         Text("CHECKPOINT!")
     }
 }
 
-struct CheckpointOne_Previews: PreviewProvider {
-    static var previews: some View {
+struct CheckpointOne_Previews: PreviewProvider
+{
+    static var previews: some View
+    {
         CheckpointOne()
     }
 }

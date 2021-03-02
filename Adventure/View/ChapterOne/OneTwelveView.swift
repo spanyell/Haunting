@@ -9,21 +9,23 @@ import AVKit
 import SwiftUI
 import Unrealm
 
-struct OneTwelveView: View {
+struct OneTwelveView: View
+{
     @StateObject var storyDataViewModel = StoryDataViewModel()
     @State private var viewAction: Int? = 0
     @State private var viewTransition: Int? = 0
-    
+
     var storyPlacement: Int
-    
-    var body: some View {
+
+    var body: some View
+    {
         let choicesArray = storyDataViewModel.choicesDictionary[storyPlacement]
-        
+
         Text(Constants.ONE_TWELVE_ONE)
         Text("\(storyDataViewModel.storyDataList[storyPlacement - 1].dataDescription)")
             .foregroundColor(.white)
             .font(Font.custom("Hoefler Text", size: 25))
-        
+
         VStack
         {
             NavigationLink(
@@ -49,13 +51,13 @@ struct OneTwelveView: View {
                 .font(Font.custom("Hoefler Text", size: 20))
                 .padding()
                 .onTapGesture(perform:
-                                {
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0)
-                                    {
-                                        viewAction = i + 1
-                                    }
-                    
-                                })
+                    {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0)
+                        {
+                            viewAction = i + 1
+                        }
+
+                    })
         }
         .navigationBarHidden(true)
     }

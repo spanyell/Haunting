@@ -5,31 +5,30 @@
 //  Created by Dan Beers on 2/16/21.
 //
 
-import SwiftUI
 import AVKit
+import SwiftUI
 import Unrealm
 
 struct StartView: View
 {
-    
     @State var musicPlayer: AVAudioPlayer!
     @State var thunderEffect: AVAudioPlayer!
     @State var flashEffect = false
     @State private var action: Int? = 0
     @State var fadeAway = false
-    
+
     var body: some View
     {
         NavigationView
         {
             ZStack
             {
-                //Inputting black color with a white and black effect.
+                // Inputting black color with a white and black effect.
                 Color(flashEffect ? .white : .black)
                     .frame(alignment: .center)
                     .opacity(flashEffect ? 0 : 1)
                     // inits the music
-                    .onAppear()
+                    .onAppear
                     {
                         musicPlayer = try! AVAudioPlayer(data: Constants.mainViewMusic!.data, fileTypeHint: "mp3")
                         thunderEffect = try! AVAudioPlayer(data: Constants.thunderclapAndRain!.data, fileTypeHint: "mp3")
@@ -38,8 +37,7 @@ struct StartView: View
                             musicPlayer.play()
                         }
                     }
-            
-        
+
                 // Text UI
                 Text("A Haunting at Willowbrook")
                     .foregroundColor(.white)
@@ -47,7 +45,8 @@ struct StartView: View
                     .offset(x: 0, y: -200)
                     .opacity(fadeAway ? 0 : 1)
                 // Calls the navigation links in order by tag
-                VStack {
+                VStack
+                {
                     NavigationLink(
                         destination: OnceUponView(), tag: 1, selection: $action)
                     {
@@ -80,11 +79,11 @@ struct StartView: View
                                 action = 1
                             }
                             withAnimation(Animation
-                                            .easeInOut(duration: 0.1)
-                                            .repeatCount(4, autoreverses: true))
+                                .easeInOut(duration: 0.1)
+                                .repeatCount(4, autoreverses: true))
                             {
                                 flashEffect.toggle()
-                                
+
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5)
                                 {
                                     flashEffect.toggle()
@@ -108,8 +107,8 @@ struct StartView: View
                                 action = 2
                             }
                             withAnimation(Animation
-                                            .easeInOut(duration: 0.1)
-                                            .repeatCount(4, autoreverses: true))
+                                .easeInOut(duration: 0.1)
+                                .repeatCount(4, autoreverses: true))
                             {
                                 flashEffect.toggle()
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5)
@@ -125,15 +124,16 @@ struct StartView: View
                         .padding()
                 }
             }
-            
         }
         .preferredColorScheme(.dark)
         .navigationBarHidden(true)
     }
 }
 
-struct StartView_Previews: PreviewProvider {
-    static var previews: some View {
+struct StartView_Previews: PreviewProvider
+{
+    static var previews: some View
+    {
         StartView()
     }
 }

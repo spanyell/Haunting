@@ -8,31 +8,33 @@
 import AVKit
 import SwiftUI
 
-struct PlaySomething: View {
-    
+struct PlaySomething: View
+{
     @State var musicEffect = try! AVAudioPlayer(data: Constants.oneOneMusic!.data, fileTypeHint: "mp3")
     @State var musicEffect2 = try! AVAudioPlayer(data: Constants.oneTwoMusic!.data, fileTypeHint: "mp3")
-// USE THIS!!!!!!
-        
-    var body: some View {
-        
+    // USE THIS!!!!!!
+
+    var body: some View
+    {
         Text("What in the John Denver.")
-            .onAppear() {
+            .onAppear
+            {
                 musicEffect = try! AVAudioPlayer(data: Constants.oneOneMusic!.data, fileTypeHint: "mp3")
                 musicEffect2 = try! AVAudioPlayer(data: Constants.oneTwoMusic!.data, fileTypeHint: "mp3")
                 musicEffect.play()
                 musicEffect.numberOfLoops = -1
             }
-            .onTapGesture {
+            .onTapGesture
+            {
                 musicEffect.numberOfLoops = 1
-
             }
-        
     }
 }
 
-struct PlaySomething_Previews: PreviewProvider {
-    static var previews: some View {
+struct PlaySomething_Previews: PreviewProvider
+{
+    static var previews: some View
+    {
         PlaySomething()
     }
 }

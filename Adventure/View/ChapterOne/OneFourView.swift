@@ -12,8 +12,8 @@ import Unrealm
 struct OneFourView: View
 {
     @StateObject var storyDataViewModel = StoryDataViewModel()
-    
-    //UI
+
+    // UI
     @State var onTappy = true
     @State var makeSmally = true
     @State var makeLarge = true
@@ -23,19 +23,19 @@ struct OneFourView: View
     @State var moveTextAround = true
     @State private var flashEffect = false
     @State var screenFade = true
-    //Sound
+    // Sound
     @State var thunderEffect: AVAudioPlayer!
     @State var oneOneOneMusic: AVAudioPlayer!
-    //Destination variable
+    // Destination variable
     @State private var viewAction: Int? = 0
     @State private var viewTransition: Int? = 0
-    
+
     var storyPlacement: Int
 
     var body: some View
     {
         let choicesArray = storyDataViewModel.choicesDictionary[storyPlacement]
-        
+
         Text(Constants.ONE_FOUR_ONE)
         Text("\(storyDataViewModel.storyDataList[storyPlacement - 1].dataDescription)")
             .foregroundColor(.white)
@@ -43,24 +43,23 @@ struct OneFourView: View
             .scaleEffect(makeSmally ? 0 : 0.5)
             .offset(y: moveTextAround ? 1000 : 0)
             .scaleEffect(makeLarge ? 0.5 : 2)
-            
+
             .onAppear
             {
                 withAnimation(.easeIn(duration: 0.5))
-                                {
+                {
                     moveTextAround.toggle()
                     makeSmally.toggle()
-                                }
+                }
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1)
                 {
                     withAnimation(.easeIn(duration: 0.5))
-                                    {
+                    {
                         makeLarge.toggle()
-                                    }
+                    }
                 }
-                
             }
-        
+
         VStack
         {
             NavigationLink(destination: OneFiveView(storyPlacement: 5), tag: 1, selection: $viewAction)
@@ -82,15 +81,14 @@ struct OneFourView: View
                 .font(Font.custom("Hoefler Text", size: 20))
                 .padding()
                 .onTapGesture(perform:
-                                {
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0)
-                                    {
-                                        viewAction = i + 1
-                                    }
-                    
-                                })
+                    {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0)
+                        {
+                            viewAction = i + 1
+                        }
+
+                    })
         }
         .navigationBarHidden(true)
     }
 }
-

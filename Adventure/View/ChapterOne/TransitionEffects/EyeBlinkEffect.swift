@@ -7,14 +7,18 @@
 
 import SwiftUI
 
-struct EyeBlinkEffect: View {
+struct EyeBlinkEffect: View
+{
     @State var eyeBlink = true
     @State var eyeBlink2 = true
-    var body: some View {
-        ZStack {
+    var body: some View
+    {
+        ZStack
+        {
             Color(.black)
                 .frame(alignment: .center)
-            VStack {
+            VStack
+            {
                 Rectangle()
                     .foregroundColor(.black)
                     .offset(y: eyeBlink ? 0 : -500)
@@ -23,23 +27,26 @@ struct EyeBlinkEffect: View {
                     .foregroundColor(.black)
                     .offset(y: eyeBlink ? 0 : 500)
                     .offset(y: eyeBlink2 ? 0 : -500)
-                    
-                    .onTapGesture {
+
+                    .onTapGesture
+                    {
                         withAnimation(Animation
-                                        .easeInOut(duration: 0.5)
-                                        .repeatCount(4, autoreverses: true)) {
+                            .easeInOut(duration: 0.5)
+                            .repeatCount(4, autoreverses: true))
+                        {
                             eyeBlink.toggle()
                         }
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5)
+                        {
                             withAnimation(Animation
-                                            .easeInOut(duration: 0.3)
-                                            .repeatCount(4, autoreverses: false)) {
+                                .easeInOut(duration: 0.3)
+                                .repeatCount(4, autoreverses: false))
+                            {
                                 eyeBlink2.toggle()
-
                             }
                         }
-                        }
                     }
+            }
             Text("Your mom.")
                 .foregroundColor(.white)
                 .font(Font.custom("Hoefler Text", size: 20))
@@ -47,8 +54,10 @@ struct EyeBlinkEffect: View {
     }
 }
 
-struct EyeBlinkEffect_Previews: PreviewProvider {
-    static var previews: some View {
+struct EyeBlinkEffect_Previews: PreviewProvider
+{
+    static var previews: some View
+    {
         EyeBlinkEffect()
     }
 }

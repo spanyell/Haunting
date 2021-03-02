@@ -12,8 +12,8 @@ import Unrealm
 struct OneTwoView: View
 {
     @StateObject var storyDataViewModel = StoryDataViewModel()
-    
-    //UI
+
+    // UI
     @State var onTappy = true
     @State var makeSmally = true
     @State var bouncySpinny = true
@@ -22,21 +22,21 @@ struct OneTwoView: View
     @State var screenFade = true
     @State private var flashEffect = false
     @State var curtainSlideX = true
-    //Sound
+    // Sound
     @State var curtainsEffect = try! AVAudioPlayer(data: Constants.drawCurtains!.data, fileTypeHint: "mp3")
     @State var oneTwoMusicEffect = try! AVAudioPlayer(data: Constants.oneTwoMusic!.data, fileTypeHint: "mp3")
-    //Destination Variable
+    // Destination Variable
     @State private var viewAction: Int? = 0
     @State private var viewTransition: Int? = 0
-    
+
     var storyPlacement: Int
-    
+
     var body: some View
     {
         let choicesArray = storyDataViewModel.choicesDictionary[storyPlacement]
-        
+
         Text(Constants.ONE_TWO_ONE)
-        
+
         Text("\(storyDataViewModel.storyDataList[storyPlacement - 1].dataDescription)")
             .foregroundColor(.white)
             .font(Font.custom("Hoefler Text", size: 25))
@@ -50,7 +50,7 @@ struct OneTwoView: View
                     blurry.toggle()
                 }
             }
-        
+
         VStack
         {
             NavigationLink(
@@ -82,24 +82,25 @@ struct OneTwoView: View
                 .blur(radius: screenFade ? 0 : 500)
                 .offset(x: curtainSlideX ? 0 : 1000)
                 .onTapGesture(perform:
-                                {
-                                    withAnimation(.easeInOut(duration: 0.5))
-                                    {
-                                        viewTransition = i + 1
-                                        if viewTransition == 1
-                                        {
-                                            curtainsEffect.play()
-                                            curtainSlideX.toggle()
-                                        } else
-                                        {
-                                            screenFade.toggle()
-                                        }
-                                    }
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + 1)
-                                    {
-                                        viewAction = i + 1
-                                    }
-                                })
+                    {
+                        withAnimation(.easeInOut(duration: 0.5))
+                        {
+                            viewTransition = i + 1
+                            if viewTransition == 1
+                            {
+                                curtainsEffect.play()
+                                curtainSlideX.toggle()
+                            }
+                            else
+                            {
+                                screenFade.toggle()
+                            }
+                        }
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1)
+                        {
+                            viewAction = i + 1
+                        }
+                    })
         }
         .navigationBarHidden(true)
     }
@@ -110,4 +111,3 @@ struct OneTwoView: View
 //        OneTwoOneView()
 //    }
 // }
-

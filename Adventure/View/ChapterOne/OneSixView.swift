@@ -9,7 +9,8 @@ import AVKit
 import SwiftUI
 import Unrealm
 
-struct OneSixView: View {
+struct OneSixView: View
+{
     @StateObject var storyDataViewModel = StoryDataViewModel()
     @State private var viewAction: Int? = 0
     @State private var viewTransition: Int? = 0
@@ -17,13 +18,15 @@ struct OneSixView: View {
     @State var textWalkForward = true
     @State var bringForward = true
     @State var doorOpenAndCreakSound = try! AVAudioPlayer(data: Constants.doorOpenAndCreak!.data, fileTypeHint: "mp3")
-    
+
     var storyPlacement: Int
-    
-    var body: some View {
+
+    var body: some View
+    {
         let choicesArray = storyDataViewModel.choicesDictionary[storyPlacement]
-        
-        ZStack {
+
+        ZStack
+        {
             Color.black
                 .frame(alignment: .center)
             Text("THE\nDOOR\nGROANS\nOPEN.").multilineTextAlignment(.trailing)
@@ -36,7 +39,7 @@ struct OneSixView: View {
                     anchorZ: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/,
                     perspective: /*@START_MENU_TOKEN@*/1.0/*@END_MENU_TOKEN@*/
                 )
-                .scaleEffect(textWalkForward ? 1: 500)
+                .scaleEffect(textWalkForward ? 1 : 500)
                 .offset()
                 .onAppear
                 {
@@ -63,13 +66,14 @@ struct OneSixView: View {
                         }
                     }
                 }
-            VStack {
+            VStack
+            {
                 Text(Constants.ONE_SIX_ONE)
                 Text("\(storyDataViewModel.storyDataList[storyPlacement - 1].dataDescription)")
                     .foregroundColor(.white)
                     .font(Font.custom("Hoefler Text", size: 25))
                     .scaleEffect(bringForward ? 0 : 1)
-                
+
                 VStack
                 {
                     NavigationLink(
@@ -97,18 +101,16 @@ struct OneSixView: View {
                         .padding()
                         .scaleEffect(bringForward ? 0 : 1)
                         .onTapGesture(perform:
-                                        {
-                                            DispatchQueue.main.asyncAfter(deadline: .now() + 0)
-                                            {
-                                                viewAction = i + 1
-                                            }
-                            
-                                        })
+                            {
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0)
+                                {
+                                    viewAction = i + 1
+                                }
+
+                            })
                 }
-                
             }
         }
         .navigationBarHidden(true)
     }
 }
-

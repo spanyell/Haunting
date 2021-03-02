@@ -7,19 +7,21 @@
 
 import SwiftUI
 
-struct SlightJitter: View {
+struct SlightJitter: View
+{
     @State var move1 = true
     @State var move2 = true
     @State var move3 = true
     @State var move4 = true
-    
-    var body: some View {
+
+    var body: some View
+    {
         Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
             .offset(x: move1 ? 0 : 2, y: 0)
             .offset(x: 0, y: move2 ? 0 : 2)
             .offset(x: 0, y: move3 ? 0 : -4)
             .offset(x: move4 ? 0 : -4, y: 0)
-            .onAppear()
+            .onAppear
             {
                 withAnimation(Animation.easeInOut(duration: 0.5).repeatForever())
                 {
@@ -50,8 +52,10 @@ struct SlightJitter: View {
     }
 }
 
-struct SlightJitter_Previews: PreviewProvider {
-    static var previews: some View {
+struct SlightJitter_Previews: PreviewProvider
+{
+    static var previews: some View
+    {
         SlightJitter()
     }
 }
