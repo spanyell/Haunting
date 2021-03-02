@@ -1,8 +1,9 @@
 - Find better thunder files, update rain.
-- Figure out how to justify text alignment in the dataDescription https://stackoverflow.com/questions/63075091/swiftui-justify-text
-- Possibly create an array of music files and call them in by tracks (playNext after assigning last loop)
-- Eye blink effect (not finished)
-
+- Figure out how to justify text alignment in the dataDescription https://stackoverflow.com/questions/63075091/swiftui-justify-text.
+- Possibly create an array of music files and call them in by tracks (playNext after assigning last loop).
+- Eye blink effect (not finished).
+- Get music to work one after the other.
+- Impose logic where we could not include specific options based on previously chosen choices.
 
 
 
