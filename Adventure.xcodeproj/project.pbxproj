@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2B095E3B25E59924002EECAC /* Haunting.csv in Resources */ = {isa = PBXBuildFile; fileRef = 2B095E3A25E59924002EECAC /* Haunting.csv */; };
 		2B0C271525DF6FF30014EF8D /* UsernameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0C271425DF6FF30014EF8D /* UsernameView.swift */; };
 		2B0E350225E495CA006BB63B /* OneOneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0E350125E495CA006BB63B /* OneOneView.swift */; };
 		2B0E350525E495D6006BB63B /* OneTwoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0E350425E495D6006BB63B /* OneTwoView.swift */; };
@@ -46,6 +45,7 @@
 		6607BEE425E991B0000359F4 /* DoorOpen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6607BEE325E991B0000359F4 /* DoorOpen.swift */; };
 		6607BEE725E9A23A000359F4 /* SlightJitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6607BEE625E9A23A000359F4 /* SlightJitter.swift */; };
 		6607BEEC25E9CA76000359F4 /* PlaySomething.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6607BEEB25E9CA76000359F4 /* PlaySomething.swift */; };
+		661C994925F2C15A00E01E63 /* Haunting.csv in Resources */ = {isa = PBXBuildFile; fileRef = 661C994825F2C15A00E01E63 /* Haunting.csv */; };
 		66FA3E4425E8B54700429099 /* MoveForwardTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FA3E4325E8B54700429099 /* MoveForwardTwo.swift */; };
 		66FA3E4B25E8B9CA00429099 /* CheckpointOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FA3E4A25E8B9CA00429099 /* CheckpointOne.swift */; };
 		66FA3E4E25E8BA4B00429099 /* ThreeDeeFloating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FA3E4D25E8BA4B00429099 /* ThreeDeeFloating.swift */; };
@@ -61,7 +61,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2B095E3A25E59924002EECAC /* Haunting.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Haunting.csv; path = ../../../Desktop/Haunting.csv; sourceTree = "<group>"; };
 		2B0C271425DF6FF30014EF8D /* UsernameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameView.swift; sourceTree = "<group>"; };
 		2B0E350125E495CA006BB63B /* OneOneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneOneView.swift; sourceTree = "<group>"; };
 		2B0E350425E495D6006BB63B /* OneTwoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneTwoView.swift; sourceTree = "<group>"; };
@@ -100,6 +99,7 @@
 		6607BEE325E991B0000359F4 /* DoorOpen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoorOpen.swift; sourceTree = "<group>"; };
 		6607BEE625E9A23A000359F4 /* SlightJitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlightJitter.swift; sourceTree = "<group>"; };
 		6607BEEB25E9CA76000359F4 /* PlaySomething.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaySomething.swift; sourceTree = "<group>"; };
+		661C994825F2C15A00E01E63 /* Haunting.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Haunting.csv; path = ../../../../Desktop/Haunting.csv; sourceTree = "<group>"; };
 		66FA3E4325E8B54700429099 /* MoveForwardTwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveForwardTwo.swift; sourceTree = "<group>"; };
 		66FA3E4A25E8B9CA00429099 /* CheckpointOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckpointOne.swift; sourceTree = "<group>"; };
 		66FA3E4D25E8BA4B00429099 /* ThreeDeeFloating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeDeeFloating.swift; sourceTree = "<group>"; };
@@ -226,7 +226,7 @@
 				2B1E931825E638F200E21D1E /* BugList_CreditAttributes */,
 				9114E90425D9A1530051CB3A /* AdventureApp.swift */,
 				2B860D0325E5F9C70082074B /* Constants.swift */,
-				2B095E3A25E59924002EECAC /* Haunting.csv */,
+				661C994825F2C15A00E01E63 /* Haunting.csv */,
 				9114E91A25D9A5EE0051CB3A /* Model */,
 				9114E91F25D9AE2D0051CB3A /* ViewModel */,
 				2BEFA5C125DCEB0400F8984F /* View */,
@@ -328,7 +328,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2B095E3B25E59924002EECAC /* Haunting.csv in Resources */,
+				661C994925F2C15A00E01E63 /* Haunting.csv in Resources */,
 				2B1E931925E638F200E21D1E /* BugList_CreditAttributes in Resources */,
 				9114E90C25D9A1540051CB3A /* Preview Assets.xcassets in Resources */,
 				9114E90925D9A1540051CB3A /* Assets.xcassets in Resources */,

@@ -22,9 +22,9 @@ struct OneOneView: View
     @State var screenFade = true
     @State var curtainSlideX = true
     // Sound
-    @State var thunderEffect: AVAudioPlayer!
-    @State var musicEffect: AVAudioPlayer!
-    @State var curtainsEffect: AVAudioPlayer!
+    @State var thunderEffect = try! AVAudioPlayer(data: Constants.thunderclapAndRain!.data, fileTypeHint: "mp3")
+    @State var musicEffect = try! AVAudioPlayer(data: Constants.oneOneMusic!.data, fileTypeHint: "mp3")
+    @State var curtainsEffect = try! AVAudioPlayer(data: Constants.drawCurtains!.data, fileTypeHint: "mp3")
     // Destination variable
     @State private var viewAction: Int? = 0
     @State private var viewTransition: Int? = 0
@@ -43,9 +43,6 @@ struct OneOneView: View
                 .frame(alignment: .center)
                 .onAppear
                 {
-                    thunderEffect = try! AVAudioPlayer(data: Constants.thunderclapAndRain!.data, fileTypeHint: "mp3")
-                    musicEffect = try! AVAudioPlayer(data: Constants.oneOneMusic!.data, fileTypeHint: "mp3")
-                    curtainsEffect = try! AVAudioPlayer(data: Constants.drawCurtains!.data, fileTypeHint: "mp3")
                     DispatchQueue.main.asyncAfter(deadline: .now() + 4)
                     {
                         thunderEffect.play()
