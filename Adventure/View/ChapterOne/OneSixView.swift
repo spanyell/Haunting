@@ -36,11 +36,11 @@ struct OneSixView: View
                     .degrees(doorOpenEffect ? 0 : -76),
                     axis: (x: 0.0, y: 1.0, z: 0.0),
                     anchor: .trailing,
-                    anchorZ: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/,
-                    perspective: /*@START_MENU_TOKEN@*/1.0/*@END_MENU_TOKEN@*/
+                    anchorZ: 0.0,
+                    perspective: 1.0
                 )
-                .scaleEffect(textWalkForward ? 1 : 500)
-                .offset()
+                .scaleEffect(textWalkForward ? 1 : 300)
+//                .offset()
                 .onAppear
                 {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5)
@@ -53,7 +53,7 @@ struct OneSixView: View
                     doorOpenAndCreakSound.play()
                     DispatchQueue.main.asyncAfter(deadline: .now() + 2.5)
                     {
-                        withAnimation(Animation.easeInOut(duration: 4))
+                        withAnimation(Animation.easeInOut(duration: 12))
                         {
                             textWalkForward.toggle()
                         }

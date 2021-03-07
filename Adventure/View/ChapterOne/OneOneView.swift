@@ -72,7 +72,7 @@ struct OneOneView: View
                     .padding()
                     .scaleEffect(makeSmally ? 0 : 1.0)
                     .offset(y: moveTextAround ? -200 : 0)
-                    .rotationEffect(bouncySpinny ? .degrees(180) : .degrees(0))
+                    .rotationEffect(bouncySpinny ? .degrees(360) : .degrees(0))
                     .blur(radius: screenFade ? 0 : 500)
                     .offset(x: curtainSlideX ? 0 : -1000)
                     .onAppear

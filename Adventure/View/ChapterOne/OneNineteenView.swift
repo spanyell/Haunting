@@ -29,7 +29,7 @@ struct OneNineteenView: View
                 .frame(alignment: .center)
             VStack
             {
-                ForEach(0 ... 2, id: \.self)
+                ForEach(0 ... 3, id: \.self)
                 {
                     _ in
                     HStack

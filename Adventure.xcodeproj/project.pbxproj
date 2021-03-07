@@ -46,6 +46,7 @@
 		6607BEE725E9A23A000359F4 /* SlightJitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6607BEE625E9A23A000359F4 /* SlightJitter.swift */; };
 		6607BEEC25E9CA76000359F4 /* PlaySomething.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6607BEEB25E9CA76000359F4 /* PlaySomething.swift */; };
 		661C994925F2C15A00E01E63 /* Haunting.csv in Resources */ = {isa = PBXBuildFile; fileRef = 661C994825F2C15A00E01E63 /* Haunting.csv */; };
+		6627F55C25F35727009FA8EF /* MultipleSpinEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6627F55B25F35727009FA8EF /* MultipleSpinEffect.swift */; };
 		66FA3E4425E8B54700429099 /* MoveForwardTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FA3E4325E8B54700429099 /* MoveForwardTwo.swift */; };
 		66FA3E4B25E8B9CA00429099 /* CheckpointOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FA3E4A25E8B9CA00429099 /* CheckpointOne.swift */; };
 		66FA3E4E25E8BA4B00429099 /* ThreeDeeFloating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FA3E4D25E8BA4B00429099 /* ThreeDeeFloating.swift */; };
@@ -100,6 +101,7 @@
 		6607BEE625E9A23A000359F4 /* SlightJitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlightJitter.swift; sourceTree = "<group>"; };
 		6607BEEB25E9CA76000359F4 /* PlaySomething.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaySomething.swift; sourceTree = "<group>"; };
 		661C994825F2C15A00E01E63 /* Haunting.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Haunting.csv; path = ../../../../Desktop/Haunting.csv; sourceTree = "<group>"; };
+		6627F55B25F35727009FA8EF /* MultipleSpinEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleSpinEffect.swift; sourceTree = "<group>"; };
 		66FA3E4325E8B54700429099 /* MoveForwardTwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveForwardTwo.swift; sourceTree = "<group>"; };
 		66FA3E4A25E8B9CA00429099 /* CheckpointOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckpointOne.swift; sourceTree = "<group>"; };
 		66FA3E4D25E8BA4B00429099 /* ThreeDeeFloating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeDeeFloating.swift; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 			children = (
 				6607BEEB25E9CA76000359F4 /* PlaySomething.swift */,
 				2B4DD0D825E71F1600923DBC /* MoveForwardOne.swift */,
+				6627F55B25F35727009FA8EF /* MultipleSpinEffect.swift */,
 				66FA3E4325E8B54700429099 /* MoveForwardTwo.swift */,
 				66FA3E4D25E8BA4B00429099 /* ThreeDeeFloating.swift */,
 				66FA3E5025E8C25400429099 /* WindowLightning.swift */,
@@ -354,6 +357,7 @@
 				9114E90525D9A1530051CB3A /* AdventureApp.swift in Sources */,
 				2B4F8FE625E1F3070091DAE3 /* TestView2.swift in Sources */,
 				66FA3E4B25E8B9CA00429099 /* CheckpointOne.swift in Sources */,
+				6627F55C25F35727009FA8EF /* MultipleSpinEffect.swift in Sources */,
 				2B0E350825E495EF006BB63B /* OneThreeView.swift in Sources */,
 				66FA3E5425E8C7A400429099 /* EyeBlinkEffect.swift in Sources */,
 				66FA3E4E25E8BA4B00429099 /* ThreeDeeFloating.swift in Sources */,
