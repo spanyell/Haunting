@@ -11,6 +11,7 @@ import Unrealm
 struct OneThreeView: View
 {
     @StateObject var storyDataViewModel = StoryDataViewModel()
+    @StateObject var soundManager = SoundManager()
 
     // UI
     @State var onTappy = true
@@ -21,10 +22,6 @@ struct OneThreeView: View
     @State private var flashEffect = false
     @State var screenFade = true
     @State var curtainSlideX = true
-    @State var curtainsEffect = try! AVAudioPlayer(data: Constants.drawCurtains!.data, fileTypeHint: "mp3")
-    // Sound
-    @State var thunderEffect: AVAudioPlayer!
-    @State var oneOneOneMusic: AVAudioPlayer!
 
     // Destination variable
     @State private var viewAction: Int? = 0
@@ -88,7 +85,7 @@ struct OneThreeView: View
                             viewTransition = i + 1
                             if viewTransition == 1
                             {
-                                curtainsEffect.play()
+                                soundManager.playDrawCurtains()
                                 curtainSlideX.toggle()
                             }
                             else

@@ -12,6 +12,7 @@ import Unrealm
 struct OneTwoView: View
 {
     @StateObject var storyDataViewModel = StoryDataViewModel()
+    @StateObject var soundManager = SoundManager()
 
     // UI
     @State var onTappy = true
@@ -22,9 +23,6 @@ struct OneTwoView: View
     @State var screenFade = true
     @State private var flashEffect = false
     @State var curtainSlideX = true
-    // Sound
-    @State var curtainsEffect = try! AVAudioPlayer(data: Constants.drawCurtains!.data, fileTypeHint: "mp3")
-    @State var oneTwoMusicEffect = try! AVAudioPlayer(data: Constants.oneTwoMusic!.data, fileTypeHint: "mp3")
     // Destination Variable
     @State private var viewAction: Int? = 0
     @State private var viewTransition: Int? = 0
@@ -88,7 +86,7 @@ struct OneTwoView: View
                             viewTransition = i + 1
                             if viewTransition == 1
                             {
-                                curtainsEffect.play()
+                                soundManager.playDrawCurtains()
                                 curtainSlideX.toggle()
                             }
                             else

@@ -12,6 +12,7 @@ import Unrealm
 struct OneFourView: View
 {
     @StateObject var storyDataViewModel = StoryDataViewModel()
+    @StateObject var soundManager = SoundManager()
 
     // UI
     @State var onTappy = true

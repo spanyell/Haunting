@@ -12,6 +12,7 @@ import Unrealm
 struct OneOneView: View
 {
     @StateObject var storyDataViewModel = StoryDataViewModel()
+    @StateObject var soundManager = SoundManager()
     // UI
     @State var moveTextAround = true
     @State var makeSmally = true
@@ -21,10 +22,6 @@ struct OneOneView: View
     @State private var flashEffect = false
     @State var screenFade = true
     @State var curtainSlideX = true
-    // Sound
-    @State var thunderEffect = try! AVAudioPlayer(data: Constants.thunderclapAndRain!.data, fileTypeHint: "mp3")
-    @State var musicEffect = try! AVAudioPlayer(data: Constants.oneOneMusic!.data, fileTypeHint: "mp3")
-    @State var curtainsEffect = try! AVAudioPlayer(data: Constants.drawCurtains!.data, fileTypeHint: "mp3")
     // Destination variable
     @State private var viewAction: Int? = 0
     @State private var viewTransition: Int? = 0
@@ -45,7 +42,7 @@ struct OneOneView: View
                 {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 4)
                     {
-                        thunderEffect.play()
+                        soundManager.playThunderEffect()
                     }
                 }
 
@@ -124,14 +121,14 @@ struct OneOneView: View
                             .offset(y: moveTextAround ? 500 : 0)
                             .offset(x: curtainSlideX ? 0 : 1000)
                             .onTapGesture(perform: {
-                                musicEffect.numberOfLoops = 1
-                                musicEffect.setVolume(0, fadeDuration: 1)
+//                                soundManager.playOneOneMusic().numberOfLoops = 1
+//                                musicEffect.setVolume(0, fadeDuration: 1)
                                 withAnimation(.easeInOut(duration: 0.5))
                                 {
                                     viewTransition = i + 1
                                     if viewTransition == 1
                                     {
-                                        curtainsEffect.play()
+                                        soundManager.playDrawCurtains()
                                         curtainSlideX.toggle()
                                     }
                                     else
@@ -148,9 +145,7 @@ struct OneOneView: View
                             {
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 10)
                                 {
-                                    musicEffect.play()
-                                    musicCurrentlyPlaying.toggle()
-                                    musicEffect.numberOfLoops = -1
+                                    soundManager.playMusicFile(data: Constants.ONE_ONE_MUSIC!.data)
                                 }
                             }
                     }

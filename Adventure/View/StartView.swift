@@ -11,11 +11,10 @@ import Unrealm
 
 struct StartView: View
 {
-    @State var musicPlayer: AVAudioPlayer!
-    @State var thunderEffect: AVAudioPlayer!
     @State var flashEffect = false
     @State private var action: Int? = 0
     @State var fadeAway = false
+    @StateObject var soundManager = SoundManager()
 
     var body: some View
     {
@@ -30,11 +29,9 @@ struct StartView: View
                     // inits the music
                     .onAppear
                     {
-                        musicPlayer = try! AVAudioPlayer(data: Constants.mainViewMusic!.data, fileTypeHint: "mp3")
-                        thunderEffect = try! AVAudioPlayer(data: Constants.thunderclapAndRain!.data, fileTypeHint: "mp3")
                         DispatchQueue.main.asyncAfter(deadline: .now() + 1)
                         {
-                            musicPlayer.play()
+                            soundManager.playMusicFile(data: Constants.MAIN_VIEW_MUSIC!.data)
                         }
                     }
 
@@ -69,13 +66,13 @@ struct StartView: View
                         .padding()
                         .onTapGesture
                         {
-                            thunderEffect.play()
+                            soundManager.playThunderEffect()
                             flashEffect.toggle()
-                            musicPlayer.setVolume(0, fadeDuration: 2)
+                            //musicPlayer.setVolume(0, fadeDuration: 2)
                             DispatchQueue.main.asyncAfter(deadline: .now() + 1)
                             {
                                 fadeAway.toggle()
-                                musicPlayer.stop()
+                               // musicPlayer.stop()
                                 action = 1
                             }
                             withAnimation(Animation
@@ -97,13 +94,13 @@ struct StartView: View
                         .padding()
                         .onTapGesture
                         {
-                            thunderEffect.play()
+                            soundManager.playThunderEffect()
                             flashEffect.toggle()
-                            musicPlayer.setVolume(0, fadeDuration: 2)
+                          //  musicPlayer.setVolume(0, fadeDuration: 2)
                             DispatchQueue.main.asyncAfter(deadline: .now() + 1)
                             {
                                 fadeAway.toggle()
-                                musicPlayer.stop()
+                             //   musicPlayer.stop()
                                 action = 2
                             }
                             withAnimation(Animation

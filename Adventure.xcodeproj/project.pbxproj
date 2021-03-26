@@ -42,11 +42,10 @@
 		2BEFA5BF25DCEAFC00F8984F /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BEFA5BE25DCEAFC00F8984F /* StartView.swift */; };
 		2BEFA5C725DCECF200F8984F /* OnceUponView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BEFA5C625DCECF200F8984F /* OnceUponView.swift */; };
 		2BF95D6E25DF25960033421E /* StoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF95D6D25DF25960033421E /* StoryView.swift */; };
-		6607BEE425E991B0000359F4 /* DoorOpen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6607BEE325E991B0000359F4 /* DoorOpen.swift */; };
 		6607BEE725E9A23A000359F4 /* SlightJitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6607BEE625E9A23A000359F4 /* SlightJitter.swift */; };
-		6607BEEC25E9CA76000359F4 /* PlaySomething.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6607BEEB25E9CA76000359F4 /* PlaySomething.swift */; };
-		661C994925F2C15A00E01E63 /* Haunting.csv in Resources */ = {isa = PBXBuildFile; fileRef = 661C994825F2C15A00E01E63 /* Haunting.csv */; };
 		6627F55C25F35727009FA8EF /* MultipleSpinEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6627F55B25F35727009FA8EF /* MultipleSpinEffect.swift */; };
+		66D2E3E6260E6E840004A1FD /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D2E3E5260E6E840004A1FD /* SoundManager.swift */; };
+		66D2E3E9260E9AB70004A1FD /* Haunting.csv in Resources */ = {isa = PBXBuildFile; fileRef = 66D2E3E8260E9AB70004A1FD /* Haunting.csv */; };
 		66FA3E4425E8B54700429099 /* MoveForwardTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FA3E4325E8B54700429099 /* MoveForwardTwo.swift */; };
 		66FA3E4B25E8B9CA00429099 /* CheckpointOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FA3E4A25E8B9CA00429099 /* CheckpointOne.swift */; };
 		66FA3E4E25E8BA4B00429099 /* ThreeDeeFloating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FA3E4D25E8BA4B00429099 /* ThreeDeeFloating.swift */; };
@@ -97,11 +96,10 @@
 		2BEFA5BE25DCEAFC00F8984F /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
 		2BEFA5C625DCECF200F8984F /* OnceUponView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnceUponView.swift; sourceTree = "<group>"; };
 		2BF95D6D25DF25960033421E /* StoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryView.swift; sourceTree = "<group>"; };
-		6607BEE325E991B0000359F4 /* DoorOpen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoorOpen.swift; sourceTree = "<group>"; };
 		6607BEE625E9A23A000359F4 /* SlightJitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlightJitter.swift; sourceTree = "<group>"; };
-		6607BEEB25E9CA76000359F4 /* PlaySomething.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaySomething.swift; sourceTree = "<group>"; };
-		661C994825F2C15A00E01E63 /* Haunting.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Haunting.csv; path = ../../../../Desktop/Haunting.csv; sourceTree = "<group>"; };
 		6627F55B25F35727009FA8EF /* MultipleSpinEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleSpinEffect.swift; sourceTree = "<group>"; };
+		66D2E3E5260E6E840004A1FD /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
+		66D2E3E8260E9AB70004A1FD /* Haunting.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Haunting.csv; path = ../../../Desktop/Haunting.csv; sourceTree = "<group>"; };
 		66FA3E4325E8B54700429099 /* MoveForwardTwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveForwardTwo.swift; sourceTree = "<group>"; };
 		66FA3E4A25E8B9CA00429099 /* CheckpointOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckpointOne.swift; sourceTree = "<group>"; };
 		66FA3E4D25E8BA4B00429099 /* ThreeDeeFloating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeDeeFloating.swift; sourceTree = "<group>"; };
@@ -177,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				2B2FD78725DDDB2400C0AB71 /* DatabaseManager.swift */,
+				66D2E3E5260E6E840004A1FD /* SoundManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -194,14 +193,12 @@
 		66FA3E4725E8B89B00429099 /* TransitionEffects */ = {
 			isa = PBXGroup;
 			children = (
-				6607BEEB25E9CA76000359F4 /* PlaySomething.swift */,
 				2B4DD0D825E71F1600923DBC /* MoveForwardOne.swift */,
 				6627F55B25F35727009FA8EF /* MultipleSpinEffect.swift */,
 				66FA3E4325E8B54700429099 /* MoveForwardTwo.swift */,
 				66FA3E4D25E8BA4B00429099 /* ThreeDeeFloating.swift */,
 				66FA3E5025E8C25400429099 /* WindowLightning.swift */,
 				66FA3E5325E8C7A400429099 /* EyeBlinkEffect.swift */,
-				6607BEE325E991B0000359F4 /* DoorOpen.swift */,
 				6607BEE625E9A23A000359F4 /* SlightJitter.swift */,
 			);
 			path = TransitionEffects;
@@ -229,7 +226,7 @@
 				2B1E931825E638F200E21D1E /* BugList_CreditAttributes */,
 				9114E90425D9A1530051CB3A /* AdventureApp.swift */,
 				2B860D0325E5F9C70082074B /* Constants.swift */,
-				661C994825F2C15A00E01E63 /* Haunting.csv */,
+				66D2E3E8260E9AB70004A1FD /* Haunting.csv */,
 				9114E91A25D9A5EE0051CB3A /* Model */,
 				9114E91F25D9AE2D0051CB3A /* ViewModel */,
 				2BEFA5C125DCEB0400F8984F /* View */,
@@ -331,10 +328,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				661C994925F2C15A00E01E63 /* Haunting.csv in Resources */,
 				2B1E931925E638F200E21D1E /* BugList_CreditAttributes in Resources */,
 				9114E90C25D9A1540051CB3A /* Preview Assets.xcassets in Resources */,
 				9114E90925D9A1540051CB3A /* Assets.xcassets in Resources */,
+				66D2E3E9260E9AB70004A1FD /* Haunting.csv in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -349,7 +346,6 @@
 				2BEFA5BF25DCEAFC00F8984F /* StartView.swift in Sources */,
 				6607BEE725E9A23A000359F4 /* SlightJitter.swift in Sources */,
 				2B4DD0B225E7199800923DBC /* OneNineView.swift in Sources */,
-				6607BEE425E991B0000359F4 /* DoorOpen.swift in Sources */,
 				2B4F8FE025E1ECF70091DAE3 /* TestView.swift in Sources */,
 				2B0E350225E495CA006BB63B /* OneOneView.swift in Sources */,
 				2B0E350525E495D6006BB63B /* OneTwoView.swift in Sources */,
@@ -362,10 +358,10 @@
 				66FA3E5425E8C7A400429099 /* EyeBlinkEffect.swift in Sources */,
 				66FA3E4E25E8BA4B00429099 /* ThreeDeeFloating.swift in Sources */,
 				2BEFA5C725DCECF200F8984F /* OnceUponView.swift in Sources */,
+				66D2E3E6260E6E840004A1FD /* SoundManager.swift in Sources */,
 				2B4F8FDD25E1CC1D0091DAE3 /* StoryView1.swift in Sources */,
 				2B4F8FE325E1ED4A0091DAE3 /* TestView1.swift in Sources */,
 				2B4F8FD825E01E120091DAE3 /* AppStartView.swift in Sources */,
-				6607BEEC25E9CA76000359F4 /* PlaySomething.swift in Sources */,
 				2B4DD0C125E71E9900923DBC /* OneFourteenView.swift in Sources */,
 				2B4DD0AC25E7128C00923DBC /* OneSevenView.swift in Sources */,
 				2B4DD0BB25E71AE300923DBC /* OneTwelveView.swift in Sources */,

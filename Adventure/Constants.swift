@@ -42,12 +42,12 @@ struct Constants
     static let ONE_TWENTYONE_ONE = "1.21.1"
     
     // Music
-    static let mainViewMusic = NSDataAsset(name: "MainViewMusic")
-    static let oneOneMusic = NSDataAsset(name: "OneOneMusic")
-    static let oneTwoMusic = NSDataAsset(name: "OneTwoMusic")
+    static let MAIN_VIEW_MUSIC = NSDataAsset(name: "MainViewMusic")
+    static let ONE_ONE_MUSIC = NSDataAsset(name: "OneOneMusic")
+    static let ONE_TWO_MUSIC = NSDataAsset(name: "OneTwoMusic")
     
     //Sound Effects
-    static let thunderclapAndRain = NSDataAsset(name: "ThunderclapAndRain")
-    static let drawCurtains = NSDataAsset(name: "DrawCurtains")
-    static let doorOpenAndCreak = NSDataAsset(name: "DoorOpenAndCreak")
+    static let THUNDERCLAP_AND_RAIN = NSDataAsset(name: "ThunderclapAndRain")
+    static let DRAW_CURTAINS = NSDataAsset(name: "DrawCurtains")
+    static let DOOR_OPEN_AND_CREAK = NSDataAsset(name: "DoorOpenAndCreak")
 }

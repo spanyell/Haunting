@@ -12,12 +12,13 @@ import Unrealm
 struct OneSixView: View
 {
     @StateObject var storyDataViewModel = StoryDataViewModel()
+    @StateObject var soundManager = SoundManager()
     @State private var viewAction: Int? = 0
     @State private var viewTransition: Int? = 0
     @State var doorOpenEffect = true
     @State var textWalkForward = true
     @State var bringForward = true
-    @State var doorOpenAndCreakSound = try! AVAudioPlayer(data: Constants.doorOpenAndCreak!.data, fileTypeHint: "mp3")
+
 
     var storyPlacement: Int
 
@@ -50,7 +51,7 @@ struct OneSixView: View
                             doorOpenEffect.toggle()
                         }
                     }
-                    doorOpenAndCreakSound.play()
+                    soundManager.playOpenDoorAndCreak()
                     DispatchQueue.main.asyncAfter(deadline: .now() + 2.5)
                     {
                         withAnimation(Animation.easeInOut(duration: 12))

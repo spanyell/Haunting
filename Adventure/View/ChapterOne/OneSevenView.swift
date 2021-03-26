@@ -12,6 +12,7 @@ import Unrealm
 struct OneSevenView: View
 {
     @StateObject var storyDataViewModel = StoryDataViewModel()
+    @StateObject var soundManager = SoundManager()
     @State private var viewAction: Int? = 0
     @State private var viewTransition: Int? = 0
 
