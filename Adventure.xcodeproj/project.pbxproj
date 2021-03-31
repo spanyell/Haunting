@@ -46,6 +46,7 @@
 		6627F55C25F35727009FA8EF /* MultipleSpinEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6627F55B25F35727009FA8EF /* MultipleSpinEffect.swift */; };
 		66D2E3E6260E6E840004A1FD /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D2E3E5260E6E840004A1FD /* SoundManager.swift */; };
 		66D2E3E9260E9AB70004A1FD /* Haunting.csv in Resources */ = {isa = PBXBuildFile; fileRef = 66D2E3E8260E9AB70004A1FD /* Haunting.csv */; };
+		66D2E3F3260EB40D0004A1FD /* FAKEVIEW.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D2E3F2260EB40D0004A1FD /* FAKEVIEW.swift */; };
 		66FA3E4425E8B54700429099 /* MoveForwardTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FA3E4325E8B54700429099 /* MoveForwardTwo.swift */; };
 		66FA3E4B25E8B9CA00429099 /* CheckpointOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FA3E4A25E8B9CA00429099 /* CheckpointOne.swift */; };
 		66FA3E4E25E8BA4B00429099 /* ThreeDeeFloating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FA3E4D25E8BA4B00429099 /* ThreeDeeFloating.swift */; };
@@ -100,6 +101,7 @@
 		6627F55B25F35727009FA8EF /* MultipleSpinEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleSpinEffect.swift; sourceTree = "<group>"; };
 		66D2E3E5260E6E840004A1FD /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
 		66D2E3E8260E9AB70004A1FD /* Haunting.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Haunting.csv; path = ../../../Desktop/Haunting.csv; sourceTree = "<group>"; };
+		66D2E3F2260EB40D0004A1FD /* FAKEVIEW.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAKEVIEW.swift; sourceTree = "<group>"; };
 		66FA3E4325E8B54700429099 /* MoveForwardTwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveForwardTwo.swift; sourceTree = "<group>"; };
 		66FA3E4A25E8B9CA00429099 /* CheckpointOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckpointOne.swift; sourceTree = "<group>"; };
 		66FA3E4D25E8BA4B00429099 /* ThreeDeeFloating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeDeeFloating.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				2B0E350125E495CA006BB63B /* OneOneView.swift */,
+				66D2E3F2260EB40D0004A1FD /* FAKEVIEW.swift */,
 				2B0E350425E495D6006BB63B /* OneTwoView.swift */,
 				2B0E350725E495EF006BB63B /* OneThreeView.swift */,
 				2B0E350A25E495FA006BB63B /* OneFourView.swift */,
@@ -351,6 +354,7 @@
 				2B0E350525E495D6006BB63B /* OneTwoView.swift in Sources */,
 				2B4DD0C725E71EB900923DBC /* OneSixteenView.swift in Sources */,
 				9114E90525D9A1530051CB3A /* AdventureApp.swift in Sources */,
+				66D2E3F3260EB40D0004A1FD /* FAKEVIEW.swift in Sources */,
 				2B4F8FE625E1F3070091DAE3 /* TestView2.swift in Sources */,
 				66FA3E4B25E8B9CA00429099 /* CheckpointOne.swift in Sources */,
 				6627F55C25F35727009FA8EF /* MultipleSpinEffect.swift in Sources */,

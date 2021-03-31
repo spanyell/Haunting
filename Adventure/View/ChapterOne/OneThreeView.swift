@@ -56,7 +56,7 @@ struct OneThreeView: View
                 EmptyView()
             }
             NavigationLink(
-                destination: OneTwoView(storyPlacement: 2), tag: 2, selection: $viewAction)
+                destination: OneTwoView(storyPlacement: 2, musicFile: Constants.ONE_TWO_MUSIC!), tag: 2, selection: $viewAction)
             {
                 EmptyView()
             }
@@ -85,7 +85,7 @@ struct OneThreeView: View
                             viewTransition = i + 1
                             if viewTransition == 1
                             {
-                                soundManager.playDrawCurtains()
+                    //            soundManager.playDrawCurtains()
                                 curtainSlideX.toggle()
                             }
                             else

@@ -6,32 +6,43 @@
 //
 
 import Foundation
-import Unrealm
 import AVKit
 
 class SoundManager: ObservableObject
 {
-    @Published private var soundFile = Constants.EMPTY_STRING
+    @Published var player: AVAudioPlayer?
+    private var currentPlayer: AVAudioPlayer?
     
-    func playThunderEffect()
-    {
-        try! AVAudioPlayer(data: Constants.THUNDERCLAP_AND_RAIN!.data, fileTypeHint: "mp3").play()
-    }
-
     func playMusicFile(data: Data)
     {
-        try! AVAudioPlayer(data: data, fileTypeHint: "mp3").play()
-    }
+        var currentPlayerTime: Double
+        var timeLeft: Double
 
-    func playDrawCurtains()
-    {
-        try! AVAudioPlayer(data: Constants.DRAW_CURTAINS!.data, fileTypeHint: "mp3").play()
+        do
+        {
+            self.player = try AVAudioPlayer(data: data, fileTypeHint: "mp3")
+            self.currentPlayer = player
+            currentPlayerTime = player!.currentTime
+            timeLeft = 4.00 - currentPlayerTime
+            
+            
+            
+            if self.player != nil
+            {
+                self.player!.play()
+                currentPlayerTime = player!.currentTime
+                
+                
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + timeLeft)
+            {
+                self.player!.play()
+            }
+        }
+        
+        catch
+        {
+            print(error.localizedDescription)
+        }
     }
-    
-    func playOpenDoorAndCreak()
-    {
-        try! AVAudioPlayer(data: Constants.DOOR_OPEN_AND_CREAK!.data, fileTypeHint: "mp3").play()
-    }
-
 }
-

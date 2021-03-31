@@ -42,7 +42,7 @@ struct OneOneView: View
                 {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 4)
                     {
-                        soundManager.playThunderEffect()
+              //          soundManager.playThunderEffect()
                     }
                 }
 
@@ -54,7 +54,7 @@ struct OneOneView: View
                     EmptyView()
                 }
                 NavigationLink(
-                    destination: OneTwoView(storyPlacement: 2), tag: 2, selection: $viewAction)
+                    destination: OneTwoView(storyPlacement: 2, musicFile: Constants.ONE_TWO_MUSIC!), tag: 2, selection: $viewAction)
                 {
                     EmptyView()
                 }
@@ -128,7 +128,7 @@ struct OneOneView: View
                                     viewTransition = i + 1
                                     if viewTransition == 1
                                     {
-                                        soundManager.playDrawCurtains()
+                                 //       soundManager.playDrawCurtains()
                                         curtainSlideX.toggle()
                                     }
                                     else

@@ -51,7 +51,7 @@ struct OneSixView: View
                             doorOpenEffect.toggle()
                         }
                     }
-                    soundManager.playOpenDoorAndCreak()
+               //     soundManager.playOpenDoorAndCreak()
                     DispatchQueue.main.asyncAfter(deadline: .now() + 2.5)
                     {
                         withAnimation(Animation.easeInOut(duration: 12))

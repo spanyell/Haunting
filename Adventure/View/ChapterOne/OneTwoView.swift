@@ -28,6 +28,7 @@ struct OneTwoView: View
     @State private var viewTransition: Int? = 0
 
     var storyPlacement: Int
+    var musicFile: NSDataAsset?
 
     var body: some View
     {
@@ -43,6 +44,8 @@ struct OneTwoView: View
             .offset(x: curtainSlideX ? 0 : -1000)
             .onAppear
             {
+                soundManager.playMusicFile(data: musicFile!.data)
+
                 withAnimation(.easeInOut(duration: 1))
                 {
                     blurry.toggle()
@@ -86,7 +89,7 @@ struct OneTwoView: View
                             viewTransition = i + 1
                             if viewTransition == 1
                             {
-                                soundManager.playDrawCurtains()
+                                //     soundManager.playDrawCurtains()
                                 curtainSlideX.toggle()
                             }
                             else
