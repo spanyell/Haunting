@@ -24,6 +24,7 @@ class SoundManager: ObservableObject
             self.currentPlayer = player
             currentPlayerTime = player!.currentTime
             timeLeft = 4.00 - currentPlayerTime
+            print(timeLeft)
             
             
             
@@ -31,6 +32,7 @@ class SoundManager: ObservableObject
             {
                 self.player!.play()
                 currentPlayerTime = player!.currentTime
+                print(currentPlayerTime)
                 
                 
             }
