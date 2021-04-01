@@ -11,7 +11,7 @@ import Unrealm
 struct OneThreeView: View
 {
     @StateObject var storyDataViewModel = StoryDataViewModel()
-    @StateObject var soundManager = SoundManager()
+    @ObservedObject var soundManager = SoundManager()
 
     // UI
     @State var onTappy = true

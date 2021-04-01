@@ -12,7 +12,7 @@ import Unrealm
 struct OneOneView: View
 {
     @StateObject var storyDataViewModel = StoryDataViewModel()
-    @StateObject var soundManager = SoundManager()
+    @ObservedObject var soundManager = SoundManager()
     // UI
     @State var moveTextAround = true
     @State var makeSmally = true
@@ -121,8 +121,7 @@ struct OneOneView: View
                             .offset(y: moveTextAround ? 500 : 0)
                             .offset(x: curtainSlideX ? 0 : 1000)
                             .onTapGesture(perform: {
-//                                soundManager.playOneOneMusic().numberOfLoops = 1
-//                                musicEffect.setVolume(0, fadeDuration: 1)
+                                SoundManager.shared.player?.numberOfLoops = 0
                                 withAnimation(.easeInOut(duration: 0.5))
                                 {
                                     viewTransition = i + 1
@@ -145,7 +144,7 @@ struct OneOneView: View
                             {
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 10)
                                 {
-                                    soundManager.playMusicFile(data: Constants.ONE_ONE_MUSIC!.data)
+                                    SoundManager.shared.playMusicFile(data: Constants.ONE_ONE_MUSIC!.data)
                                 }
                             }
                     }

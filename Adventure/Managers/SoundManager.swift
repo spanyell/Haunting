@@ -5,46 +5,46 @@
 //  Created by Dan Beers on 3/26/21.
 //
 
-import Foundation
 import AVKit
+import Foundation
 
 class SoundManager: ObservableObject
 {
+    static let shared = SoundManager()
+    
     @Published var player: AVAudioPlayer?
     private var currentPlayer: AVAudioPlayer?
-    
+
     func playMusicFile(data: Data)
     {
-        var currentPlayerTime: Double
-        var timeLeft: Double
+        var currentPlayerTime = 0.0
+        var timeLeft = 0.0
 
         do
         {
-            self.player = try AVAudioPlayer(data: data, fileTypeHint: "mp3")
-            self.currentPlayer = player
+            player = try AVAudioPlayer(data: data, fileTypeHint: "mp3")
             currentPlayerTime = player!.currentTime
             timeLeft = 4.00 - currentPlayerTime
             print(timeLeft)
-            
-            
-            
-            if self.player != nil
+
+            if currentPlayer != nil
             {
-                self.player!.play()
                 currentPlayerTime = player!.currentTime
-                print(currentPlayerTime)
-                
-                
+                print("\n\nCurrent player time is: \(currentPlayerTime)")
+                timeLeft = 4.00 - currentPlayerTime
+                print("\n\nTime left is: \(timeLeft)\n\n")
             }
             DispatchQueue.main.asyncAfter(deadline: .now() + timeLeft)
             {
+                self.player!.numberOfLoops = -1
                 self.player!.play()
             }
         }
-        
+
         catch
         {
             print(error.localizedDescription)
         }
+        currentPlayer = player
     }
 }
