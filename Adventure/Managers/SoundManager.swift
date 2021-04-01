@@ -13,6 +13,7 @@ class SoundManager: ObservableObject
     static let shared = SoundManager()
     
     @Published var player: AVAudioPlayer?
+    @Published var effectPlayer: AVAudioPlayer?
     private var currentPlayer: AVAudioPlayer?
 
     func playMusicFile(data: Data)
@@ -52,8 +53,8 @@ class SoundManager: ObservableObject
     {
         do
         {
-            player = try AVAudioPlayer(data: data, fileTypeHint: "mp3")
-            self.player!.play()
+            effectPlayer = try AVAudioPlayer(data: data, fileTypeHint: "mp3")
+            self.effectPlayer!.play()
         }
         catch
         {
