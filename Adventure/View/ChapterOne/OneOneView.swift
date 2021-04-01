@@ -42,7 +42,7 @@ struct OneOneView: View
                 {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 4)
                     {
-              //          soundManager.playThunderEffect()
+                        soundManager.playSoundFile(data: Constants.THUNDERCLAP_AND_RAIN!.data)
                     }
                 }
 
@@ -127,7 +127,7 @@ struct OneOneView: View
                                     viewTransition = i + 1
                                     if viewTransition == 1
                                     {
-                                 //       soundManager.playDrawCurtains()
+                                        soundManager.playSoundFile(data: Constants.DRAW_CURTAINS!.data)
                                         curtainSlideX.toggle()
                                     }
                                     else

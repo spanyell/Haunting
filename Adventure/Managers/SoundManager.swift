@@ -47,4 +47,17 @@ class SoundManager: ObservableObject
         }
         currentPlayer = player
     }
+    
+    func playSoundFile(data: Data)
+    {
+        do
+        {
+            player = try AVAudioPlayer(data: data, fileTypeHint: "mp3")
+            self.player!.play()
+        }
+        catch
+        {
+            print(error.localizedDescription)
+        }
+    }
 }

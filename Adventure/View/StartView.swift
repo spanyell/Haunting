@@ -31,7 +31,7 @@ struct StartView: View
                     {
                         DispatchQueue.main.asyncAfter(deadline: .now() + 1)
                         {
-                            soundManager.playMusicFile(data: Constants.MAIN_VIEW_MUSIC!.data)
+                            soundManager.playSoundFile(data: Constants.MAIN_VIEW_MUSIC!.data)
                         }
                     }
 
@@ -66,7 +66,7 @@ struct StartView: View
                         .padding()
                         .onTapGesture
                         {
-                            soundManager.playMusicFile(data: Constants.THUNDERCLAP_AND_RAIN!.data)
+                            soundManager.playSoundFile(data: Constants.THUNDERCLAP_AND_RAIN!.data)
                             flashEffect.toggle()
                             //musicPlayer.setVolume(0, fadeDuration: 2)
                             DispatchQueue.main.asyncAfter(deadline: .now() + 1)
@@ -94,7 +94,7 @@ struct StartView: View
                         .padding()
                         .onTapGesture
                         {
-                            soundManager.playMusicFile(data: Constants.THUNDERCLAP_AND_RAIN!.data)
+                            soundManager.playSoundFile(data: Constants.THUNDERCLAP_AND_RAIN!.data)
                             flashEffect.toggle()
                           //  musicPlayer.setVolume(0, fadeDuration: 2)
                             DispatchQueue.main.asyncAfter(deadline: .now() + 1)
