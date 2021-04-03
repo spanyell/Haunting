@@ -121,7 +121,7 @@ struct OneOneView: View
                             .offset(y: moveTextAround ? 500 : 0)
                             .offset(x: curtainSlideX ? 0 : 1000)
                             .onTapGesture(perform: {
-                                SoundManager.shared.player?.numberOfLoops = 0
+//                                SoundManager.shared.player?.numberOfLoops = 0
                                 withAnimation(.easeInOut(duration: 0.5))
                                 {
                                     viewTransition = i + 1

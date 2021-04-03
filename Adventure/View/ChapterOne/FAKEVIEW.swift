@@ -12,27 +12,12 @@ import Unrealm
 struct FAKEVIEW: View {
     @StateObject var storyDataViewModel = StoryDataViewModel()
     @StateObject var soundManager = SoundManager()
-    @State var isInitialLoad = true
         
     var body: some View
     {
         Text("Hello, World!")
-            .onAppear()
-            {
-                if isInitialLoad
-                {
-  //                  playfirstsong
-                }
-            }
-            .onTapGesture
-            {
-                if soundManager.player != nil
-                {
-                    soundManager.player?.play()
-                    isInitialLoad = false
-           //         playsecond song
-                }
-                
+            .onTapGesture {
+                SoundManager.shared.playMusicFile(data: Constants.ONE_ONE_MUSIC!.data)
             }
     }
 }
