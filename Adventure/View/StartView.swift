@@ -26,7 +26,8 @@ struct StartView: View
                 Color(flashEffect ? .white : .black)
                     .frame(alignment: .center)
                     .opacity(flashEffect ? 0 : 1)
-                    // inits the music
+
+                    // Inits the main view music.
                     .onAppear
                     {
                         DispatchQueue.main.asyncAfter(deadline: .now() + 1)
@@ -36,12 +37,15 @@ struct StartView: View
                     }
 
                 // Text UI
-                Text("A Haunting at Willowbrook")
+                Text("The Willowbrook Loop")
                     .foregroundColor(.white)
                     .font(Font.custom("Hoefler Text", size: 50))
+                    .multilineTextAlignment(.center)
                     .offset(x: 0, y: -200)
                     .opacity(fadeAway ? 0 : 1)
-                // Calls the navigation links in order by tag
+                
+                // Calls the navigation links in order by tag. The Continue button takes user to the beginning still. Needs to be fixed to save the last spot.
+
                 VStack
                 {
                     NavigationLink(
@@ -56,23 +60,20 @@ struct StartView: View
                     }
                     .navigationBarHidden(true)
                 }
+                
                 // Text UI with graphic animations toggling and sound effects playing.
                 VStack
                 {
                     Text("New Game")
-                        .foregroundColor(.white)
-                        .font(Font.custom("Hoefler Text", size: 20))
-                        .opacity(fadeAway ? 0 : 1)
-                        .padding()
                         .onTapGesture
                         {
                             soundManager.playSoundFile(data: Constants.THUNDERCLAP_AND_RAIN!.data)
+
                             flashEffect.toggle()
-                            //musicPlayer.setVolume(0, fadeDuration: 2)
+
                             DispatchQueue.main.asyncAfter(deadline: .now() + 1)
                             {
                                 fadeAway.toggle()
-                               // musicPlayer.stop()
                                 action = 1
                             }
                             withAnimation(Animation
@@ -88,19 +89,14 @@ struct StartView: View
                             }
                         }
                     Text("Continue")
-                        .foregroundColor(.white)
-                        .font(Font.custom("Hoefler Text", size: 20))
-                        .opacity(fadeAway ? 0 : 1)
-                        .padding()
                         .onTapGesture
                         {
                             soundManager.playSoundFile(data: Constants.THUNDERCLAP_AND_RAIN!.data)
                             flashEffect.toggle()
-                          //  musicPlayer.setVolume(0, fadeDuration: 2)
+
                             DispatchQueue.main.asyncAfter(deadline: .now() + 1)
                             {
                                 fadeAway.toggle()
-                             //   musicPlayer.stop()
                                 action = 2
                             }
                             withAnimation(Animation
@@ -108,18 +104,20 @@ struct StartView: View
                                 .repeatCount(4, autoreverses: true))
                             {
                                 flashEffect.toggle()
+
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5)
                                 {
                                     flashEffect.toggle()
                                 }
                             }
                         }
-                    Text("Quit")
-                        .foregroundColor(.white)
-                        .font(Font.custom("Hoefler Text", size: 20))
-                        .opacity(fadeAway ? 0 : 1)
                         .padding()
+                    
+                    Text("Quit")
                 }
+                .foregroundColor(.white)
+                .font(Font.custom("Hoefler Text", size: 20))
+                .opacity(fadeAway ? 0 : 1)
             }
         }
         .preferredColorScheme(.dark)
