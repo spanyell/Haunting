@@ -56,7 +56,7 @@ struct OneOneView: View
                 }
                 
                 NavigationLink(
-                    destination: OneTwoView(storyPlacement: 2, musicFile: Constants.ONE_TWO_MUSIC!), tag: 2, selection: $viewAction)
+                    destination: OneTwoView(storyPlacement: 2, musicFile: Constants.ONE_TWO_MUSIC_WAV!), tag: 2, selection: $viewAction)
                 {
                     EmptyView()
                 }
@@ -153,7 +153,7 @@ struct OneOneView: View
         {
             DispatchQueue.main.asyncAfter(deadline: .now() + 10)
             {
-                SoundManager.shared.playMusicFile(data: Constants.ONE_ONE_MUSIC!.data)
+                SoundManager.shared.playMusicFile(data: Constants.ONE_ONE_MUSIC_WAV!.data)
             }
         }
     }

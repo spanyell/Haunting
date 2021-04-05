@@ -29,7 +29,7 @@ class SoundManager: ObservableObject
         do
         {
             //  Create a new player with the passed in data file
-            player = try AVAudioPlayer(data: data, fileTypeHint: "mp3")
+            player = try AVAudioPlayer(data: data, fileTypeHint: "wav")
         
             //  Check to see if there is already a music file playing
             if currentPlayer != nil
