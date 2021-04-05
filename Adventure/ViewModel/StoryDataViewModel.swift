@@ -24,8 +24,6 @@ class StoryDataViewModel: ObservableObject
     func retrieveChapterData(chapter: Int)
     {
         self.storyDataList = StoryData.retrieveStoryDataByChapter(chapter: chapter)
-        
-        print("Size of storyDataList is: \(storyDataList.count)")
     }
     
     func populateChoicesAndDestinationsDictionary()
@@ -33,21 +31,15 @@ class StoryDataViewModel: ObservableObject
         //  Spin through the storyDataList to get each individual story data object
         for storyData in storyDataList
         {
-            //  Get the choices string, choiceeDestination and paragraph from the story data object
+            //  Get the choices string, choiceDestination and paragraph from the story data object
             let choiceString = storyData.choices
             let paragraph = storyData.paragraph
             
             //  Create the choices array
             let choicesList = choiceString.components(separatedBy: "*")
             
-            for choice in choicesList
-            {
-                print("Paragraph is: \(paragraph)\nChoice is: \(choice)")
-            }
-            
             //  Assign the choice and destinations arrays to the dictionary using the paragraph as the key.
             choicesDictionary[paragraph] = choicesList
         }
     }
 }
-

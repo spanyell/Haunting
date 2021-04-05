@@ -44,7 +44,7 @@ struct OneTwoView: View
             .offset(x: curtainSlideX ? 0 : -1000)
             .onAppear
             {
-                soundManager.playMusicFile(data: musicFile!.data)
+                SoundManager.shared.playMusicFile(data: musicFile!.data)
 
                 withAnimation(.easeInOut(duration: 1))
                 {

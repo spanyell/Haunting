@@ -7,12 +7,12 @@
 
 import AVKit
 import SwiftUI
-import Unrealm
 
 struct OneOneView: View
 {
     @StateObject var storyDataViewModel = StoryDataViewModel()
     @ObservedObject var soundManager = SoundManager()
+    
     // UI
     @State var moveTextAround = true
     @State var makeSmally = true
@@ -22,6 +22,7 @@ struct OneOneView: View
     @State private var flashEffect = false
     @State var screenFade = true
     @State var curtainSlideX = true
+    
     // Destination variable
     @State private var viewAction: Int? = 0
     @State private var viewTransition: Int? = 0
@@ -53,16 +54,19 @@ struct OneOneView: View
                 {
                     EmptyView()
                 }
+                
                 NavigationLink(
                     destination: OneTwoView(storyPlacement: 2, musicFile: Constants.ONE_TWO_MUSIC!), tag: 2, selection: $viewAction)
                 {
                     EmptyView()
                 }
+                
                 NavigationLink(
                     destination: OneThreeView(storyPlacement: 3), tag: 3, selection: $viewAction)
                 {
                     EmptyView()
                 }
+                
                 Text("\(storyDataViewModel.storyDataList[0].dataDescription)")
                     .foregroundColor(.white)
                     .font(Font.custom("Hoefler Text", size: 25))
@@ -110,8 +114,6 @@ struct OneOneView: View
                     {
                         i in
 
-                        // index = i
-
                         Text("\(choicesArray![i])")
                             .foregroundColor(.white)
                             .font(Font.custom("Hoefler Text", size: 20))
@@ -120,11 +122,12 @@ struct OneOneView: View
                             .blur(radius: screenFade ? 0 : 500)
                             .offset(y: moveTextAround ? 500 : 0)
                             .offset(x: curtainSlideX ? 0 : 1000)
-                            .onTapGesture(perform: {
-//                                SoundManager.shared.player?.numberOfLoops = 0
+                            .onTapGesture(perform:
+                            {
                                 withAnimation(.easeInOut(duration: 0.5))
                                 {
                                     viewTransition = i + 1
+                                    
                                     if viewTransition == 1
                                     {
                                         soundManager.playSoundFile(data: Constants.DRAW_CURTAINS!.data)
@@ -135,22 +138,23 @@ struct OneOneView: View
                                         screenFade.toggle()
                                     }
                                 }
+                                
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 1)
                                 {
                                     viewAction = i + 1
                                 }
                             })
-                            .onAppear
-                            {
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 10)
-                                {
-                                    SoundManager.shared.playMusicFile(data: Constants.ONE_ONE_MUSIC!.data)
-                                }
-                            }
                     }
                 }
             }
             .navigationBarHidden(true)
+        }
+        .onAppear
+        {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 10)
+            {
+                SoundManager.shared.playMusicFile(data: Constants.ONE_ONE_MUSIC!.data)
+            }
         }
     }
 }
