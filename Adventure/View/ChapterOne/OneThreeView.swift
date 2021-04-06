@@ -14,7 +14,6 @@ struct OneThreeView: View
     @ObservedObject var soundManager = SoundManager()
 
     // UI
-    @State var onTappy = true
     @State var makeSmally = true
     @State var bouncySpinny = true
     @State var shadows = true

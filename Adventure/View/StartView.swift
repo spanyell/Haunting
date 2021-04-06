@@ -68,7 +68,7 @@ struct StartView: View
                         .onTapGesture
                         {
                             soundManager.playSoundFile(data: Constants.THUNDERCLAP_AND_RAIN!.data)
-
+                            soundManager.playAmbienceFile(data: Constants.RAIN_AMBIENCE!.data)
                             flashEffect.toggle()
 
                             DispatchQueue.main.asyncAfter(deadline: .now() + 1)
@@ -92,6 +92,7 @@ struct StartView: View
                         .onTapGesture
                         {
                             soundManager.playSoundFile(data: Constants.THUNDERCLAP_AND_RAIN!.data)
+                            soundManager.playAmbienceFile(data: Constants.RAIN_AMBIENCE!.data)
                             flashEffect.toggle()
 
                             DispatchQueue.main.asyncAfter(deadline: .now() + 1)

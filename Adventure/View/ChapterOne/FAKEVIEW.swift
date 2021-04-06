@@ -27,13 +27,10 @@ struct FAKEVIEW: View
             Text("Turn it off!")
                 .onTapGesture
                 {
-                    soundManager.ambiencePlayer?.setVolume(0, fadeDuration: 2)
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 2)
-                    {
-                        soundManager.ambiencePlayer?.stop()
-                    }
+                    soundManager.stopAmbienceFile()
                 }
         }
+                    
     }
 }
 

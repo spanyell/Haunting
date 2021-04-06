@@ -19,7 +19,7 @@ struct OneOneView: View
     @State var bouncySpinny = true
     @State var shadows = true
     @State var blurry = true
-    @State private var flashEffect = false
+    @State var flashEffect = false
     @State var screenFade = true
     @State var curtainSlideX = true
     

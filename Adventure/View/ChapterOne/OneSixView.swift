@@ -41,7 +41,7 @@ struct OneSixView: View
                     perspective: 1.0
                 )
                 .scaleEffect(textWalkForward ? 1 : 300)
-//                .offset()
+
                 .onAppear
                 {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5)
@@ -51,7 +51,7 @@ struct OneSixView: View
                             doorOpenEffect.toggle()
                         }
                     }
-               //     soundManager.playOpenDoorAndCreak()
+                    soundManager.playSoundFile(data: Constants.DOOR_OPEN_AND_CREAK!.data)
                     DispatchQueue.main.asyncAfter(deadline: .now() + 2.5)
                     {
                         withAnimation(Animation.easeInOut(duration: 12))
