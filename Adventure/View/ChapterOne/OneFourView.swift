@@ -32,6 +32,7 @@ struct OneFourView: View
     @State private var viewTransition: Int? = 0
 
     var storyPlacement: Int
+    var musicFile: NSDataAsset?
 
     var body: some View
     {
@@ -47,6 +48,8 @@ struct OneFourView: View
 
             .onAppear
             {
+                SoundManager.shared.playMusicFile(data: musicFile!.data)
+                
                 withAnimation(.easeIn(duration: 0.5))
                 {
                     moveTextAround.toggle()

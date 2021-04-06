@@ -27,7 +27,6 @@ struct OneOneView: View
     @State private var viewAction: Int? = 0
     @State private var viewTransition: Int? = 0
     @State var index = 0
-    @State var musicCurrentlyPlaying = false
 
     var paragraph = UserDefaults.standard.integer(forKey: "paragraph")
 
@@ -43,20 +42,20 @@ struct OneOneView: View
                 {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 4)
                     {
-                        soundManager.playSoundFile(data: Constants.THUNDERCLAP_AND_RAIN!.data)
+                        soundManager.playSoundFile(data: Constants.THUNDER_RUMBLE!.data)
                     }
                 }
 
             VStack
             {
                 NavigationLink(
-                    destination: OneFourView(storyPlacement: 4), tag: 1, selection: $viewAction)
+                    destination: OneFourView(storyPlacement: 4, musicFile: Constants.ONE_FOUR_MUSIC!), tag: 1, selection: $viewAction)
                 {
                     EmptyView()
                 }
                 
                 NavigationLink(
-                    destination: OneTwoView(storyPlacement: 2, musicFile: Constants.ONE_TWO_MUSIC_WAV!), tag: 2, selection: $viewAction)
+                    destination: OneTwoView(storyPlacement: 2), tag: 2, selection: $viewAction)
                 {
                     EmptyView()
                 }
@@ -153,7 +152,7 @@ struct OneOneView: View
         {
             DispatchQueue.main.asyncAfter(deadline: .now() + 10)
             {
-                SoundManager.shared.playMusicFile(data: Constants.ONE_ONE_MUSIC_WAV!.data)
+                SoundManager.shared.playMusicFile(data: Constants.ONE_ONE_THRU_ONE_THREE_MUSIC!.data)
             }
         }
     }

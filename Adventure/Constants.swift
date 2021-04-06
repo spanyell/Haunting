@@ -43,13 +43,18 @@ struct Constants
     
     // Music
     static let MAIN_VIEW_MUSIC = NSDataAsset(name: "MainViewMusic")
-    static let ONE_ONE_MUSIC = NSDataAsset(name: "OneOneMusic")
-    static let ONE_TWO_MUSIC = NSDataAsset(name: "OneTwoMusic")
-    static let ONE_ONE_MUSIC_WAV = NSDataAsset(name: "OneOneMusicWav")
-    static let ONE_TWO_MUSIC_WAV = NSDataAsset(name: "OneTwoMusicWav")
+    static let ONE_ONE_THRU_ONE_THREE_MUSIC = NSDataAsset(name: "OneOneThruOneThreeMusic")
+    static let ONE_FOUR_MUSIC = NSDataAsset(name: "OneFourMusic")
+
     
     //Sound Effects
     static let THUNDERCLAP_AND_RAIN = NSDataAsset(name: "ThunderclapAndRain")
     static let DRAW_CURTAINS = NSDataAsset(name: "DrawCurtains")
     static let DOOR_OPEN_AND_CREAK = NSDataAsset(name: "DoorOpenAndCreak")
+    static let RAIN_AMBIENCE = NSDataAsset(name: "RainAmbience")
+    static let THUNDER_RUMBLE = NSDataAsset(name: "ThunderRumble")
+    
+    //Retired Sounds and Music
+    static let ONE_ONE_MUSIC_WAV = NSDataAsset(name: "OneOneMusicWav")
+    static let ONE_TWO_MUSIC_WAV = NSDataAsset(name: "OneTwoMusicWav")
 }

@@ -44,8 +44,6 @@ struct OneTwoView: View
             .offset(x: curtainSlideX ? 0 : -1000)
             .onAppear
             {
-                SoundManager.shared.playMusicFile(data: musicFile!.data)
-
                 withAnimation(.easeInOut(duration: 1))
                 {
                     blurry.toggle()
@@ -55,7 +53,7 @@ struct OneTwoView: View
         VStack
         {
             NavigationLink(
-                destination: OneFourView(storyPlacement: 4), tag: 1, selection: $viewAction)
+                destination: OneFourView(storyPlacement: 4, musicFile: Constants.ONE_FOUR_MUSIC!), tag: 1, selection: $viewAction)
             {
                 EmptyView()
             }
@@ -87,9 +85,10 @@ struct OneTwoView: View
                         withAnimation(.easeInOut(duration: 0.5))
                         {
                             viewTransition = i + 1
+                            
                             if viewTransition == 1
                             {
-                                //     soundManager.playDrawCurtains()
+                                soundManager.playSoundFile(data: Constants.DRAW_CURTAINS!.data)
                                 curtainSlideX.toggle()
                             }
                             else

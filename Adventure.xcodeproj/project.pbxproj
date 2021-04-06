@@ -135,7 +135,6 @@
 			isa = PBXGroup;
 			children = (
 				2B0E350125E495CA006BB63B /* OneOneView.swift */,
-				66D2E3F2260EB40D0004A1FD /* FAKEVIEW.swift */,
 				2B0E350425E495D6006BB63B /* OneTwoView.swift */,
 				2B0E350725E495EF006BB63B /* OneThreeView.swift */,
 				2B0E350A25E495FA006BB63B /* OneFourView.swift */,
@@ -157,6 +156,7 @@
 				2B4DD0D225E71EE700923DBC /* OneTwentyView.swift */,
 				2B4DD0D525E71EFA00923DBC /* OneTwentyOneView.swift */,
 				66FA3E4A25E8B9CA00429099 /* CheckpointOne.swift */,
+				66D2E3F2260EB40D0004A1FD /* FAKEVIEW.swift */,
 				66FA3E4725E8B89B00429099 /* TransitionEffects */,
 			);
 			path = ChapterOne;

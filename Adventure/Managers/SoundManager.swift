@@ -14,6 +14,7 @@ class SoundManager: ObservableObject
     
     @Published var player: AVAudioPlayer?
     @Published var effectPlayer: AVAudioPlayer?
+    @Published var ambiencePlayer: AVAudioPlayer?
     
     private var currentPlayer: AVAudioPlayer?
 
@@ -92,4 +93,33 @@ class SoundManager: ObservableObject
             print(error.localizedDescription)
         }
     }
+    
+    func playAmbienceFile(data: Data)
+    {
+        do
+        {
+            ambiencePlayer = try AVAudioPlayer(data: data, fileTypeHint: "mp3")
+            
+            self.ambiencePlayer!.play()
+            self.ambiencePlayer!.volume = 0.2
+            self.ambiencePlayer!.numberOfLoops = -1
+        }
+        catch
+        {
+            print(error.localizedDescription)
+        }
+    }
+    
+//    func stopAmbienceFile(data: Data)
+//    {
+//        do
+//        {
+//            self.ambiencePlayer!.setVolume(0, fadeDuration: 2)
+//            self.ambiencePlayer!.stop()
+//        }
+//        catch
+//        {
+//            print(error.localizedDescription)
+//        }
+//    }
 }

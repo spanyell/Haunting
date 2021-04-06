@@ -28,6 +28,7 @@ struct OneThreeView: View
     @State private var viewTransition: Int? = 0
 
     var storyPlacement: Int
+    var musicFile: NSDataAsset?
 
     var body: some View
     {
@@ -51,12 +52,12 @@ struct OneThreeView: View
         VStack
         {
             NavigationLink(
-                destination: OneFourView(storyPlacement: 4), tag: 1, selection: $viewAction)
+                destination: OneFourView(storyPlacement: 4, musicFile: Constants.ONE_FOUR_MUSIC!), tag: 1, selection: $viewAction)
             {
                 EmptyView()
             }
             NavigationLink(
-                destination: OneTwoView(storyPlacement: 2, musicFile: Constants.ONE_TWO_MUSIC!), tag: 2, selection: $viewAction)
+                destination: OneTwoView(storyPlacement: 2), tag: 2, selection: $viewAction)
             {
                 EmptyView()
             }
@@ -82,15 +83,19 @@ struct OneThreeView: View
                     {
                         withAnimation(.easeInOut(duration: 0.5))
                         {
-                            viewTransition = i + 1
-                            if viewTransition == 1
+                            withAnimation(.easeInOut(duration: 0.5))
                             {
-                    //            soundManager.playDrawCurtains()
-                                curtainSlideX.toggle()
-                            }
-                            else
-                            {
-                                screenFade.toggle()
+                                viewTransition = i + 1
+                                
+                                if viewTransition == 1
+                                {
+                                    soundManager.playSoundFile(data: Constants.DRAW_CURTAINS!.data)
+                                    curtainSlideX.toggle()
+                                }
+                                else
+                                {
+                                    screenFade.toggle()
+                                }
                             }
                         }
                         DispatchQueue.main.asyncAfter(deadline: .now() + 1)
