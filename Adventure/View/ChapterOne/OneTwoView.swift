@@ -15,7 +15,6 @@ struct OneTwoView: View
     @StateObject var soundManager = SoundManager()
 
     // UI
-    @State var onTappy = true
     @State var makeSmally = true
     @State var bouncySpinny = true
     @State var shadows = true
@@ -23,6 +22,7 @@ struct OneTwoView: View
     @State var screenFade = true
     @State private var flashEffect = false
     @State var curtainSlideX = true
+    
     // Destination Variable
     @State private var viewAction: Int? = 0
     @State private var viewTransition: Int? = 0
@@ -34,7 +34,7 @@ struct OneTwoView: View
     {
         let choicesArray = storyDataViewModel.choicesDictionary[storyPlacement]
 
-        Text(Constants.ONE_TWO_ONE)
+   //     Text(Constants.ONE_TWO_ONE)
 
         Text("\(storyDataViewModel.storyDataList[storyPlacement - 1].dataDescription)")
             .foregroundColor(.white)
@@ -73,7 +73,9 @@ struct OneTwoView: View
         {
             i in
 
-            Text("\(choicesArray![i])")
+            if (!storyDataViewModel.viewedChoices.contains(choicesArray![i]))
+            {
+                Text("\(choicesArray![i])")
                 .foregroundColor(.white)
                 .font(Font.custom("Hoefler Text", size: 20))
                 .padding()
@@ -81,26 +83,38 @@ struct OneTwoView: View
                 .blur(radius: screenFade ? 0 : 500)
                 .offset(x: curtainSlideX ? 0 : 1000)
                 .onTapGesture(perform:
+                {
+                    storyDataViewModel.viewedChoices.append(choicesArray![i])
+                    
+                    print("\n\nAdding \(choicesArray![i]) to the viewedChoices array!")
+                    
+                    print("Size of viewedChoices array is: \(storyDataViewModel.viewedChoices.count)\n\n")
+                    
+                    for choice in storyDataViewModel.viewedChoices
                     {
-                        withAnimation(.easeInOut(duration: 0.5))
+                        print("\n\nViewedChoices array value is: \(choice)")
+                    }
+                    
+                    withAnimation(.easeInOut(duration: 0.5))
+                    {
+                        viewTransition = i + 1
+                        
+                        if viewTransition == 1
                         {
-                            viewTransition = i + 1
-                            
-                            if viewTransition == 1
-                            {
-                                soundManager.playSoundFile(data: Constants.DRAW_CURTAINS!.data)
-                                curtainSlideX.toggle()
-                            }
-                            else
-                            {
-                                screenFade.toggle()
-                            }
+                            soundManager.playSoundFile(data: Constants.DRAW_CURTAINS!.data)
+                            curtainSlideX.toggle()
                         }
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 1)
+                        else
                         {
-                            viewAction = i + 1
+                            screenFade.toggle()
                         }
-                    })
+                    }
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1)
+                    {
+                        viewAction = i + 1
+                    }
+                })
+            }
         }
         .navigationBarHidden(true)
     }

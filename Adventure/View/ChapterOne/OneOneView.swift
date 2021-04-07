@@ -7,6 +7,7 @@
 
 import AVKit
 import SwiftUI
+import Unrealm
 
 struct OneOneView: View
 {
@@ -112,8 +113,10 @@ struct OneOneView: View
                     ForEach(choicesArray!.indices, id: \.self)
                     {
                         i in
-
-                        Text("\(choicesArray![i])")
+                        
+                        if (!storyDataViewModel.viewedChoices.contains(choicesArray![i]))
+                        {
+                            Text("\(choicesArray![i])")
                             .foregroundColor(.white)
                             .font(Font.custom("Hoefler Text", size: 20))
                             .padding()
@@ -123,6 +126,12 @@ struct OneOneView: View
                             .offset(x: curtainSlideX ? 0 : 1000)
                             .onTapGesture(perform:
                             {
+                                storyDataViewModel.viewedChoices.append(choicesArray![i])
+                                
+                                print("\n\nAdding \(choicesArray![i]) to the viewedChoices array!")
+                                
+                                print("Size of viewChoices array is: \(storyDataViewModel.viewedChoices.count)\n\n")
+                                
                                 withAnimation(.easeInOut(duration: 0.5))
                                 {
                                     viewTransition = i + 1
@@ -143,6 +152,7 @@ struct OneOneView: View
                                     viewAction = i + 1
                                 }
                             })
+                        }
                     }
                 }
             }
