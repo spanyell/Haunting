@@ -14,7 +14,6 @@ class StoryDataViewModel: ObservableObject
     //  This is a dictionary where the key is the paragraph string and the value is the array of choice and choiceDestination strings
     var choicesDictionary = [Int : [String]]()
     var destinationsDictionary = [String :[String]]()
-    var viewedChoices = [String]()
     
     init()
     {

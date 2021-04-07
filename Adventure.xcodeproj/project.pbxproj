@@ -43,6 +43,7 @@
 		2BEFA5C725DCECF200F8984F /* OnceUponView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BEFA5C625DCECF200F8984F /* OnceUponView.swift */; };
 		2BF95D6E25DF25960033421E /* StoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF95D6D25DF25960033421E /* StoryView.swift */; };
 		6607BEE725E9A23A000359F4 /* SlightJitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6607BEE625E9A23A000359F4 /* SlightJitter.swift */; };
+		660BC14A261E628900A1AB07 /* UtilitiesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660BC149261E628900A1AB07 /* UtilitiesManager.swift */; };
 		6627F55C25F35727009FA8EF /* MultipleSpinEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6627F55B25F35727009FA8EF /* MultipleSpinEffect.swift */; };
 		66D2E3E6260E6E840004A1FD /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D2E3E5260E6E840004A1FD /* SoundManager.swift */; };
 		66D2E3E9260E9AB70004A1FD /* Haunting.csv in Resources */ = {isa = PBXBuildFile; fileRef = 66D2E3E8260E9AB70004A1FD /* Haunting.csv */; };
@@ -99,6 +100,7 @@
 		2BEFA5C625DCECF200F8984F /* OnceUponView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnceUponView.swift; sourceTree = "<group>"; };
 		2BF95D6D25DF25960033421E /* StoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryView.swift; sourceTree = "<group>"; };
 		6607BEE625E9A23A000359F4 /* SlightJitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlightJitter.swift; sourceTree = "<group>"; };
+		660BC149261E628900A1AB07 /* UtilitiesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilitiesManager.swift; sourceTree = "<group>"; };
 		6627F55B25F35727009FA8EF /* MultipleSpinEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleSpinEffect.swift; sourceTree = "<group>"; };
 		66D2E3E5260E6E840004A1FD /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
 		66D2E3E8260E9AB70004A1FD /* Haunting.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Haunting.csv; path = ../../../Desktop/Haunting.csv; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 			children = (
 				2B2FD78725DDDB2400C0AB71 /* DatabaseManager.swift */,
 				66D2E3E5260E6E840004A1FD /* SoundManager.swift */,
+				660BC149261E628900A1AB07 /* UtilitiesManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -372,6 +375,7 @@
 				2B4DD0C125E71E9900923DBC /* OneFourteenView.swift in Sources */,
 				2B4DD0AC25E7128C00923DBC /* OneSevenView.swift in Sources */,
 				2B4DD0BB25E71AE300923DBC /* OneTwelveView.swift in Sources */,
+				660BC14A261E628900A1AB07 /* UtilitiesManager.swift in Sources */,
 				66D2E438261562230004A1FD /* WaterLetterView.swift in Sources */,
 				2B4DD0C425E71EA600923DBC /* OneFifteenView.swift in Sources */,
 				2B4DD0CA25E71EC400923DBC /* OneSeventeenView.swift in Sources */,

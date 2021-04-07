@@ -73,7 +73,7 @@ struct OneTwoView: View
         {
             i in
 
-            if (!storyDataViewModel.viewedChoices.contains(choicesArray![i]))
+            if (!UtilitiesManager.shared.viewedChoices.contains(choicesArray![i]))
             {
                 Text("\(choicesArray![i])")
                 .foregroundColor(.white)
@@ -84,13 +84,13 @@ struct OneTwoView: View
                 .offset(x: curtainSlideX ? 0 : 1000)
                 .onTapGesture(perform:
                 {
-                    storyDataViewModel.viewedChoices.append(choicesArray![i])
+                    UtilitiesManager.shared.viewedChoices.append(choicesArray![i])
                     
                     print("\n\nAdding \(choicesArray![i]) to the viewedChoices array!")
                     
-                    print("Size of viewedChoices array is: \(storyDataViewModel.viewedChoices.count)\n\n")
+                    print("Size of viewedChoices array is: \(UtilitiesManager.shared.viewedChoices.count)\n\n")
                     
-                    for choice in storyDataViewModel.viewedChoices
+                    for choice in UtilitiesManager.shared.viewedChoices
                     {
                         print("\n\nViewedChoices array value is: \(choice)")
                     }
