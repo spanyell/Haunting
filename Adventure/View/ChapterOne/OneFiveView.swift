@@ -72,6 +72,7 @@ struct OneFiveView: View
                     {
                         soundManager.playAmbienceFile2(data: Constants.WATER_DRIP_BATHTUB!.data)
                         soundManager.ambienceFile2PanLeft()
+                        soundManager.playScaryAmbienceFile(data: Constants.ZAPSPLAT_FLANGE!.data)
                     }
                 }
             VStack

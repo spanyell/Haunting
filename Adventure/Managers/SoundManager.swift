@@ -17,6 +17,7 @@ class SoundManager: ObservableObject
     @Published var effectPlayer2: AVAudioPlayer?
     @Published var ambiencePlayer: AVAudioPlayer?
     @Published var ambiencePlayer2: AVAudioPlayer?
+    @Published var scaryAmbiencePlayer: AVAudioPlayer?
 
     private var currentPlayer: AVAudioPlayer?
 
@@ -181,4 +182,24 @@ class SoundManager: ObservableObject
     {
         ambiencePlayer2!.pan = 0
     }
+    
+    func playScaryAmbienceFile(data: Data)
+    {
+        do
+        {
+            scaryAmbiencePlayer = try AVAudioPlayer(data: data, fileTypeHint: "mp3")
+
+            scaryAmbiencePlayer!.play()
+        }
+        catch
+        {
+            print(error.localizedDescription)
+        }
+    }
+    
+    func stopScaryAmbienceFile()
+    {
+        scaryAmbiencePlayer?.stop()
+    }
 }
+

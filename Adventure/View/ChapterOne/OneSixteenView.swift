@@ -12,6 +12,7 @@ import Unrealm
 struct OneSixteenView: View
 {
     @StateObject var storyDataViewModel = StoryDataViewModel()
+    @StateObject var soundManager = SoundManager()
     @State private var viewAction: Int? = 0
     @State private var viewTransition: Int? = 0
     @State var blurry = true
@@ -33,6 +34,8 @@ struct OneSixteenView: View
             .onAppear
             {
                 SoundManager.shared.playMusicFile(data: musicFile!.data)
+                SoundManager.shared.stopScaryAmbienceFile()
+                
                 withAnimation(.easeInOut(duration: 1))
                 {
                     blurry.toggle()

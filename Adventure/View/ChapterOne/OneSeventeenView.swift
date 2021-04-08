@@ -12,6 +12,7 @@ import Unrealm
 struct OneSeventeenView: View
 {
     @StateObject var storyDataViewModel = StoryDataViewModel()
+    @StateObject var soundManager = SoundManager()
     @State private var viewAction: Int? = 0
     @State private var viewTransition: Int? = 0
     @State var blurry = true
@@ -88,7 +89,19 @@ struct OneSeventeenView: View
 
                             withAnimation(.easeInOut(duration: 0.5))
                             {
-                                screenFade.toggle()
+                                viewTransition = i + 1
+
+                                if viewTransition == 2
+                                {
+                                    soundManager.playSoundFile2(data: Constants.THUNDERCLAP_AND_RAIN!.data)
+                                    soundManager.effectPlayer2?.setVolume(0, fadeDuration: 6)
+                                    SoundManager.shared.stopMusicFile()
+                                    
+                                }
+                                else
+                                {
+                                    screenFade.toggle()
+                                }
                             }
                             DispatchQueue.main.asyncAfter(deadline: .now() + 1)
                             {

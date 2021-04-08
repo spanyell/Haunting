@@ -12,6 +12,7 @@ import Unrealm
 struct OneFourteenView: View
 {
     @StateObject var storyDataViewModel = StoryDataViewModel()
+    @StateObject var soundManager = SoundManager()
     @State private var viewAction: Int? = 0
     @State private var viewTransition: Int? = 0
     @State var blurry = true
@@ -31,9 +32,16 @@ struct OneFourteenView: View
             .blur(radius: screenFade ? 0 : 500)
             .onAppear
             {
+                soundManager.playSoundFile2(data: Constants.THUNDERCLAP_AND_RAIN!.data)
+                soundManager.effectPlayer2?.setVolume(0, fadeDuration: 6)
+                
                 withAnimation(.easeInOut(duration: 1))
                 {
                     blurry.toggle()
+                }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1)
+                {
+                    soundManager.playSoundFile(data: Constants.BULB_EXPLODE!.data)
                 }
             }
 

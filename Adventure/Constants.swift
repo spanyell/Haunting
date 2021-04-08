@@ -60,6 +60,9 @@ struct Constants
     static let RAIN_AMBIENCE = NSDataAsset(name: "RainAmbience")
     static let THUNDER_RUMBLE = NSDataAsset(name: "ThunderRumble")
     static let WATER_DRIP_BATHTUB = NSDataAsset(name: "WaterDripBathtub")
+    static let ZAPSPLAT_FLANGE = NSDataAsset(name: "ZapsplatFlange")
+    static let TUB_DRAIN = NSDataAsset(name: "TubDrain")
+    static let BULB_EXPLODE = NSDataAsset(name: "BulbExplode")
     
     //Retired Sounds and Music
     static let ONE_ONE_MUSIC_WAV = NSDataAsset(name: "OneOneMusicWav")

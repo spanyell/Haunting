@@ -12,6 +12,7 @@ import Unrealm
 struct OneThirteenView: View
 {
     @StateObject var storyDataViewModel = StoryDataViewModel()
+    @StateObject var soundManager = SoundManager()
     @State private var viewAction: Int? = 0
     @State private var viewTransition: Int? = 0
     @State var blurry = true
@@ -31,6 +32,7 @@ struct OneThirteenView: View
             .blur(radius: screenFade ? 0 : 500)
             .onAppear
             {
+                soundManager.playSoundFile(data: Constants.TUB_DRAIN!.data)
                 withAnimation(.easeInOut(duration: 1))
                 {
                     blurry.toggle()

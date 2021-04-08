@@ -12,6 +12,7 @@ import Unrealm
 struct OneTwelveView: View
 {
     @StateObject var storyDataViewModel = StoryDataViewModel()
+    @StateObject var soundManager = SoundManager()
     @State private var viewAction: Int? = 0
     @State private var viewTransition: Int? = 0
     @State var blurry = true
@@ -31,6 +32,8 @@ struct OneTwelveView: View
             .blur(radius: screenFade ? 0 : 500)
             .onAppear
             {
+                soundManager.playScaryAmbienceFile(data: Constants.ZAPSPLAT_FLANGE!.data)
+                
                 withAnimation(.easeInOut(duration: 1))
                 {
                     blurry.toggle()

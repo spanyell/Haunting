@@ -12,6 +12,7 @@ import Unrealm
 struct OneEighteenView: View
 {
     @StateObject var storyDataViewModel = StoryDataViewModel()
+    @StateObject var soundManager = SoundManager()
     @State private var viewAction: Int? = 0
     @State private var viewTransition: Int? = 0
     @State var blurry = true
@@ -42,11 +43,6 @@ struct OneEighteenView: View
 
         VStack
         {
-            NavigationLink(
-                destination: OneFiveView(storyPlacement: 5), tag: 1, selection: $viewAction)
-            {
-                EmptyView()
-            }
             NavigationLink(
                 destination: OneTwentyView(storyPlacement: 20, musicFile: Constants.ONE_TWENTY_MUSIC!), tag: 2, selection: $viewAction)
             {
