@@ -50,7 +50,7 @@ struct OneEightView: View
                 EmptyView()
             }
             NavigationLink(
-                destination: OneEighteenView(storyPlacement: 18), tag: 2, selection: $viewAction)
+                destination: OneEighteenView(storyPlacement: 18, musicFile: Constants.ONE_EIGHTEEN_MUSIC!), tag: 2, selection: $viewAction)
             {
                 EmptyView()
             }

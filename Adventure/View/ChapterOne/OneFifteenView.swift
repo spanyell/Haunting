@@ -40,7 +40,7 @@ struct OneFifteenView: View
         VStack
         {
             NavigationLink(
-                destination: OneSixteenView(storyPlacement: 16, musicFile: Constants.POST_BATHROOM_MUSIC!), tag: 1, selection: $viewAction)
+                destination: OneFourteenView(storyPlacement: 14), tag: 1, selection: $viewAction)
             {
                 EmptyView()
             }
@@ -75,7 +75,8 @@ struct OneFifteenView: View
                             {
                                 print("\n\nViewedChoices array value is: \(choice)")
                             }
-
+                            SoundManager.shared.effectPlayer?.setVolume(0, fadeDuration: 6)
+                            SoundManager.shared.effectPlayer2?.setVolume(0, fadeDuration: 6)
                             withAnimation(.easeInOut(duration: 0.5))
                             {
                                 screenFade.toggle()

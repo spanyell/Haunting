@@ -85,7 +85,20 @@ struct OneThirteenView: View
 
                             withAnimation(.easeInOut(duration: 0.5))
                             {
-                                screenFade.toggle()
+                                viewTransition = i + 1
+
+                                if viewTransition == 1
+                                {
+                                    soundManager.playSoundFile2(data: Constants.THUNDERCLAP_AND_RAIN!.data)
+                                    soundManager.effectPlayer2?.setVolume(0, fadeDuration: 6)
+                                    SoundManager.shared.stopMusicFile()
+                                    soundManager.effectPlayer?.setVolume(0, fadeDuration: 6)
+                                    
+                                }
+                                else
+                                {
+                                    screenFade.toggle()
+                                }
                             }
                             DispatchQueue.main.asyncAfter(deadline: .now() + 1)
                             {
