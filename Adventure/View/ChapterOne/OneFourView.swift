@@ -54,6 +54,7 @@ struct OneFourView: View
                 {
                     moveTextAround.toggle()
                     makeSmally.toggle()
+                    blurry.toggle()
                 }
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1)
                 {
@@ -70,8 +71,21 @@ struct OneFourView: View
             {
                 EmptyView()
             }
+            NavigationLink(destination: OneSeventeenView(storyPlacement: 17), tag: 2, selection: $viewAction)
+            {
+                EmptyView()
+            }
+            NavigationLink(destination: OneEighteenView(storyPlacement: 18), tag: 3, selection: $viewAction)
+            {
+                EmptyView()
+            }
+            NavigationLink(destination: OneNineteenView(storyPlacement: 19), tag: 4, selection: $viewAction)
+            {
+                EmptyView()
+            }
         }
-        Divider().background(Color.white)
+        
+        Divider().background(LinearGradient(gradient: Gradient(colors: [Color.black, Color.white, Color.black]), startPoint: /*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/, endPoint: /*@START_MENU_TOKEN@*/.trailing/*@END_MENU_TOKEN@*/))
             .frame(height: 100)
             .blur(radius: blurry ? 100 : 0)
             .blur(radius: screenFade ? 0 : 500)
@@ -80,18 +94,47 @@ struct OneFourView: View
         {
             i in
 
-            Text("\(choicesArray![i])")
+            if (!UtilitiesManager.shared.viewedChoices.contains(choicesArray![i]))
+            {
+                Text("\(choicesArray![i])")
                 .foregroundColor(.white)
                 .font(Font.custom("Hoefler Text", size: 20))
                 .padding()
+                .blur(radius: blurry ? 100 : 0)
+                .blur(radius: screenFade ? 0 : 500)
                 .onTapGesture(perform:
+                {
+                    UtilitiesManager.shared.viewedChoices.append(choicesArray![i])
+                    
+                    print("\n\nAdding \(choicesArray![i]) to the viewedChoices array!")
+                    
+                    print("Size of viewedChoices array is: \(UtilitiesManager.shared.viewedChoices.count)\n\n")
+                    
+                    for choice in UtilitiesManager.shared.viewedChoices
                     {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0)
+                        print("\n\nViewedChoices array value is: \(choice)")
+                    }
+                    
+                    withAnimation(.easeInOut(duration: 0.5))
+                    {
+                        viewTransition = i + 1
+                        
+                        if viewTransition == 1
                         {
-                            viewAction = i + 1
+                            soundManager.playSoundFile2(data: Constants.FOUR_SIXTEENTH_NOTES_A!.data)
+                            SoundManager.shared.stopMusicFile()
                         }
-
-                    })
+                        else
+                        {
+                            screenFade.toggle()
+                        }
+                    }
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1)
+                    {
+                        viewAction = i + 1
+                    }
+                })
+            }
         }
         .navigationBarHidden(true)
     }

@@ -35,7 +35,12 @@ struct OneSevenView: View
                 EmptyView()
             }
             NavigationLink(
-                destination: OneEightView(storyPlacement: 8), tag: 2, selection: $viewAction)
+                destination: OneSixView(storyPlacement: 6), tag: 2, selection: $viewAction)
+            {
+                EmptyView()
+            }
+            NavigationLink(
+                destination: OneEightView(storyPlacement: 8), tag: 3, selection: $viewAction)
             {
                 EmptyView()
             }

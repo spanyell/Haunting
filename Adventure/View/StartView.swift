@@ -75,6 +75,7 @@ struct StartView: View
                             {
                                 fadeAway.toggle()
                                 action = 1
+                                soundManager.effectPlayer?.setVolume(0, fadeDuration: 10)
                             }
                             withAnimation(Animation
                                 .easeInOut(duration: 0.1)
@@ -99,6 +100,7 @@ struct StartView: View
                             {
                                 fadeAway.toggle()
                                 action = 2
+                                soundManager.effectPlayer?.setVolume(0, fadeDuration: 10)
                             }
                             withAnimation(Animation
                                 .easeInOut(duration: 0.1)

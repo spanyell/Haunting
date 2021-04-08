@@ -45,6 +45,9 @@ struct Constants
     static let MAIN_VIEW_MUSIC = NSDataAsset(name: "MainViewMusic")
     static let ONE_ONE_THRU_ONE_THREE_MUSIC = NSDataAsset(name: "OneOneThruOneThreeMusic")
     static let ONE_FOUR_MUSIC = NSDataAsset(name: "OneFourMusic")
+    static let HARD_STRINGS_A = NSDataAsset(name: "HardStringsA")
+    static let SURPRISE_NOTE_A = NSDataAsset(name: "SurpriseNoteA")
+    static let FOUR_SIXTEENTH_NOTES_A = NSDataAsset(name: "FourSixteenthNotesA")
 
     
     //Sound Effects
@@ -53,6 +56,7 @@ struct Constants
     static let DOOR_OPEN_AND_CREAK = NSDataAsset(name: "DoorOpenAndCreak")
     static let RAIN_AMBIENCE = NSDataAsset(name: "RainAmbience")
     static let THUNDER_RUMBLE = NSDataAsset(name: "ThunderRumble")
+    static let WATER_DRIP_BATHTUB = NSDataAsset(name: "WaterDripBathtub")
     
     //Retired Sounds and Music
     static let ONE_ONE_MUSIC_WAV = NSDataAsset(name: "OneOneMusicWav")

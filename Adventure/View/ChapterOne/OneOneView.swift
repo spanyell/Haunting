@@ -102,9 +102,9 @@ struct OneOneView: View
                     }
                     .shadow(color: shadows ? .white : .black, radius: shadows ? 18 : 0, x: 1, y: 1)
 
-                Divider().background(Color.white)
+                Divider().background(LinearGradient(gradient: Gradient(colors: [Color.black, Color.white, Color.black]), startPoint: /*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/, endPoint: /*@START_MENU_TOKEN@*/.trailing/*@END_MENU_TOKEN@*/))
                     .frame(height: 100)
-                    .blur(radius: blurry ? 100 : 0)
+                    .blur(radius: blurry ? 1000 : 0)
                     .blur(radius: screenFade ? 0 : 500)
                     .offset(x: curtainSlideX ? 0 : 1000)
 
@@ -168,10 +168,13 @@ struct OneOneView: View
     }
 }
 
-struct OneOneView_Previews: PreviewProvider
-{
-    static var previews: some View
-    {
-        OneOneView()
-    }
-}
+//struct OneOneView_Previews: PreviewProvider
+//{
+//    static var previews: some View
+//    {
+//        Group {
+//            OneOneView()
+//
+//        }
+//    }
+//}

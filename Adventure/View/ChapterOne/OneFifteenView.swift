@@ -29,20 +29,11 @@ struct OneFifteenView: View
         VStack
         {
             NavigationLink(
-                destination: OneSeventeenView(storyPlacement: 17), tag: 1, selection: $viewAction)
+                destination: OneSixteenView(storyPlacement: 16), tag: 1, selection: $viewAction)
             {
                 EmptyView()
             }
-            NavigationLink(
-                destination: OneEighteenView(storyPlacement: 18), tag: 2, selection: $viewAction)
-            {
-                EmptyView()
-            }
-            NavigationLink(
-                destination: OneNineteenView(storyPlacement: 19), tag: 3, selection: $viewAction)
-            {
-                EmptyView()
-            }
+
         }
         Divider().background(Color.white)
             .frame(height: 100)

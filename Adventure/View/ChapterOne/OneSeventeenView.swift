@@ -34,7 +34,7 @@ struct OneSeventeenView: View
                 EmptyView()
             }
             NavigationLink(
-                destination: OneSixteenView(storyPlacement: 16), tag: 2, selection: $viewAction)
+                destination: OneFiveView(storyPlacement: 5), tag: 2, selection: $viewAction)
             {
                 EmptyView()
             }

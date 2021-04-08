@@ -33,6 +33,21 @@ struct OneTwentyOneView: View
             {
                 EmptyView()
             }
+            NavigationLink(
+                destination: OneFiveView(storyPlacement: 5), tag: 2, selection: $viewAction)
+            {
+                EmptyView()
+            }
+            NavigationLink(
+                destination: OneNineteenView(storyPlacement: 19), tag: 3, selection: $viewAction)
+            {
+                EmptyView()
+            }
+            NavigationLink(
+                destination: OneSeventeenView(storyPlacement: 17), tag: 4, selection: $viewAction)
+            {
+                EmptyView()
+            }
         }
         Divider().background(Color.white)
             .frame(height: 100)

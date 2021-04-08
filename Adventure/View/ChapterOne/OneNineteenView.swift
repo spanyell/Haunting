@@ -75,7 +75,7 @@ struct OneNineteenView: View
                 VStack
                 {
                     NavigationLink(
-                        destination: OneSixView(storyPlacement: 6), tag: 1, selection: $viewAction)
+                        destination: OneFiveView(storyPlacement: 5), tag: 1, selection: $viewAction)
                     {
                         EmptyView()
                     }

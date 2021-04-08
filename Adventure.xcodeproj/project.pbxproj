@@ -45,8 +45,8 @@
 		6607BEE725E9A23A000359F4 /* SlightJitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6607BEE625E9A23A000359F4 /* SlightJitter.swift */; };
 		660BC14A261E628900A1AB07 /* UtilitiesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660BC149261E628900A1AB07 /* UtilitiesManager.swift */; };
 		6627F55C25F35727009FA8EF /* MultipleSpinEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6627F55B25F35727009FA8EF /* MultipleSpinEffect.swift */; };
+		6651CF54261E8E8D001493B3 /* Haunting.csv in Resources */ = {isa = PBXBuildFile; fileRef = 6651CF53261E8E8D001493B3 /* Haunting.csv */; };
 		66D2E3E6260E6E840004A1FD /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D2E3E5260E6E840004A1FD /* SoundManager.swift */; };
-		66D2E3E9260E9AB70004A1FD /* Haunting.csv in Resources */ = {isa = PBXBuildFile; fileRef = 66D2E3E8260E9AB70004A1FD /* Haunting.csv */; };
 		66D2E3F3260EB40D0004A1FD /* FAKEVIEW.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D2E3F2260EB40D0004A1FD /* FAKEVIEW.swift */; };
 		66D2E438261562230004A1FD /* WaterLetterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D2E437261562230004A1FD /* WaterLetterView.swift */; };
 		66FA3E4425E8B54700429099 /* MoveForwardTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FA3E4325E8B54700429099 /* MoveForwardTwo.swift */; };
@@ -102,8 +102,8 @@
 		6607BEE625E9A23A000359F4 /* SlightJitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlightJitter.swift; sourceTree = "<group>"; };
 		660BC149261E628900A1AB07 /* UtilitiesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilitiesManager.swift; sourceTree = "<group>"; };
 		6627F55B25F35727009FA8EF /* MultipleSpinEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleSpinEffect.swift; sourceTree = "<group>"; };
+		6651CF53261E8E8D001493B3 /* Haunting.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Haunting.csv; path = ../../../Desktop/Haunting.csv; sourceTree = "<group>"; };
 		66D2E3E5260E6E840004A1FD /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
-		66D2E3E8260E9AB70004A1FD /* Haunting.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Haunting.csv; path = ../../../Desktop/Haunting.csv; sourceTree = "<group>"; };
 		66D2E3F2260EB40D0004A1FD /* FAKEVIEW.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAKEVIEW.swift; sourceTree = "<group>"; };
 		66D2E437261562230004A1FD /* WaterLetterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterLetterView.swift; sourceTree = "<group>"; };
 		66FA3E4325E8B54700429099 /* MoveForwardTwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveForwardTwo.swift; sourceTree = "<group>"; };
@@ -234,8 +234,8 @@
 			children = (
 				2B1E931825E638F200E21D1E /* BugList_CreditAttributes */,
 				9114E90425D9A1530051CB3A /* AdventureApp.swift */,
+				6651CF53261E8E8D001493B3 /* Haunting.csv */,
 				2B860D0325E5F9C70082074B /* Constants.swift */,
-				66D2E3E8260E9AB70004A1FD /* Haunting.csv */,
 				9114E91A25D9A5EE0051CB3A /* Model */,
 				9114E91F25D9AE2D0051CB3A /* ViewModel */,
 				2BEFA5C125DCEB0400F8984F /* View */,
@@ -337,10 +337,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6651CF54261E8E8D001493B3 /* Haunting.csv in Resources */,
 				2B1E931925E638F200E21D1E /* BugList_CreditAttributes in Resources */,
 				9114E90C25D9A1540051CB3A /* Preview Assets.xcassets in Resources */,
 				9114E90925D9A1540051CB3A /* Assets.xcassets in Resources */,
-				66D2E3E9260E9AB70004A1FD /* Haunting.csv in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

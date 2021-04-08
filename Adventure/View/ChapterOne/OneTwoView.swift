@@ -63,7 +63,7 @@ struct OneTwoView: View
                 EmptyView()
             }
         }
-        Divider().background(Color.white)
+        Divider().background(LinearGradient(gradient: Gradient(colors: [Color.black, Color.white, Color.black]), startPoint: /*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/, endPoint: /*@START_MENU_TOKEN@*/.trailing/*@END_MENU_TOKEN@*/))
             .frame(height: 100)
             .blur(radius: blurry ? 100 : 0)
             .blur(radius: screenFade ? 0 : 500)

@@ -29,7 +29,12 @@ struct OneThirteenView: View
         VStack
         {
             NavigationLink(
-                destination: OneSixteenView(storyPlacement: 16), tag: 1, selection: $viewAction)
+                destination: OneFourteenView(storyPlacement: 14), tag: 1, selection: $viewAction)
+            {
+                EmptyView()
+            }
+            NavigationLink(
+                destination: OneFifteenView(storyPlacement: 15), tag: 2, selection: $viewAction)
             {
                 EmptyView()
             }
