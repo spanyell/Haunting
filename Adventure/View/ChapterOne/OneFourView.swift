@@ -49,7 +49,7 @@ struct OneFourView: View
             .onAppear
             {
                 SoundManager.shared.playMusicFile(data: musicFile!.data)
-
+                
                 withAnimation(.easeIn(duration: 0.5))
                 {
                     moveTextAround.toggle()
@@ -121,8 +121,10 @@ struct OneFourView: View
 
                                 if viewTransition == 1
                                 {
-                                    soundManager.playSoundFile2(data: Constants.FOUR_SIXTEENTH_NOTES_A!.data)
+                                    soundManager.playSoundFile2(data: Constants.THUNDERCLAP_AND_RAIN!.data)
+                                    soundManager.effectPlayer2?.setVolume(0, fadeDuration: 6)
                                     SoundManager.shared.stopMusicFile()
+                                    
                                 }
                                 else
                                 {

@@ -48,6 +48,9 @@ struct Constants
     static let HARD_STRINGS_A = NSDataAsset(name: "HardStringsA")
     static let SURPRISE_NOTE_A = NSDataAsset(name: "SurpriseNoteA")
     static let FOUR_SIXTEENTH_NOTES_A = NSDataAsset(name: "FourSixteenthNotesA")
+    static let POST_BATHROOM_MUSIC = NSDataAsset(name: "PostBathroomMusic")
+    static let ONE_EIGHTEEN_MUSIC = NSDataAsset(name: "OneEighteenMusic")
+    static let ONE_TWENTY_MUSIC = NSDataAsset(name: "OneTwentyMusic")
 
     
     //Sound Effects

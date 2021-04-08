@@ -18,6 +18,7 @@ struct OneTwentyView: View
     @State var screenFade = true
 
     var storyPlacement: Int
+    var musicFile: NSDataAsset?
 
     var body: some View
     {
@@ -31,6 +32,8 @@ struct OneTwentyView: View
             .blur(radius: screenFade ? 0 : 500)
             .onAppear
             {
+                SoundManager.shared.playMusicFile(data: musicFile!.data)
+                
                 withAnimation(.easeInOut(duration: 1))
                 {
                     blurry.toggle()

@@ -58,6 +58,7 @@ struct OneNineteenView: View
                             .easeInOut(duration: 1))
                         {
                             fadeInStory.toggle()
+                            blurry.toggle()
                         }
                         DispatchQueue.main.asyncAfter(deadline: .now() + 2)
                         {
@@ -87,12 +88,7 @@ struct OneNineteenView: View
                         EmptyView()
                     }
                     NavigationLink(
-                        destination: OneEighteenView(storyPlacement: 18), tag: 3, selection: $viewAction)
-                    {
-                        EmptyView()
-                    }
-                    NavigationLink(
-                        destination: OneTwentyView(storyPlacement: 20), tag: 4, selection: $viewAction)
+                        destination: OneEighteenView(storyPlacement: 18, musicFile: Constants.ONE_EIGHTEEN_MUSIC!), tag: 3, selection: $viewAction)
                     {
                         EmptyView()
                     }

@@ -18,6 +18,7 @@ struct OneSixteenView: View
     @State var screenFade = true
 
     var storyPlacement: Int
+    var musicFile: NSDataAsset?
 
     var body: some View
     {
@@ -31,6 +32,7 @@ struct OneSixteenView: View
             .blur(radius: screenFade ? 0 : 500)
             .onAppear
             {
+                SoundManager.shared.playMusicFile(data: musicFile!.data)
                 withAnimation(.easeInOut(duration: 1))
                 {
                     blurry.toggle()
@@ -45,7 +47,7 @@ struct OneSixteenView: View
                 EmptyView()
             }
             NavigationLink(
-                destination: OneEighteenView(storyPlacement: 18), tag: 2, selection: $viewAction)
+                destination: OneEighteenView(storyPlacement: 18, musicFile: Constants.ONE_EIGHTEEN_MUSIC!), tag: 2, selection: $viewAction)
             {
                 EmptyView()
             }

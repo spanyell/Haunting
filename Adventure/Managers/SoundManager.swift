@@ -50,8 +50,8 @@ class SoundManager: ObservableObject
                 currentPlayerTime = currentPlayer!.currentTime
                 print("\n\nCurrent player time is: \(currentPlayerTime)")
 
-                //  Since all sound file are exactly 8 seconds long, subtract the number of seconds played from 8.00
-                timeLeft = 8.00 - currentPlayerTime
+                //  Since all sound file are exactly 4 seconds long, subtract the number of seconds played from 4.00
+                timeLeft = 4.00 - currentPlayerTime
                 print("\n\nTime left is: \(timeLeft)\n\n")
             }
             else
