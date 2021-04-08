@@ -16,6 +16,8 @@ struct OneNineteenView: View
     @State private var viewTransition: Int? = 0
     @State var windowLightningEffect = true
     @State var fadeInStory = true
+    @State var blurry = true
+    @State var screenFade = true
 
     var storyPlacement: Int
 
@@ -95,26 +97,47 @@ struct OneNineteenView: View
                         EmptyView()
                     }
                 }
-                Divider().background(Color.white)
+
+                Divider().background(LinearGradient(gradient: Gradient(colors: [Color.black, Color.white, Color.black]), startPoint:  .leading, endPoint:  .trailing))
                     .frame(height: 100)
+                    .blur(radius: blurry ? 100 : 0)
+                    .blur(radius: screenFade ? 0 : 500)
 
                 ForEach(choicesArray!.indices, id: \.self)
                 {
                     i in
 
-                    Text("\(choicesArray![i])")
-                        .foregroundColor(.white)
-                        .font(Font.custom("Hoefler Text", size: 20))
-                        .padding()
-                        .blur(radius: fadeInStory ? 100 : 0)
-                        .onTapGesture(perform:
-                            {
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 0)
+                    if !UtilitiesManager.shared.viewedChoices.contains(choicesArray![i])
+                    {
+                        Text("\(choicesArray![i])")
+                            .foregroundColor(.white)
+                            .font(Font.custom("Hoefler Text", size: 20))
+                            .padding()
+                            .blur(radius: blurry ? 100 : 0)
+                            .blur(radius: screenFade ? 0 : 500)
+                            .onTapGesture(perform:
                                 {
-                                    viewAction = i + 1
-                                }
+                                    UtilitiesManager.shared.viewedChoices.append(choicesArray![i])
 
-                            })
+                                    print("\n\nAdding \(choicesArray![i]) to the viewedChoices array!")
+
+                                    print("Size of viewedChoices array is: \(UtilitiesManager.shared.viewedChoices.count)\n\n")
+
+                                    for choice in UtilitiesManager.shared.viewedChoices
+                                    {
+                                        print("\n\nViewedChoices array value is: \(choice)")
+                                    }
+
+                                    withAnimation(.easeInOut(duration: 0.5))
+                                    {
+                                        screenFade.toggle()
+                                    }
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 1)
+                                    {
+                                        viewAction = i + 1
+                                    }
+                                })
+                    }
                 }
                 .navigationBarHidden(true)
             }

@@ -38,7 +38,7 @@ struct OneFourView: View
     {
         let choicesArray = storyDataViewModel.choicesDictionary[storyPlacement]
 
-   //     Text(Constants.ONE_FOUR_ONE)
+        //     Text(Constants.ONE_FOUR_ONE)
         Text("\(storyDataViewModel.storyDataList[storyPlacement - 1].dataDescription)")
             .foregroundColor(.white)
             .font(Font.custom("Hoefler Text", size: 25))
@@ -49,7 +49,7 @@ struct OneFourView: View
             .onAppear
             {
                 SoundManager.shared.playMusicFile(data: musicFile!.data)
-                
+
                 withAnimation(.easeIn(duration: 0.5))
                 {
                     moveTextAround.toggle()
@@ -84,8 +84,8 @@ struct OneFourView: View
                 EmptyView()
             }
         }
-        
-        Divider().background(LinearGradient(gradient: Gradient(colors: [Color.black, Color.white, Color.black]), startPoint: /*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/, endPoint: /*@START_MENU_TOKEN@*/.trailing/*@END_MENU_TOKEN@*/))
+
+        Divider().background(LinearGradient(gradient: Gradient(colors: [Color.black, Color.white, Color.black]), startPoint:  .leading, endPoint:  .trailing))
             .frame(height: 100)
             .blur(radius: blurry ? 100 : 0)
             .blur(radius: screenFade ? 0 : 500)
@@ -94,46 +94,46 @@ struct OneFourView: View
         {
             i in
 
-            if (!UtilitiesManager.shared.viewedChoices.contains(choicesArray![i]))
+            if !UtilitiesManager.shared.viewedChoices.contains(choicesArray![i])
             {
                 Text("\(choicesArray![i])")
-                .foregroundColor(.white)
-                .font(Font.custom("Hoefler Text", size: 20))
-                .padding()
-                .blur(radius: blurry ? 100 : 0)
-                .blur(radius: screenFade ? 0 : 500)
-                .onTapGesture(perform:
-                {
-                    UtilitiesManager.shared.viewedChoices.append(choicesArray![i])
-                    
-                    print("\n\nAdding \(choicesArray![i]) to the viewedChoices array!")
-                    
-                    print("Size of viewedChoices array is: \(UtilitiesManager.shared.viewedChoices.count)\n\n")
-                    
-                    for choice in UtilitiesManager.shared.viewedChoices
-                    {
-                        print("\n\nViewedChoices array value is: \(choice)")
-                    }
-                    
-                    withAnimation(.easeInOut(duration: 0.5))
-                    {
-                        viewTransition = i + 1
-                        
-                        if viewTransition == 1
+                    .foregroundColor(.white)
+                    .font(Font.custom("Hoefler Text", size: 20))
+                    .padding()
+                    .blur(radius: blurry ? 100 : 0)
+                    .blur(radius: screenFade ? 0 : 500)
+                    .onTapGesture(perform:
                         {
-                            soundManager.playSoundFile2(data: Constants.FOUR_SIXTEENTH_NOTES_A!.data)
-                            SoundManager.shared.stopMusicFile()
-                        }
-                        else
-                        {
-                            screenFade.toggle()
-                        }
-                    }
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1)
-                    {
-                        viewAction = i + 1
-                    }
-                })
+                            UtilitiesManager.shared.viewedChoices.append(choicesArray![i])
+
+                            print("\n\nAdding \(choicesArray![i]) to the viewedChoices array!")
+
+                            print("Size of viewedChoices array is: \(UtilitiesManager.shared.viewedChoices.count)\n\n")
+
+                            for choice in UtilitiesManager.shared.viewedChoices
+                            {
+                                print("\n\nViewedChoices array value is: \(choice)")
+                            }
+
+                            withAnimation(.easeInOut(duration: 0.5))
+                            {
+                                viewTransition = i + 1
+
+                                if viewTransition == 1
+                                {
+                                    soundManager.playSoundFile2(data: Constants.FOUR_SIXTEENTH_NOTES_A!.data)
+                                    SoundManager.shared.stopMusicFile()
+                                }
+                                else
+                                {
+                                    screenFade.toggle()
+                                }
+                            }
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1)
+                            {
+                                viewAction = i + 1
+                            }
+                        })
             }
         }
         .navigationBarHidden(true)

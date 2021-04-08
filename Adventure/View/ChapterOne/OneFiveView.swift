@@ -21,7 +21,6 @@ struct OneFiveView: View
     @State var blurry = true
     @State var screenFade = true
 
-
     var storyPlacement: Int
 
     var body: some View
@@ -59,7 +58,6 @@ struct OneFiveView: View
                         withAnimation(Animation.easeIn(duration: 12))
                         {
                             textWalkForward.toggle()
-                            
                         }
                     }
                     DispatchQueue.main.asyncAfter(deadline: .now() + 2.5)
@@ -102,7 +100,7 @@ struct OneFiveView: View
                         EmptyView()
                     }
                 }
-                Divider().background(LinearGradient(gradient: Gradient(colors: [Color.black, Color.white, Color.black]), startPoint: /*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/, endPoint: /*@START_MENU_TOKEN@*/.trailing/*@END_MENU_TOKEN@*/))
+                Divider().background(LinearGradient(gradient: Gradient(colors: [Color.black, Color.white, Color.black]), startPoint:  .leading, endPoint:  .trailing))
                     .frame(height: 100)
                     .scaleEffect(bringForward ? 0 : 1)
                     .blur(radius: blurry ? 100 : 0)

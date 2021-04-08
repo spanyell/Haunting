@@ -28,6 +28,15 @@ struct OneSixView: View
         Text("\(storyDataViewModel.storyDataList[storyPlacement - 1].dataDescription)")
             .foregroundColor(.white)
             .font(Font.custom("Hoefler Text", size: 25))
+            .blur(radius: blurry ? 500 : 0)
+            .blur(radius: screenFade ? 0 : 500)
+            .onAppear
+            {
+                withAnimation(.easeInOut(duration: 1))
+                {
+                    blurry.toggle()
+                }
+            }
 
         VStack
         {
@@ -42,7 +51,7 @@ struct OneSixView: View
                 EmptyView()
             }
         }
-        Divider().background(LinearGradient(gradient: Gradient(colors: [Color.black, Color.white, Color.black]), startPoint: /*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/, endPoint: /*@START_MENU_TOKEN@*/.trailing/*@END_MENU_TOKEN@*/))
+        Divider().background(LinearGradient(gradient: Gradient(colors: [Color.black, Color.white, Color.black]), startPoint:  .leading, endPoint:  .trailing))
             .frame(height: 100)
             .blur(radius: blurry ? 100 : 0)
             .blur(radius: screenFade ? 0 : 500)
@@ -51,18 +60,37 @@ struct OneSixView: View
         {
             i in
 
-            Text("\(choicesArray![i])")
-                .foregroundColor(.white)
-                .font(Font.custom("Hoefler Text", size: 20))
-                .padding()
-                .onTapGesture(perform:
-                    {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0)
+            if !UtilitiesManager.shared.viewedChoices.contains(choicesArray![i])
+            {
+                Text("\(choicesArray![i])")
+                    .foregroundColor(.white)
+                    .font(Font.custom("Hoefler Text", size: 20))
+                    .padding()
+                    .blur(radius: blurry ? 100 : 0)
+                    .blur(radius: screenFade ? 0 : 500)
+                    .onTapGesture(perform:
                         {
-                            viewAction = i + 1
-                        }
+                            UtilitiesManager.shared.viewedChoices.append(choicesArray![i])
 
-                    })
+                            print("\n\nAdding \(choicesArray![i]) to the viewedChoices array!")
+
+                            print("Size of viewedChoices array is: \(UtilitiesManager.shared.viewedChoices.count)\n\n")
+
+                            for choice in UtilitiesManager.shared.viewedChoices
+                            {
+                                print("\n\nViewedChoices array value is: \(choice)")
+                            }
+
+                            withAnimation(.easeInOut(duration: 0.5))
+                            {
+                                screenFade.toggle()
+                            }
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1)
+                            {
+                                viewAction = i + 1
+                            }
+                        })
+            }
         }
         .navigationBarHidden(true)
     }

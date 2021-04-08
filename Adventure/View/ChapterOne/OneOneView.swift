@@ -13,7 +13,7 @@ struct OneOneView: View
 {
     @StateObject var storyDataViewModel = StoryDataViewModel()
     @ObservedObject var soundManager = SoundManager()
-    
+
     // UI
     @State var moveTextAround = true
     @State var makeSmally = true
@@ -23,7 +23,7 @@ struct OneOneView: View
     @State var flashEffect = false
     @State var screenFade = true
     @State var curtainSlideX = true
-    
+
     // Destination variable
     @State private var viewAction: Int? = 0
     @State private var viewTransition: Int? = 0
@@ -54,19 +54,19 @@ struct OneOneView: View
                 {
                     EmptyView()
                 }
-                
+
                 NavigationLink(
                     destination: OneTwoView(storyPlacement: 2), tag: 2, selection: $viewAction)
                 {
                     EmptyView()
                 }
-                
+
                 NavigationLink(
                     destination: OneThreeView(storyPlacement: 3), tag: 3, selection: $viewAction)
                 {
                     EmptyView()
                 }
-                
+
                 Text("\(storyDataViewModel.storyDataList[0].dataDescription)")
                     .foregroundColor(.white)
                     .font(Font.custom("Hoefler Text", size: 25))
@@ -102,7 +102,7 @@ struct OneOneView: View
                     }
                     .shadow(color: shadows ? .white : .black, radius: shadows ? 18 : 0, x: 1, y: 1)
 
-                Divider().background(LinearGradient(gradient: Gradient(colors: [Color.black, Color.white, Color.black]), startPoint: /*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/, endPoint: /*@START_MENU_TOKEN@*/.trailing/*@END_MENU_TOKEN@*/))
+                Divider().background(LinearGradient(gradient: Gradient(colors: [Color.black, Color.white, Color.black]), startPoint:  .leading, endPoint:  .trailing))
                     .frame(height: 100)
                     .blur(radius: blurry ? 1000 : 0)
                     .blur(radius: screenFade ? 0 : 500)
@@ -113,45 +113,45 @@ struct OneOneView: View
                     ForEach(choicesArray!.indices, id: \.self)
                     {
                         i in
-                        
-                        if (!UtilitiesManager.shared.viewedChoices.contains(choicesArray![i]))
+
+                        if !UtilitiesManager.shared.viewedChoices.contains(choicesArray![i])
                         {
                             Text("\(choicesArray![i])")
-                            .foregroundColor(.white)
-                            .font(Font.custom("Hoefler Text", size: 20))
-                            .padding()
-                            .blur(radius: blurry ? 100 : 0)
-                            .blur(radius: screenFade ? 0 : 500)
-                            .offset(y: moveTextAround ? 500 : 0)
-                            .offset(x: curtainSlideX ? 0 : 1000)
-                            .onTapGesture(perform:
-                            {
-                                UtilitiesManager.shared.viewedChoices.append(choicesArray![i])
-                                
-                                print("\n\nAdding \(choicesArray![i]) to the viewedChoices array!")
-                                
-                                print("Size of viewChoices array is: \(UtilitiesManager.shared.viewedChoices.count)\n\n")
-                                
-                                withAnimation(.easeInOut(duration: 0.5))
-                                {
-                                    viewTransition = i + 1
-                                    
-                                    if viewTransition == 1
+                                .foregroundColor(.white)
+                                .font(Font.custom("Hoefler Text", size: 20))
+                                .padding()
+                                .blur(radius: blurry ? 100 : 0)
+                                .blur(radius: screenFade ? 0 : 500)
+                                .offset(y: moveTextAround ? 500 : 0)
+                                .offset(x: curtainSlideX ? 0 : 1000)
+                                .onTapGesture(perform:
                                     {
-                                        soundManager.playSoundFile(data: Constants.DRAW_CURTAINS!.data)
-                                        curtainSlideX.toggle()
-                                    }
-                                    else
-                                    {
-                                        screenFade.toggle()
-                                    }
-                                }
-                                
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 1)
-                                {
-                                    viewAction = i + 1
-                                }
-                            })
+                                        UtilitiesManager.shared.viewedChoices.append(choicesArray![i])
+
+                                        print("\n\nAdding \(choicesArray![i]) to the viewedChoices array!")
+
+                                        print("Size of viewChoices array is: \(UtilitiesManager.shared.viewedChoices.count)\n\n")
+
+                                        withAnimation(.easeInOut(duration: 0.5))
+                                        {
+                                            viewTransition = i + 1
+
+                                            if viewTransition == 1
+                                            {
+                                                soundManager.playSoundFile(data: Constants.DRAW_CURTAINS!.data)
+                                                curtainSlideX.toggle()
+                                            }
+                                            else
+                                            {
+                                                screenFade.toggle()
+                                            }
+                                        }
+
+                                        DispatchQueue.main.asyncAfter(deadline: .now() + 1)
+                                        {
+                                            viewAction = i + 1
+                                        }
+                                    })
                         }
                     }
                 }
@@ -168,8 +168,8 @@ struct OneOneView: View
     }
 }
 
-//struct OneOneView_Previews: PreviewProvider
-//{
+// struct OneOneView_Previews: PreviewProvider
+// {
 //    static var previews: some View
 //    {
 //        Group {
@@ -177,4 +177,4 @@ struct OneOneView: View
 //
 //        }
 //    }
-//}
+// }
