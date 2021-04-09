@@ -36,6 +36,7 @@ struct OneSeventeenView: View
                 {
                     blurry.toggle()
                 }
+                soundManager.playSoundFile(data: Constants.LOCKED_DOOR_JIGGLE!.data)
             }
 
         VStack

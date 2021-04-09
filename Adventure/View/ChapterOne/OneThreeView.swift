@@ -15,6 +15,7 @@ struct OneThreeView: View
     @ObservedObject var soundManager = SoundManager()
 
     // UI
+    @State var moveTextAround = true
     @State var makeSmally = true
     @State var bouncySpinny = true
     @State var shadows = true
@@ -43,9 +44,10 @@ struct OneThreeView: View
             .offset(x: curtainSlideX ? 0 : -1000)
             .onAppear
             {
-                withAnimation(.easeInOut(duration: 1))
+                withAnimation(.easeInOut(duration: 2))
                 {
                     blurry.toggle()
+                    moveTextAround.toggle()
                 }
             }
 
@@ -67,6 +69,7 @@ struct OneThreeView: View
             .blur(radius: blurry ? 100 : 0)
             .blur(radius: screenFade ? 0 : 500)
             .offset(x: curtainSlideX ? 0 : 1000)
+            .offset(y: moveTextAround ? 500 : 0)
 
         ForEach(choicesArray!.indices, id: \.self)
         {
@@ -75,10 +78,14 @@ struct OneThreeView: View
             Text("\(choicesArray![i])")
                 .foregroundColor(.white)
                 .font(Font.custom("Hoefler Text", size: 20))
+                .blur(radius: blurry ? 100 : 0)
+                .blur(radius: screenFade ? 0 : 500)
+                .offset(x: curtainSlideX ? 0 : 1000)
+                .offset(y: moveTextAround ? 500 : 0)
                 .padding()
                 .onTapGesture(perform:
                     {
-                        withAnimation(.easeInOut(duration: 0.5))
+                        withAnimation(.easeInOut(duration: 1))
                         {
                             viewTransition = i + 1
 
@@ -90,6 +97,8 @@ struct OneThreeView: View
                             else
                             {
                                 screenFade.toggle()
+                                blurry.toggle()
+                                moveTextAround.toggle()
                             }
                         }
                         DispatchQueue.main.asyncAfter(deadline: .now() + 1)

@@ -106,6 +106,7 @@ struct OneOneView: View
                     .frame(height: 100)
                     .blur(radius: blurry ? 1000 : 0)
                     .blur(radius: screenFade ? 0 : 500)
+                    .offset(y: moveTextAround ? 500 : 0)
                     .offset(x: curtainSlideX ? 0 : 1000)
 
                 VStack
@@ -117,10 +118,14 @@ struct OneOneView: View
                         Text("\(choicesArray![i])")
                             .foregroundColor(.white)
                             .font(Font.custom("Hoefler Text", size: 20))
+                            .blur(radius: blurry ? 100 : 0)
+                            .blur(radius: screenFade ? 0 : 500)
+                            .offset(y: moveTextAround ? 500 : 0)
+                            .offset(x: curtainSlideX ? 0 : 1000)
                             .padding()
                             .onTapGesture(perform:
                                 {
-                                    withAnimation(.easeInOut(duration: 0.5))
+                                    withAnimation(.easeInOut(duration: 1))
                                     {
                                         viewTransition = i + 1
 
@@ -132,6 +137,8 @@ struct OneOneView: View
                                         else
                                         {
                                             screenFade.toggle()
+                                            blurry.toggle()
+                                            moveTextAround.toggle()
                                         }
                                     }
                                     DispatchQueue.main.asyncAfter(deadline: .now() + 1)

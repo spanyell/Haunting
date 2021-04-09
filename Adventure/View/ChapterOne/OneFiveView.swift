@@ -70,8 +70,8 @@ struct OneFiveView: View
                     }
                     DispatchQueue.main.asyncAfter(deadline: .now() + 5.5)
                     {
-                        soundManager.playAmbienceFile2(data: Constants.WATER_DRIP_BATHTUB!.data)
-                        soundManager.ambienceFile2PanLeft()
+                        SoundManager.shared.playAmbienceFile2(data: Constants.WATER_DRIP_BATHTUB!.data)
+                        SoundManager.shared.ambienceFile2PanLeft()
                         soundManager.playScaryAmbienceFile(data: Constants.ZAPSPLAT_FLANGE!.data)
                     }
                 }

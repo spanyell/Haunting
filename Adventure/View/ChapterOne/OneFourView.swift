@@ -22,7 +22,7 @@ struct OneFourView: View
     @State var shadows = true
     @State var blurry = true
     @State var moveTextAround = true
-    @State private var flashEffect = false
+    @State private var flashEffect = true
     @State var screenFade = true
     // Sound
     @State var thunderEffect: AVAudioPlayer!
@@ -39,31 +39,45 @@ struct OneFourView: View
         let choicesArray = storyDataViewModel.choicesDictionary[storyPlacement]
 
         //     Text(Constants.ONE_FOUR_ONE)
-        Text("\(storyDataViewModel.storyDataList[storyPlacement - 1].dataDescription)")
-            .foregroundColor(.white)
-            .font(Font.custom("Hoefler Text", size: 25))
-            .scaleEffect(makeSmally ? 0 : 0.5)
-            .offset(y: moveTextAround ? 1000 : 0)
-            .scaleEffect(makeLarge ? 0.5 : 2)
+        ZStack {
+            Color(flashEffect ? .black : .white)
+            Text("\(storyDataViewModel.storyDataList[storyPlacement - 1].dataDescription)")
+                .foregroundColor(.white)
+                .font(Font.custom("Hoefler Text", size: 25))
+                .scaleEffect(makeSmally ? 0 : 0.5)
+                .offset(y: moveTextAround ? 1000 : 0)
+                .scaleEffect(makeLarge ? 0.5 : 2)
 
-            .onAppear
-            {
-                SoundManager.shared.playMusicFile(data: musicFile!.data)
-                
-                withAnimation(.easeIn(duration: 0.5))
+                .onAppear
                 {
-                    moveTextAround.toggle()
-                    makeSmally.toggle()
-                    blurry.toggle()
-                }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1)
-                {
+                    SoundManager.shared.playMusicFile(data: musicFile!.data)
+                    
                     withAnimation(.easeIn(duration: 0.5))
                     {
-                        makeLarge.toggle()
+                        moveTextAround.toggle()
+                        makeSmally.toggle()
+                        blurry.toggle()
                     }
-                }
+                    withAnimation(Animation
+                        .easeInOut(duration: 0.1)
+                        .repeatCount(4, autoreverses: true))
+                    {
+                        flashEffect.toggle()
+
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5)
+                        {
+                            flashEffect.toggle()
+                        }
+                    }
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1)
+                    {
+                        withAnimation(.easeIn(duration: 0.5))
+                        {
+                            makeLarge.toggle()
+                        }
+                    }
             }
+        }
 
         VStack
         {
@@ -109,6 +123,17 @@ struct OneFourView: View
                                 soundManager.playSoundFile2(data: Constants.THUNDERCLAP_AND_RAIN!.data)
                                 soundManager.effectPlayer2?.setVolume(0, fadeDuration: 6)
                                 SoundManager.shared.stopMusicFile()
+                                withAnimation(Animation
+                                    .easeInOut(duration: 0.1)
+                                    .repeatCount(4, autoreverses: true))
+                                {
+                                    flashEffect.toggle()
+
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5)
+                                    {
+                                        flashEffect.toggle()
+                                    }
+                                }
                             }
                             else
                             {

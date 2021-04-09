@@ -15,6 +15,7 @@ struct OneTwoView: View
     @StateObject var soundManager = SoundManager()
 
     // UI
+    @State var moveTextAround = true
     @State var makeSmally = true
     @State var bouncySpinny = true
     @State var shadows = true
@@ -44,9 +45,10 @@ struct OneTwoView: View
             .offset(x: curtainSlideX ? 0 : -1000)
             .onAppear
             {
-                withAnimation(.easeInOut(duration: 1))
+                withAnimation(.easeInOut(duration: 2))
                 {
                     blurry.toggle()
+                    moveTextAround.toggle()
                 }
             }
 
@@ -68,6 +70,7 @@ struct OneTwoView: View
             .blur(radius: blurry ? 100 : 0)
             .blur(radius: screenFade ? 0 : 500)
             .offset(x: curtainSlideX ? 0 : 1000)
+            .offset(y: moveTextAround ? 500 : 0)
 
         ForEach(choicesArray!.indices, id: \.self)
         {
@@ -76,10 +79,14 @@ struct OneTwoView: View
             Text("\(choicesArray![i])")
                 .foregroundColor(.white)
                 .font(Font.custom("Hoefler Text", size: 20))
+                .blur(radius: blurry ? 100 : 0)
+                .blur(radius: screenFade ? 0 : 500)
+                .offset(x: curtainSlideX ? 0 : 1000)
+                .offset(y: moveTextAround ? 500 : 0)
                 .padding()
                 .onTapGesture(perform:
                     {
-                        withAnimation(.easeInOut(duration: 0.5))
+                        withAnimation(.easeInOut(duration: 1))
                         {
                             viewTransition = i + 1
 
@@ -91,6 +98,8 @@ struct OneTwoView: View
                             else
                             {
                                 screenFade.toggle()
+                                blurry.toggle()
+                                moveTextAround.toggle()
                             }
                         }
                         DispatchQueue.main.asyncAfter(deadline: .now() + 1)

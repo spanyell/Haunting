@@ -34,6 +34,7 @@ struct OneEighteenView: View
             .blur(radius: screenFade ? 0 : 500)
             .onAppear
             {
+                soundManager.playSoundFile(data: Constants.FLIP_SWITCH!.data)
                 SoundManager.shared.playMusicFile(data: musicFile!.data)
                 withAnimation(.easeInOut(duration: 1))
                 {

@@ -67,6 +67,11 @@ struct Constants
     static let ZAPSPLAT_FLANGE = NSDataAsset(name: "ZapsplatFlange")
     static let TUB_DRAIN = NSDataAsset(name: "TubDrain")
     static let BULB_EXPLODE = NSDataAsset(name: "BulbExplode")
+    static let FLIP_SWITCH = NSDataAsset(name: "FlipSwitch")
+    static let FAUCET_SQUEAK = NSDataAsset(name: "FaucetSqueak")
+    static let BROKEN_TOILET = NSDataAsset(name: "BrokenToilet")
+    static let PICKUP_BOOK = NSDataAsset(name: "PickupBook")
+    static let LOCKED_DOOR_JIGGLE = NSDataAsset(name: "LockedDoorJiggle")
     
     //Retired Sounds and Music
     static let ONE_ONE_MUSIC_WAV = NSDataAsset(name: "OneOneMusicWav")

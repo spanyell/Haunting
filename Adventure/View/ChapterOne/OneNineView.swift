@@ -12,10 +12,12 @@ import Unrealm
 struct OneNineView: View
 {
     @StateObject var storyDataViewModel = StoryDataViewModel()
+    @StateObject var soundManager = SoundManager()
     @State private var viewAction: Int? = 0
     @State private var viewTransition: Int? = 0
     @State var blurry = true
     @State var screenFade = true
+    @State var curtainSlideX = true
 
     var storyPlacement: Int
 
@@ -31,6 +33,7 @@ struct OneNineView: View
             .blur(radius: screenFade ? 0 : 500)
             .onAppear
             {
+                soundManager.playSoundFile(data: Constants.FLIP_SWITCH!.data)
                 withAnimation(.easeInOut(duration: 1))
                 {
                     blurry.toggle()
@@ -80,7 +83,18 @@ struct OneNineView: View
                     {
                         withAnimation(.easeInOut(duration: 0.5))
                         {
-                            screenFade.toggle()
+                            viewTransition = i + 1
+
+                            if viewTransition == 3
+                            {
+                                soundManager.playSoundFile(data: Constants.DRAW_CURTAINS!.data)
+                                curtainSlideX.toggle()
+                                SoundManager.shared.ambienceFile2PanCenter()
+                            }
+                            else
+                            {
+                                screenFade.toggle()
+                            }
                         }
                         DispatchQueue.main.asyncAfter(deadline: .now() + 1)
                         {
