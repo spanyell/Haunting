@@ -41,6 +41,10 @@ struct Constants
     static let ONE_TWENTY_ONE = "1.20.1"
     static let ONE_TWENTYONE_ONE = "1.21.1"
     
+    // Choices for later
+    static let CHAPTER_ONE_LIGHTS_ON = "Look for a light switch in the bedroom."
+    
+    
     // Music
     static let MAIN_VIEW_MUSIC = NSDataAsset(name: "MainViewMusic")
     static let ONE_ONE_THRU_ONE_THREE_MUSIC = NSDataAsset(name: "OneOneThruOneThreeMusic")
