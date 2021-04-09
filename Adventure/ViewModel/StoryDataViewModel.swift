@@ -36,7 +36,21 @@ class StoryDataViewModel: ObservableObject
             let paragraph = storyData.paragraph
             
             //  Create the choices array
-            let choicesList = choiceString.components(separatedBy: "*")
+            var choicesList = choiceString.components(separatedBy: "*")
+            
+            var i = 0
+            
+            //  Only add choices if they are not in the viewedChoices array
+            for choice in choicesList
+            {
+                if UtilitiesManager.shared.viewedChoices.contains(choice)
+                {
+                    //  Remove the choice from the array
+                    choicesList.remove(at: i)
+                }
+                
+                i = i + 1
+            }
             
             //  Assign the choice and destinations arrays to the dictionary using the paragraph as the key.
             choicesDictionary[paragraph] = choicesList

@@ -101,7 +101,7 @@ struct OneFiveView: View
                         EmptyView()
                     }
                 }
-                Divider().background(LinearGradient(gradient: Gradient(colors: [Color.black, Color.white, Color.black]), startPoint:  .leading, endPoint:  .trailing))
+                Divider().background(LinearGradient(gradient: Gradient(colors: [Color.black, Color.white, Color.black]), startPoint: .leading, endPoint: .trailing))
                     .frame(height: 100)
                     .scaleEffect(bringForward ? 0 : 1)
                     .blur(radius: blurry ? 100 : 0)

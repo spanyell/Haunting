@@ -63,37 +63,23 @@ struct OneFourteenView: View
         {
             i in
 
-            if !UtilitiesManager.shared.viewedChoices.contains(choicesArray![i])
-            {
-                Text("\(choicesArray![i])")
-                    .foregroundColor(.white)
-                    .font(Font.custom("Hoefler Text", size: 20))
-                    .padding()
-                    .blur(radius: blurry ? 100 : 0)
-                    .blur(radius: screenFade ? 0 : 500)
-                    .onTapGesture(perform:
+            Text("\(choicesArray![i])")
+                .foregroundColor(.white)
+                .font(Font.custom("Hoefler Text", size: 20))
+                .padding()
+                .blur(radius: blurry ? 100 : 0)
+                .blur(radius: screenFade ? 0 : 500)
+                .onTapGesture(perform:
+                    {
+                        withAnimation(.easeInOut(duration: 0.5))
                         {
-                            UtilitiesManager.shared.viewedChoices.append(choicesArray![i])
-
-                            print("\n\nAdding \(choicesArray![i]) to the viewedChoices array!")
-
-                            print("Size of viewedChoices array is: \(UtilitiesManager.shared.viewedChoices.count)\n\n")
-
-                            for choice in UtilitiesManager.shared.viewedChoices
-                            {
-                                print("\n\nViewedChoices array value is: \(choice)")
-                            }
-
-                            withAnimation(.easeInOut(duration: 0.5))
-                            {
-                                screenFade.toggle()
-                            }
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 1)
-                            {
-                                viewAction = i + 1
-                            }
-                        })
-            }
+                            screenFade.toggle()
+                        }
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1)
+                        {
+                            viewAction = i + 1
+                        }
+                    })
         }
         .navigationBarHidden(true)
     }

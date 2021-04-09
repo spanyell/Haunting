@@ -102,7 +102,7 @@ struct OneOneView: View
                     }
                     .shadow(color: shadows ? .white : .black, radius: shadows ? 18 : 0, x: 1, y: 1)
 
-                Divider().background(LinearGradient(gradient: Gradient(colors: [Color.black, Color.white, Color.black]), startPoint:  .leading, endPoint:  .trailing))
+                Divider().background(LinearGradient(gradient: Gradient(colors: [Color.black, Color.white, Color.black]), startPoint: .leading, endPoint: .trailing))
                     .frame(height: 100)
                     .blur(radius: blurry ? 1000 : 0)
                     .blur(radius: screenFade ? 0 : 500)
@@ -114,49 +114,35 @@ struct OneOneView: View
                     {
                         i in
 
-                        if !UtilitiesManager.shared.viewedChoices.contains(choicesArray![i])
-                        {
-                            Text("\(choicesArray![i])")
-                                .foregroundColor(.white)
-                                .font(Font.custom("Hoefler Text", size: 20))
-                                .padding()
-                                .blur(radius: blurry ? 100 : 0)
-                                .blur(radius: screenFade ? 0 : 500)
-                                .offset(y: moveTextAround ? 500 : 0)
-                                .offset(x: curtainSlideX ? 0 : 1000)
-                                .onTapGesture(perform:
+                        Text("\(choicesArray![i])")
+                            .foregroundColor(.white)
+                            .font(Font.custom("Hoefler Text", size: 20))
+                            .padding()
+                            .onTapGesture(perform:
+                                {
+                                    withAnimation(.easeInOut(duration: 0.5))
                                     {
-                                        UtilitiesManager.shared.viewedChoices.append(choicesArray![i])
+                                        viewTransition = i + 1
 
-                                        print("\n\nAdding \(choicesArray![i]) to the viewedChoices array!")
-
-                                        print("Size of viewChoices array is: \(UtilitiesManager.shared.viewedChoices.count)\n\n")
-
-                                        withAnimation(.easeInOut(duration: 0.5))
+                                        if viewTransition == 1
                                         {
-                                            viewTransition = i + 1
-
-                                            if viewTransition == 1
-                                            {
-                                                soundManager.playSoundFile(data: Constants.DRAW_CURTAINS!.data)
-                                                curtainSlideX.toggle()
-                                            }
-                                            else
-                                            {
-                                                screenFade.toggle()
-                                            }
+                                            soundManager.playSoundFile(data: Constants.DRAW_CURTAINS!.data)
+                                            curtainSlideX.toggle()
                                         }
-
-                                        DispatchQueue.main.asyncAfter(deadline: .now() + 1)
+                                        else
                                         {
-                                            viewAction = i + 1
+                                            screenFade.toggle()
                                         }
-                                    })
-                        }
+                                    }
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 1)
+                                    {
+                                        viewAction = i + 1
+                                    }
+                                })
                     }
+                    .navigationBarHidden(true)
                 }
             }
-            .navigationBarHidden(true)
         }
         .onAppear
         {

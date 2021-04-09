@@ -57,7 +57,7 @@ struct OneSeventeenView: View
             }
         }
 
-        Divider().background(LinearGradient(gradient: Gradient(colors: [Color.black, Color.white, Color.black]), startPoint:  .leading, endPoint:  .trailing))
+        Divider().background(LinearGradient(gradient: Gradient(colors: [Color.black, Color.white, Color.black]), startPoint: .leading, endPoint: .trailing))
             .frame(height: 100)
             .blur(radius: blurry ? 100 : 0)
             .blur(radius: screenFade ? 0 : 500)
@@ -66,49 +66,34 @@ struct OneSeventeenView: View
         {
             i in
 
-            if !UtilitiesManager.shared.viewedChoices.contains(choicesArray![i])
-            {
-                Text("\(choicesArray![i])")
-                    .foregroundColor(.white)
-                    .font(Font.custom("Hoefler Text", size: 20))
-                    .padding()
-                    .blur(radius: blurry ? 100 : 0)
-                    .blur(radius: screenFade ? 0 : 500)
-                    .onTapGesture(perform:
+            Text("\(choicesArray![i])")
+                .foregroundColor(.white)
+                .font(Font.custom("Hoefler Text", size: 20))
+                .padding()
+                .blur(radius: blurry ? 100 : 0)
+                .blur(radius: screenFade ? 0 : 500)
+                .onTapGesture(perform:
+                    {
+                        withAnimation(.easeInOut(duration: 0.5))
                         {
-                            UtilitiesManager.shared.viewedChoices.append(choicesArray![i])
+                            viewTransition = i + 1
 
-                            print("\n\nAdding \(choicesArray![i]) to the viewedChoices array!")
-
-                            print("Size of viewedChoices array is: \(UtilitiesManager.shared.viewedChoices.count)\n\n")
-
-                            for choice in UtilitiesManager.shared.viewedChoices
+                            if viewTransition == 2
                             {
-                                print("\n\nViewedChoices array value is: \(choice)")
+                                soundManager.playSoundFile2(data: Constants.THUNDERCLAP_AND_RAIN!.data)
+                                soundManager.effectPlayer2?.setVolume(0, fadeDuration: 6)
+                                SoundManager.shared.stopMusicFile()
                             }
-
-                            withAnimation(.easeInOut(duration: 0.5))
+                            else
                             {
-                                viewTransition = i + 1
-
-                                if viewTransition == 2
-                                {
-                                    soundManager.playSoundFile2(data: Constants.THUNDERCLAP_AND_RAIN!.data)
-                                    soundManager.effectPlayer2?.setVolume(0, fadeDuration: 6)
-                                    SoundManager.shared.stopMusicFile()
-                                    
-                                }
-                                else
-                                {
-                                    screenFade.toggle()
-                                }
+                                screenFade.toggle()
                             }
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 1)
-                            {
-                                viewAction = i + 1
-                            }
-                        })
-            }
+                        }
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1)
+                        {
+                            viewAction = i + 1
+                        }
+                    })
         }
         .navigationBarHidden(true)
     }
