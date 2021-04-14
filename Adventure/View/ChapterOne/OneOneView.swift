@@ -50,7 +50,7 @@ struct OneOneView: View
             VStack
             {
                 NavigationLink(
-                    destination: OneFourView(storyPlacement: 4, musicFile: Constants.ONE_FOUR_MUSIC!), tag: 1, selection: $viewAction)
+                    destination: OneFourView(storyPlacement: 4), tag: 1, selection: $viewAction)
                 {
                     EmptyView()
                 }
@@ -155,7 +155,7 @@ struct OneOneView: View
         {
             DispatchQueue.main.asyncAfter(deadline: .now() + 10)
             {
-                SoundManager.shared.playMusicFile(data: Constants.ONE_ONE_THRU_ONE_THREE_MUSIC!.data)
+//                SoundManager.shared.playMusicFile(data: Constants.ONE_ONE_THRU_ONE_THREE_MUSIC!.data)
             }
         }
     }

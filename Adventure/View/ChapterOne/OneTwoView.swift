@@ -55,7 +55,7 @@ struct OneTwoView: View
         VStack
         {
             NavigationLink(
-                destination: OneFourView(storyPlacement: 4, musicFile: Constants.ONE_FOUR_MUSIC!), tag: 1, selection: $viewAction)
+                destination: OneFourView(storyPlacement: 4), tag: 1, selection: $viewAction)
             {
                 EmptyView()
             }
