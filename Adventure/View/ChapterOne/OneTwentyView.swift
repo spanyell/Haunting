@@ -25,64 +25,67 @@ struct OneTwentyView: View
     {
         let choicesArray = storyDataViewModel.choicesDictionary[storyPlacement]
 
-        Text(Constants.ONE_TWENTY_ONE)
-        Text("\(storyDataViewModel.storyDataList[storyPlacement - 1].dataDescription)")
-            .foregroundColor(.white)
-            .font(Font.custom("Hoefler Text", size: 25))
-            .blur(radius: blurry ? 500 : 0)
-            .blur(radius: screenFade ? 0 : 500)
-            .onAppear
+        ZStack
+        {
+            Color(.black)
+                .frame(alignment: .center)
+            VStack
             {
-                soundManager.playSoundFile(data: Constants.PICKUP_BOOK!.data)
-//                SoundManager.shared.playMusicFile(data: musicFile!.data)
-
-                withAnimation(.easeInOut(duration: 1))
+                NavigationLink(
+                    destination: OneTwentyOneView(storyPlacement: 21), tag: 1, selection: $viewAction)
                 {
-                    blurry.toggle()
+                    EmptyView()
+                }
+                NavigationLink(
+                    destination: CheckpointOne(), tag: 2, selection: $viewAction)
+                {
+                    EmptyView()
+                }
+//                Text(Constants.ONE_TWENTY_ONE)
+                Text("\(storyDataViewModel.storyDataList[storyPlacement - 1].dataDescription)")
+                    .foregroundColor(.white)
+                    .font(Font.custom("Hoefler Text", size: 25))
+                    .blur(radius: blurry ? 500 : 0)
+                    .blur(radius: screenFade ? 0 : 500)
+                    .onAppear
+                    {
+                        soundManager.playSoundFile(data: Constants.PAPER_RUSTLING!.data)
+                        //                SoundManager.shared.playMusicFile(data: musicFile!.data)
+
+                        withAnimation(.easeInOut(duration: 1))
+                        {
+                            blurry.toggle()
+                        }
+                    }
+                Divider().background(LinearGradient(gradient: Gradient(colors: [Color.black, Color.white, Color.black]), startPoint: .leading, endPoint: .trailing))
+                    .frame(height: 100)
+                    .blur(radius: blurry ? 100 : 0)
+                    .blur(radius: screenFade ? 0 : 500)
+
+                ForEach(choicesArray!.indices, id: \.self)
+                {
+                    i in
+
+                    Text("\(choicesArray![i])")
+                        .foregroundColor(.white)
+                        .font(Font.custom("Hoefler Text", size: 20))
+                        .padding()
+                        .blur(radius: blurry ? 100 : 0)
+                        .blur(radius: screenFade ? 0 : 500)
+                        .onTapGesture(perform:
+                            {
+                                withAnimation(.easeInOut(duration: 0.5))
+                                {
+                                    screenFade.toggle()
+                                }
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 1)
+                                {
+                                    viewAction = i + 1
+                                }
+                            })
                 }
             }
-
-        VStack
-        {
-            NavigationLink(
-                destination: OneTwentyOneView(storyPlacement: 21), tag: 1, selection: $viewAction)
-            {
-                EmptyView()
-            }
-            NavigationLink(
-                destination: CheckpointOne(), tag: 2, selection: $viewAction)
-            {
-                EmptyView()
-            }
+            .navigationBarHidden(true)
         }
-
-        Divider().background(LinearGradient(gradient: Gradient(colors: [Color.black, Color.white, Color.black]), startPoint: .leading, endPoint: .trailing))
-            .frame(height: 100)
-            .blur(radius: blurry ? 100 : 0)
-            .blur(radius: screenFade ? 0 : 500)
-
-        ForEach(choicesArray!.indices, id: \.self)
-        {
-            i in
-
-            Text("\(choicesArray![i])")
-                .foregroundColor(.white)
-                .font(Font.custom("Hoefler Text", size: 20))
-                .padding()
-                .blur(radius: blurry ? 100 : 0)
-                .blur(radius: screenFade ? 0 : 500)
-                .onTapGesture(perform:
-                    {
-                        withAnimation(.easeInOut(duration: 0.5))
-                        {
-                            screenFade.toggle()
-                        }
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 1)
-                        {
-                            viewAction = i + 1
-                        }
-                    })
-        }
-        .navigationBarHidden(true)
     }
 }

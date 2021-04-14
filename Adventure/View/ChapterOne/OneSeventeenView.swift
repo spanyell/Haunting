@@ -24,78 +24,81 @@ struct OneSeventeenView: View
     {
         let choicesArray = storyDataViewModel.choicesDictionary[storyPlacement]
 
-        Text(Constants.ONE_SEVENTEEN_ONE)
-        Text("\(storyDataViewModel.storyDataList[storyPlacement - 1].dataDescription)")
-            .foregroundColor(.white)
-            .font(Font.custom("Hoefler Text", size: 25))
-            .blur(radius: blurry ? 500 : 0)
-            .blur(radius: screenFade ? 0 : 500)
-            .onAppear
+        ZStack
+        {
+            Color(.black)
+                .frame(alignment: .center)
+            VStack
             {
-                withAnimation(.easeInOut(duration: 1))
+                NavigationLink(
+                    destination: OneEighteenView(storyPlacement: 18), tag: 1, selection: $viewAction)
                 {
-                    blurry.toggle()
+                    EmptyView()
                 }
-                soundManager.playSoundFile(data: Constants.LOCKED_DOOR_JIGGLE!.data)
-            }
-
-        VStack
-        {
-            NavigationLink(
-                destination: OneEighteenView(storyPlacement: 18), tag: 1, selection: $viewAction)
-            {
-                EmptyView()
-            }
-            NavigationLink(
-                destination: OneFiveView(storyPlacement: 5), tag: 2, selection: $viewAction)
-            {
-                EmptyView()
-            }
-            NavigationLink(
-                destination: OneNineteenView(storyPlacement: 19), tag: 3, selection: $viewAction)
-            {
-                EmptyView()
-            }
-        }
-
-        Divider().background(LinearGradient(gradient: Gradient(colors: [Color.black, Color.white, Color.black]), startPoint: .leading, endPoint: .trailing))
-            .frame(height: 100)
-            .blur(radius: blurry ? 100 : 0)
-            .blur(radius: screenFade ? 0 : 500)
-
-        ForEach(choicesArray!.indices, id: \.self)
-        {
-            i in
-
-            Text("\(choicesArray![i])")
-                .foregroundColor(.white)
-                .font(Font.custom("Hoefler Text", size: 20))
-                .padding()
-                .blur(radius: blurry ? 100 : 0)
-                .blur(radius: screenFade ? 0 : 500)
-                .onTapGesture(perform:
+                NavigationLink(
+                    destination: OneFiveView(storyPlacement: 5), tag: 2, selection: $viewAction)
+                {
+                    EmptyView()
+                }
+                NavigationLink(
+                    destination: OneNineteenView(storyPlacement: 19), tag: 3, selection: $viewAction)
+                {
+                    EmptyView()
+                }
+//                Text(Constants.ONE_SEVENTEEN_ONE)
+                Text("\(storyDataViewModel.storyDataList[storyPlacement - 1].dataDescription)")
+                    .foregroundColor(.white)
+                    .font(Font.custom("Hoefler Text", size: 25))
+                    .blur(radius: blurry ? 500 : 0)
+                    .blur(radius: screenFade ? 0 : 500)
+                    .onAppear
                     {
-                        withAnimation(.easeInOut(duration: 0.5))
+                        withAnimation(.easeInOut(duration: 1))
                         {
-                            viewTransition = i + 1
+                            blurry.toggle()
+                        }
+                        soundManager.playSoundFile(data: Constants.LOCKED_DOOR_JIGGLE!.data)
+                    }
+                Divider().background(LinearGradient(gradient: Gradient(colors: [Color.black, Color.white, Color.black]), startPoint: .leading, endPoint: .trailing))
+                    .frame(height: 100)
+                    .blur(radius: blurry ? 100 : 0)
+                    .blur(radius: screenFade ? 0 : 500)
 
-                            if viewTransition == 2
+                ForEach(choicesArray!.indices, id: \.self)
+                {
+                    i in
+
+                    Text("\(choicesArray![i])")
+                        .foregroundColor(.white)
+                        .font(Font.custom("Hoefler Text", size: 20))
+                        .padding()
+                        .blur(radius: blurry ? 100 : 0)
+                        .blur(radius: screenFade ? 0 : 500)
+                        .onTapGesture(perform:
                             {
-                                soundManager.playSoundFile2(data: Constants.THUNDERCLAP_AND_RAIN!.data)
-                                soundManager.effectPlayer2?.setVolume(0, fadeDuration: 6)
-                                SoundManager.shared.stopMusicFile()
-                            }
-                            else
-                            {
-                                screenFade.toggle()
-                            }
-                        }
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 1)
-                        {
-                            viewAction = i + 1
-                        }
-                    })
+                                withAnimation(.easeInOut(duration: 0.5))
+                                {
+                                    viewTransition = i + 1
+
+                                    if viewTransition == 2
+                                    {
+                                        soundManager.playSoundFile2(data: Constants.THUNDERCLAP_AND_RAIN!.data)
+                                        soundManager.effectPlayer2?.setVolume(0, fadeDuration: 6)
+                                        SoundManager.shared.stopMusicFile()
+                                    }
+                                    else
+                                    {
+                                        screenFade.toggle()
+                                    }
+                                }
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 1)
+                                {
+                                    viewAction = i + 1
+                                }
+                            })
+                }
+            }
+            .navigationBarHidden(true)
         }
-        .navigationBarHidden(true)
     }
 }

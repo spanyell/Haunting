@@ -70,8 +70,8 @@ struct Constants
     static let FLIP_SWITCH = NSDataAsset(name: "FlipSwitch")
     static let FAUCET_SQUEAK = NSDataAsset(name: "FaucetSqueak")
     static let BROKEN_TOILET = NSDataAsset(name: "BrokenToilet")
-    static let PICKUP_BOOK = NSDataAsset(name: "PickupBook")
     static let LOCKED_DOOR_JIGGLE = NSDataAsset(name: "LockedDoorJiggle")
+    static let PAPER_RUSTLING = NSDataAsset(name: "PaperRustling")
     
     //Retired Sounds and Music
     static let ONE_ONE_MUSIC_WAV = NSDataAsset(name: "OneOneMusicWav")

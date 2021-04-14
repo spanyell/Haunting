@@ -39,13 +39,6 @@ struct OneOneView: View
         {
             Color(flashEffect ? .white : .black)
                 .frame(alignment: .center)
-                .onAppear
-                {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 4)
-                    {
-                        soundManager.playSoundFile(data: Constants.THUNDER_RUMBLE!.data)
-                    }
-                }
 
             VStack
             {
@@ -98,6 +91,10 @@ struct OneOneView: View
                                     flashEffect.toggle()
                                 }
                             }
+                        }
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 4)
+                        {
+                            soundManager.playSoundFile(data: Constants.THUNDER_RUMBLE!.data)
                         }
                     }
                     .shadow(color: shadows ? .white : .black, radius: shadows ? 18 : 0, x: 1, y: 1)

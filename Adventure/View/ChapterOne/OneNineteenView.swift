@@ -48,7 +48,23 @@ struct OneNineteenView: View
             }
             VStack
             {
-                Text(Constants.ONE_NINETEEN_ONE)
+                NavigationLink(
+                    destination: OneFiveView(storyPlacement: 5), tag: 1, selection: $viewAction)
+                {
+                    EmptyView()
+                }
+                NavigationLink(
+                    destination: OneSeventeenView(storyPlacement: 17), tag: 2, selection: $viewAction)
+                {
+                    EmptyView()
+                }
+                NavigationLink(
+                    destination: OneEighteenView(storyPlacement: 18), tag: 3, selection: $viewAction)
+                {
+                    EmptyView()
+                }
+
+//                Text(Constants.ONE_NINETEEN_ONE)
                 Text("\(storyDataViewModel.storyDataList[storyPlacement - 1].dataDescription)")
                     .foregroundColor(.white)
                     .font(Font.custom("Hoefler Text", size: 25))
@@ -77,26 +93,6 @@ struct OneNineteenView: View
                             }
                         }
                     }
-
-                VStack
-                {
-                    NavigationLink(
-                        destination: OneFiveView(storyPlacement: 5), tag: 1, selection: $viewAction)
-                    {
-                        EmptyView()
-                    }
-                    NavigationLink(
-                        destination: OneSeventeenView(storyPlacement: 17), tag: 2, selection: $viewAction)
-                    {
-                        EmptyView()
-                    }
-                    NavigationLink(
-                        destination: OneEighteenView(storyPlacement: 18), tag: 3, selection: $viewAction)
-                    {
-                        EmptyView()
-                    }
-                }
-
                 Divider().background(LinearGradient(gradient: Gradient(colors: [Color.black, Color.white, Color.black]), startPoint: .leading, endPoint: .trailing))
                     .frame(height: 100)
                     .blur(radius: blurry ? 100 : 0)
@@ -135,8 +131,8 @@ struct OneNineteenView: View
                                 }
                             })
                 }
-                .navigationBarHidden(true)
             }
         }
+        .navigationBarHidden(true)
     }
 }
