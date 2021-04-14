@@ -46,7 +46,7 @@ struct OneSevenView: View
                 EmptyView()
             }
             NavigationLink(
-                destination: OneEightView(storyPlacement: 8, musicFile: Constants.POST_BATHROOM_MUSIC!), tag: 2, selection: $viewAction)
+                destination: OneEightView(storyPlacement: 8), tag: 2, selection: $viewAction)
             {
                 EmptyView()
             }

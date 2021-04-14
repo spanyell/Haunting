@@ -50,7 +50,7 @@ struct OneFourView: View
 
                 .onAppear
                 {
-                    SoundManager.shared.playMusicFile(data: musicFile!.data)
+//                    SoundManager.shared.playMusicFile(data: musicFile!.data)
                     
                     withAnimation(.easeIn(duration: 0.5))
                     {

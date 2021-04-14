@@ -35,7 +35,7 @@ struct OneEighteenView: View
             .onAppear
             {
                 soundManager.playSoundFile(data: Constants.FLIP_SWITCH!.data)
-                SoundManager.shared.playMusicFile(data: musicFile!.data)
+//                SoundManager.shared.playMusicFile(data: musicFile!.data)
                 withAnimation(.easeInOut(duration: 1))
                 {
                     blurry.toggle()
@@ -45,7 +45,7 @@ struct OneEighteenView: View
         VStack
         {
             NavigationLink(
-                destination: OneTwentyView(storyPlacement: 20, musicFile: Constants.ONE_TWENTY_MUSIC!), tag: 1, selection: $viewAction)
+                destination: OneTwentyView(storyPlacement: 20), tag: 1, selection: $viewAction)
             {
                 EmptyView()
             }

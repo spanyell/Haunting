@@ -42,7 +42,7 @@ struct OneSeventeenView: View
         VStack
         {
             NavigationLink(
-                destination: OneEighteenView(storyPlacement: 18, musicFile: Constants.ONE_EIGHTEEN_MUSIC!), tag: 1, selection: $viewAction)
+                destination: OneEighteenView(storyPlacement: 18), tag: 1, selection: $viewAction)
             {
                 EmptyView()
             }

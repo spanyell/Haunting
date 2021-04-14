@@ -34,7 +34,7 @@ struct OneTwentyView: View
             .onAppear
             {
                 soundManager.playSoundFile(data: Constants.PICKUP_BOOK!.data)
-                SoundManager.shared.playMusicFile(data: musicFile!.data)
+//                SoundManager.shared.playMusicFile(data: musicFile!.data)
 
                 withAnimation(.easeInOut(duration: 1))
                 {
