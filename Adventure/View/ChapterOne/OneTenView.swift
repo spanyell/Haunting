@@ -81,7 +81,7 @@ struct OneTenView: View
                         {
                             viewTransition = i + 1
 
-                            if viewTransition == 3
+                            if viewTransition == 2
                             {
                                 soundManager.playSoundFile(data: Constants.DRAW_CURTAINS!.data)
                                 curtainSlideX.toggle()

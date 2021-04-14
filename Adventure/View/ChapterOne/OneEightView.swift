@@ -33,7 +33,7 @@ struct OneEightView: View
             .blur(radius: screenFade ? 0 : 500)
             .onAppear
             {
-                SoundManager.shared.playMusicFile(data: musicFile!.data)
+//                SoundManager.shared.playMusicFile(data: musicFile!.data)
                 SoundManager.shared.stopScaryAmbienceFile()
                 
                 withAnimation(.easeInOut(duration: 1))

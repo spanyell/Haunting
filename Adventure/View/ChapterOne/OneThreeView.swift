@@ -44,7 +44,7 @@ struct OneThreeView: View
             .offset(x: curtainSlideX ? 0 : -1000)
             .onAppear
             {
-                withAnimation(.easeInOut(duration: 2))
+                withAnimation(.easeOut(duration: 3))
                 {
                     blurry.toggle()
                     moveTextAround.toggle()
