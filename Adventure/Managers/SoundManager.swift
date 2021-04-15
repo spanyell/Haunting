@@ -154,8 +154,8 @@ class SoundManager: ObservableObject
     {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2)
         {
-            self.ambiencePlayer!.setVolume(0, fadeDuration: 2)
-            self.ambiencePlayer!.stop()
+            self.ambiencePlayer?.setVolume(0, fadeDuration: 2)
+            self.ambiencePlayer?.stop()
         }
     }
 
@@ -163,8 +163,8 @@ class SoundManager: ObservableObject
     {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2)
         {
-            self.ambiencePlayer2!.setVolume(0, fadeDuration: 2)
-            self.ambiencePlayer2!.stop()
+            self.ambiencePlayer2?.setVolume(0, fadeDuration: 2)
+            self.ambiencePlayer2?.stop()
         }
     }
     

@@ -58,6 +58,11 @@ struct StartView: View
                     {
                         EmptyView()
                     }
+                    NavigationLink(
+                        destination: OneFiveView(storyPlacement: 5), tag: 3, selection: $action)
+                    {
+                        EmptyView()
+                    }
                     .navigationBarHidden(true)
                 }
                 
@@ -117,6 +122,14 @@ struct StartView: View
                         .padding()
                     
                     Text("Quit")
+                        .onTapGesture {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1)
+                            {
+                                fadeAway.toggle()
+                                action = 3
+                                soundManager.effectPlayer?.setVolume(0, fadeDuration: 2)
+                            }
+                        }
                 }
                 .foregroundColor(.white)
                 .font(Font.custom("Hoefler Text", size: 20))

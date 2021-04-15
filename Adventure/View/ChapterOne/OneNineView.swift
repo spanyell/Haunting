@@ -90,7 +90,6 @@ struct OneNineView: View
                                     {
                                         soundManager.playSoundFile(data: Constants.DRAW_CURTAINS!.data)
                                         curtainSlideX.toggle()
-                                        SoundManager.shared.ambienceFile2PanCenter()
                                     }
                                     else
                                     {
