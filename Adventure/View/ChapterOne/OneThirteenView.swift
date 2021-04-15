@@ -41,6 +41,8 @@ struct OneThirteenView: View
                 .frame(alignment: .center)
                 .onAppear
                 {
+                    // Turns off looped drip, drains tub, and starts the word montage.
+                    
                     SoundManager.shared.stopAmbienceFile2()
                     soundManager.playSoundFile(data: Constants.TUB_DRAIN!.data)
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1)
@@ -49,6 +51,7 @@ struct OneThirteenView: View
                             .easeInOut(duration: 4)
                             .repeatCount(7, autoreverses: false))
                         {
+                            // Allows for 7 visual and audible drips as the words fade in and out.
                             growCircle.toggle()
                             soundManager.playSoundFile2(data: Constants.WATER_DRIP_BATHTUB!.data)
                             soundManager.effectPlayer2?.numberOfLoops = 6
